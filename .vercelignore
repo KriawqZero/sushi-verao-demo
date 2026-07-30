@@ -1,0 +1,13 @@
+# Materiais locais de pesquisa e documentação não fazem parte do site publicado.
+assets/instagram/raw/
+assets/instagram/.session/
+docs/
+design-system/
+prototipos/
+
+# Dependências, builds e credenciais locais.
+node_modules/
+dist/
+.vercel/
+.env
+.env.*
