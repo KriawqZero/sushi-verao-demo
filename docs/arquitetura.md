@@ -126,6 +126,13 @@ exposta no HTML, ainda que restrita por domínio.
   responsabilidade, não por estética: são pessoas reais, a casa é frequentada
   por figuras públicas locais, e nada disso foi autorizado. Só entram tomadas
   de salão vazio, mesas postas, fachada e prato.
+
+  Uma ressalva honesta: a foto de abertura é a fachada à noite, e pela porta
+  aberta aparecem clientes ao fundo. Ampliei a região para conferir — são
+  silhuetas de costas e de perfil, à distância, sob o escurecimento aplicado
+  pelo site; nenhum rosto é reconhecível. Julguei aceitável. Se o Marcilio
+  discordar, a substituta é a fachada de dia, que não tem ninguém, ao custo de
+  perder o clima noturno que combina com o horário da casa.
 - Nenhuma imagem gerada por IA.
 - Nenhuma arte promocional (flyer) — não representa o posicionamento adotado.
 - Mídia bruta permanece fora do Git; ao repositório vai apenas a seleção
