@@ -1,0 +1,27 @@
+# Dependências e build
+node_modules/
+dist/
+.next/
+.vercel/
+dist-vercel/
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+
+# Segredos
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Sessões, cookies e credenciais de coleta
+*.session
+*session*.json
+cookies.txt
+cookies*.json
+.instaloader-*
+assets/instagram/.session/
+
+# Acervo bruto do Instagram: preservado localmente, fora do Git.
+assets/instagram/raw/
