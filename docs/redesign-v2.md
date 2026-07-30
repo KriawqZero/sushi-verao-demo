@@ -13,7 +13,7 @@ Cada crítica foi confrontada com evidência antes de virar decisão.
 
 | # | Crítica do Marcilio | O que a evidência mostrou | Resposta na v2 |
 | --- | --- | --- | --- |
-| 1 | Abaixo de Seveng e Recanto; cara de layout genérico de IA | Confirmado. A v1 era uma grade de 13 cards idênticos com "Adicionar ao pedido", fundo escuro e pílulas âmbar. Nenhum conceito. | Conceito nomeado que atravessa hero, seções, foto, tipografia e movimento. |
+| 1 | Abaixo de Seveng e Recanto; cara de layout genérico de IA | Confirmado. A v1 era uma grade de 13 cards idênticos com "Adicionar ao pedido", fundo escuro e pílulas âmbar. Nenhum conceito. | Direção visual com razão de ser (o horário da casa) atravessando hero, seções, foto, tipografia e movimento. |
 | 2 | A logo real não aparece | Confirmado: o header era texto puro; a marca só existia, borrada, dentro da foto da fachada. | Logo real no header, no hero e no rodapé. Arquivo enviado pelo Marcilio. |
 | 3 | Preto + âmbar não convence | O âmbar foi inventado. A marca é **preto, vermelho e branco**; a fachada tem faixas vermelhas; os pratos do salão são vermelhos; há quadros de círculo vermelho na parede. | Paleta derivada da marca e medida nas fotos. |
 | 4 | Copy fraca; "Tem sushi na esquina da Antônio João" é banal | Confirmado. Era um endereço no lugar de uma ideia. | Narrativa reescrita inteira. |
@@ -26,15 +26,18 @@ Cada crítica foi confrontada com evidência antes de virar decisão.
 | 11 | Interatividade com propósito | A v1 só tinha filtro e carrinho. | Ver seção 5. |
 | 12 | Precisa servir ao portfólio | — | Meta desta rodada. |
 
-## 2. O conceito
+## 2. A direção visual
 
-**A casa acende às 19h.**
+> **Nota da rodada de copy (seção 10):** esta direção nasceu com um nome —
+> "A casa acende às 19h" — que virava título na página. O Marcilio rejeitou a
+> frase como texto de IA, e com razão. **O nome morreu; o raciocínio visual
+> abaixo continua de pé**, porque ele nunca dependeu da frase: depende do
+> horário, que é fato.
 
-A página encena a chegada a uma esquina do Centro de Corumbá depois que o
-letreiro acende. Isso resolve o problema apontado no item 9: o escuro deixa de
-ser "dark premium" — um estilo escolhido por gosto — e passa a ser **o horário
-de funcionamento da casa**, que é fato informado pelo Marcilio (terça a
-domingo, 19h às 23h30).
+O escuro não é "dark premium", um estilo escolhido por gosto. Ele responde ao
+**horário de funcionamento** — terça a domingo, das 19h às 23h30, informado
+pelo Marcilio. A página é feita para ser aberta nesse horário, no celular, por
+quem está decidindo onde jantar. Isso resolve o problema apontado no item 9.
 
 A luz é o material de composição. Ela aparece como:
 
