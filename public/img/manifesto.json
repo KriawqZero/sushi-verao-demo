@@ -1,548 +1,305 @@
 {
- "fachada-noite": {
-  "origem": "2023-06-01_Cs7ieSDAcNK_01.jpg",
-  "shortcode": "Cs7ieSDAcNK",
-  "original": [
-   1440,
-   1440
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     800
-    ],
-    "bytes": 51528
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1440,
-     1440
-    ],
-    "bytes": 118278
-   }
-  ]
- },
- "fachada-dia": {
-  "origem": "2023-05-09_CsCJTFCA9Nj_01.jpg",
-  "shortcode": "CsCJTFCA9Nj",
-  "original": [
-   1440,
-   1800
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     1000
-    ],
-    "bytes": 79564
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1440,
-     1800
-    ],
-    "bytes": 227062
-   }
-  ]
- },
- "salao-mesas": {
-  "origem": "2023-06-01_Cs7ieSDAcNK_07.jpg",
-  "shortcode": "Cs7ieSDAcNK",
-  "original": [
-   1302,
-   1302
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     800
-    ],
-    "bytes": 26258
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1302,
-     1302
-    ],
-    "bytes": 53632
-   }
-  ]
- },
- "salao-janela": {
-  "origem": "2023-06-01_Cs7ieSDAcNK_10.jpg",
-  "shortcode": "Cs7ieSDAcNK",
-  "original": [
-   1302,
-   1302
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     800
-    ],
-    "bytes": 44892
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1302,
-     1302
-    ],
-    "bytes": 95824
-   }
-  ]
- },
- "salao-folhagem": {
-  "origem": "2023-06-01_Cs7ieSDAcNK_09.jpg",
-  "shortcode": "Cs7ieSDAcNK",
-  "original": [
-   1302,
-   1302
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     800
-    ],
-    "bytes": 52240
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1302,
-     1302
-    ],
-    "bytes": 104828
-   }
-  ]
- },
- "salao-mesa3": {
-  "origem": "2023-06-01_Cs7ieSDAcNK_06.jpg",
-  "shortcode": "Cs7ieSDAcNK",
-  "original": [
-   1302,
-   1302
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     800
-    ],
-    "bytes": 41038
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1302,
-     1302
-    ],
-    "bytes": 81048
-   }
-  ]
- },
  "area-kids": {
   "origem": "2023-05-09_CsCJTFCA9Nj_10.jpg",
   "shortcode": "CsCJTFCA9Nj",
-  "original": [
-   1440,
-   1800
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     1000
-    ],
-    "bytes": 28780
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1440,
-     1800
-    ],
-    "bytes": 56770
-   }
-  ]
- },
- "combinado-verao": {
-  "origem": "2023-06-06_CtKrBRCAXNH_01.jpg",
-  "shortcode": "CtKrBRCAXNH",
-  "original": [
-   1080,
-   1080
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     800
-    ],
-    "bytes": 44798
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1080,
-     1080
-    ],
-    "bytes": 69434
-   }
-  ]
- },
- "combinado-premium": {
-  "origem": "2023-11-17_CzxAXeag3XD_01.jpg",
-  "shortcode": "CzxAXeag3XD",
-  "original": [
-   1080,
-   1080
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     800
-    ],
-    "bytes": 85120
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1080,
-     1080
-    ],
-    "bytes": 123694
-   }
-  ]
- },
- "combinado-chef": {
-  "origem": "2023-09-07_Cw5gBpIgsK__06.jpg",
-  "shortcode": "Cw5gBpIgsK",
-  "original": [
-   1440,
+  "corte": null,
+  "larguras": [
+   480,
+   960,
    1440
   ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     800
-    ],
-    "bytes": 182668
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1440,
-     1440
-    ],
-    "bytes": 490934
-   }
-  ]
- },
- "sashimi": {
-  "origem": "2023-09-07_Cw5gBpIgsK__05.jpg",
-  "shortcode": "Cw5gBpIgsK",
-  "original": [
-   1440,
-   1439
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     799
-    ],
-    "bytes": 102602
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1440,
-     1439
-    ],
-    "bytes": 317558
-   }
-  ]
- },
- "carpaccio": {
-  "origem": "2023-09-07_Cw5gBpIgsK__09.jpg",
-  "shortcode": "Cw5gBpIgsK",
-  "original": [
-   1440,
-   1440
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     800
-    ],
-    "bytes": 85704
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1440,
-     1440
-    ],
-    "bytes": 208348
-   }
-  ]
- },
- "uramaki": {
-  "origem": "2023-02-21_Co8ShluskQ9_01.jpg",
-  "shortcode": "Co8ShluskQ9",
-  "original": [
-   1080,
-   1080
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     800
-    ],
-    "bytes": 179126
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1080,
-     1080
-    ],
-    "bytes": 312072
-   }
-  ]
- },
- "makimono": {
-  "origem": "2023-10-26_Cy4Zp5Eg4rS_01.jpg",
-  "shortcode": "Cy4Zp5Eg4rS",
-  "original": [
-   1024,
-   1024
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     800
-    ],
-    "bytes": 94108
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1024,
-     1024
-    ],
-    "bytes": 122548
-   }
-  ]
- },
- "hot-roll": {
-  "origem": "2023-09-16_CxO3tBSAf5H_01.jpg",
-  "shortcode": "CxO3tBSAf5H",
-  "original": [
-   1080,
-   1080
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     800
-    ],
-    "bytes": 97958
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1080,
-     1080
-    ],
-    "bytes": 165460
-   }
-  ]
- },
- "yakisoba": {
-  "origem": "2023-05-28_CszaFM4gLQz_01.jpg",
-  "shortcode": "CszaFM4gLQz",
-  "original": [
-   1080,
-   813
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     602
-    ],
-    "bytes": 50002
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1080,
-     813
-    ],
-    "bytes": 79788
-   }
-  ]
- },
- "risoto-camarao": {
-  "origem": "2023-06-01_Cs7iwWmgw9V_03.jpg",
-  "shortcode": "Cs7iwWmgw9V",
-  "original": [
-   991,
-   992
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     801
-    ],
-    "bytes": 42594
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     991,
-     992
-    ],
-    "bytes": 59722
-   }
-  ]
- },
- "polvo": {
-  "origem": "2023-11-29_C0NmZKjgSLz_01.jpg",
-  "shortcode": "C0NmZKjgSLz",
-  "original": [
-   1440,
-   1800
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     1000
-    ],
-    "bytes": 50322
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1440,
-     1800
-    ],
-    "bytes": 159026
-   }
-  ]
- },
- "buffet": {
-  "origem": "2023-09-17_CxSCpiqABFj_02.jpg",
-  "shortcode": "CxSCpiqABFj",
-  "original": [
-   1440,
-   1800
-  ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     1000
-    ],
-    "bytes": 148604
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1440,
-     1800
-    ],
-    "bytes": 400494
-   }
-  ]
+  "proporcao": 0.8
  },
  "barca-grande": {
   "origem": "2023-11-19_Cz2H9L3AOeT_01.jpg",
   "shortcode": "Cz2H9L3AOeT",
-  "original": [
-   1080,
+  "corte": null,
+  "larguras": [
+   480,
+   960,
    1080
   ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     800
-    ],
-    "bytes": 130330
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1080,
-     1080
-    ],
-    "bytes": 194910
-   }
-  ]
+  "proporcao": 1.0
+ },
+ "box-vermelho": {
+  "origem": "2023-06-01_Cs7ieSDAcNK_04.jpg",
+  "shortcode": "Cs7ieSDAcNK",
+  "corte": [
+   0.3,
+   0.0,
+   1.0,
+   1.0
+  ],
+  "larguras": [
+   480,
+   912
+  ],
+  "proporcao": 0.7005
+ },
+ "buffet": {
+  "origem": "2023-09-17_CxSCpiqABFj_02.jpg",
+  "shortcode": "CxSCpiqABFj",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1440
+  ],
+  "proporcao": 0.8
+ },
+ "carpaccio": {
+  "origem": "2023-09-07_Cw5gBpIgsK__09.jpg",
+  "shortcode": "Cw5gBpIgsK",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1440
+  ],
+  "proporcao": 1.0
+ },
+ "combinado-chef": {
+  "origem": "2023-09-07_Cw5gBpIgsK__06.jpg",
+  "shortcode": "Cw5gBpIgsK",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1440
+  ],
+  "proporcao": 1.0
+ },
+ "combinado-premium": {
+  "origem": "2023-11-17_CzxAXeag3XD_01.jpg",
+  "shortcode": "CzxAXeag3XD",
+  "corte": [
+   0.0,
+   0.26,
+   1.0,
+   1.0
+  ],
+  "larguras": [
+   480,
+   960,
+   1080
+  ],
+  "proporcao": 1.35
+ },
+ "combinado-verao": {
+  "origem": "2023-06-06_CtKrBRCAXNH_01.jpg",
+  "shortcode": "CtKrBRCAXNH",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1080
+  ],
+  "proporcao": 1.0
+ },
+ "esquina-placa": {
+  "origem": "2023-05-09_CsCJTFCA9Nj_02.jpg",
+  "shortcode": "CsCJTFCA9Nj",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1302
+  ],
+  "proporcao": 0.8002
+ },
+ "fachada-dia": {
+  "origem": "2023-05-09_CsCJTFCA9Nj_01.jpg",
+  "shortcode": "CsCJTFCA9Nj",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1440
+  ],
+  "proporcao": 0.8
+ },
+ "fachada-noite": {
+  "origem": "2023-06-01_Cs7ieSDAcNK_01.jpg",
+  "shortcode": "Cs7ieSDAcNK",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1440
+  ],
+  "proporcao": 1.0
+ },
+ "hot-roll": {
+  "origem": "2023-09-16_CxO3tBSAf5H_01.jpg",
+  "shortcode": "CxO3tBSAf5H",
+  "corte": [
+   0.0,
+   0.14,
+   1.0,
+   1.0
+  ],
+  "larguras": [
+   480,
+   960,
+   1080
+  ],
+  "proporcao": 1.1625
+ },
+ "letreiro": {
+  "origem": "2023-06-01_Cs7ieSDAcNK_02.jpg",
+  "shortcode": "Cs7ieSDAcNK",
+  "corte": [
+   0.0,
+   0.0,
+   0.62,
+   1.0
+  ],
+  "larguras": [
+   480,
+   807
+  ],
+  "proporcao": 0.6198
+ },
+ "makimono": {
+  "origem": "2023-10-26_Cy4Zp5Eg4rS_01.jpg",
+  "shortcode": "Cy4Zp5Eg4rS",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1024
+  ],
+  "proporcao": 1.0
+ },
+ "parede-discos": {
+  "origem": "2023-06-01_Cs7ieSDAcNK_05.jpg",
+  "shortcode": "Cs7ieSDAcNK",
+  "corte": [
+   0.0,
+   0.0,
+   1.0,
+   0.375
+  ],
+  "larguras": [
+   480,
+   960,
+   1302
+  ],
+  "proporcao": 2.668
+ },
+ "polvo": {
+  "origem": "2023-11-29_C0NmZKjgSLz_01.jpg",
+  "shortcode": "C0NmZKjgSLz",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1440
+  ],
+  "proporcao": 0.8
  },
  "preparo-fogo": {
   "origem": "2023-09-30_Cx1YAACANO9_01.jpg",
   "shortcode": "Cx1YAACANO9",
-  "original": [
-   1024,
+  "corte": [
+   0.0,
+   0.35,
+   1.0,
+   1.0
+  ],
+  "larguras": [
+   480,
+   960,
    1024
   ],
-  "saidas": [
-   {
-    "variante": "sm",
-    "tamanho": [
-     800,
-     800
-    ],
-    "bytes": 59372
-   },
-   {
-    "variante": "lg",
-    "tamanho": [
-     1024,
-     1024
-    ],
-    "bytes": 86846
-   }
-  ]
+  "proporcao": 1.5375
+ },
+ "risoto-camarao": {
+  "origem": "2023-06-01_Cs7iwWmgw9V_03.jpg",
+  "shortcode": "Cs7iwWmgw9V",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   991
+  ],
+  "proporcao": 0.999
+ },
+ "salao-folhagem": {
+  "origem": "2023-06-01_Cs7ieSDAcNK_09.jpg",
+  "shortcode": "Cs7ieSDAcNK",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1302
+  ],
+  "proporcao": 1.0
+ },
+ "salao-janela": {
+  "origem": "2023-06-01_Cs7ieSDAcNK_10.jpg",
+  "shortcode": "Cs7ieSDAcNK",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1302
+  ],
+  "proporcao": 1.0
+ },
+ "salao-mesa3": {
+  "origem": "2023-06-01_Cs7ieSDAcNK_06.jpg",
+  "shortcode": "Cs7ieSDAcNK",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1302
+  ],
+  "proporcao": 1.0
+ },
+ "salao-mesas": {
+  "origem": "2023-06-01_Cs7ieSDAcNK_07.jpg",
+  "shortcode": "Cs7ieSDAcNK",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1302
+  ],
+  "proporcao": 1.0
+ },
+ "sashimi": {
+  "origem": "2023-09-07_Cw5gBpIgsK__05.jpg",
+  "shortcode": "Cw5gBpIgsK",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1440
+  ],
+  "proporcao": 1.0007
+ },
+ "uramaki": {
+  "origem": "2023-02-21_Co8ShluskQ9_01.jpg",
+  "shortcode": "Co8ShluskQ9",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1080
+  ],
+  "proporcao": 1.0
+ },
+ "yakisoba": {
+  "origem": "2023-05-28_CszaFM4gLQz_01.jpg",
+  "shortcode": "CszaFM4gLQz",
+  "corte": null,
+  "larguras": [
+   480,
+   960,
+   1080
+  ],
+  "proporcao": 1.3284
  }
 }

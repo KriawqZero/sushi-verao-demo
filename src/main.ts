@@ -1,199 +1,396 @@
 /**
  * Sushi do Verão — conceito independente da Avantis.
  *
- * A única interatividade da página: filtro por categoria e montagem de um
- * pedido que vira mensagem pronta de WhatsApp. Não há carrinho, valor,
- * checkout nem backend — a conversa de preço acontece com a casa, porque
- * nenhum preço atual foi confirmado.
+ * Conceito "A casa acende às 19h". Toda a interatividade daqui serve à
+ * exploração: revelar a carta na ordem de leitura, abrir um item de perto e
+ * marcar onde o visitante está. Não existe carrinho, contador, valor nem
+ * checkout — o site não processa pedido, e não finge que processa.
  */
 
-import './style.css';
-import { CATEGORIAS, ITENS, type Categoria, type Item } from './cardapio';
+import './style.css'
+import {
+  CAPITULOS,
+  LUGAR,
+  linkWhatsApp,
+  type CapituloCarta,
+  type Imagem,
+  type ItemCarta,
+} from './conteudo'
 
-/** Número cadastrado no perfil comercial do restaurante. */
-const WHATSAPP = '5567999917786';
+/* =========================================================================
+   utilidades de imagem
+   ========================================================================= */
 
-type Filtro = Categoria | 'tudo';
-
-const selecionados = new Map<string, number>();
-let filtroAtivo: Filtro = 'tudo';
-
-/* ---------------------------------------------------------------- helpers */
-
-function el<T extends HTMLElement>(selector: string): T {
-  const node = document.querySelector<T>(selector);
-  if (!node) throw new Error(`Elemento ausente no HTML: ${selector}`);
-  return node;
+function srcset(img: Imagem): string {
+  return img.larguras.map((l) => `/img/${img.arquivo}-${l}.webp ${l}w`).join(', ')
 }
 
-function linkWhatsApp(texto: string): string {
-  return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
+function maiorLargura(img: Imagem): number {
+  return img.larguras[img.larguras.length - 1] ?? 960
 }
 
-/* ------------------------------------------------------------- montagem   */
+/**
+ * Monta um <img> com srcset, sizes e width/height reais. O par width/height
+ * existe para o navegador reservar a altura antes do download — é o que
+ * mantém o CLS em zero.
+ */
+function montaImagem(img: Imagem, sizes: string, lazy = true): HTMLImageElement {
+  const el = document.createElement('img')
+  const largura = maiorLargura(img)
+  el.src = `/img/${img.arquivo}-${largura}.webp`
+  el.srcset = srcset(img)
+  el.sizes = sizes
+  el.width = largura
+  el.height = Math.round(largura / img.proporcao)
+  el.alt = img.alt
+  if (lazy) {
+    el.loading = 'lazy'
+    el.decoding = 'async'
+  }
+  return el
+}
 
-function cardDoItem(item: Item): HTMLLIElement {
-  const li = document.createElement('li');
-  li.className = 'prato';
-  li.dataset.categoria = item.categoria;
+/* =========================================================================
+   ato II — a carta
+   ========================================================================= */
 
-  const figura = document.createElement('div');
-  figura.className = 'prato-img';
-  const img = document.createElement('img');
-  img.src = `/img/${item.img}-sm.webp`;
-  img.alt = item.alt;
-  img.width = 800;
-  img.height = 600;
-  img.loading = 'lazy';
-  img.decoding = 'async';
-  figura.append(img);
+const SIZES_ITEM_GRANDE = '(min-width: 48rem) 38vw, 47vw'
+const SIZES_ITEM = '(min-width: 48rem) 19vw, 47vw'
 
-  const corpo = document.createElement('div');
-  corpo.className = 'prato-corpo';
+function montaItem(item: ItemCarta, capitulo: CapituloCarta, indice: number): HTMLElement {
+  const botao = document.createElement('button')
+  botao.type = 'button'
+  botao.className = 'item'
+  botao.dataset.item = item.id
+  botao.setAttribute('aria-haspopup', 'dialog')
+  // o rótulo acessível diz o que o botão faz, não só o nome do prato
+  botao.setAttribute('aria-label', `${item.nome} — ver de perto, em ${capitulo.titulo}`)
 
-  const h3 = document.createElement('h3');
-  h3.textContent = item.nome;
+  const moldura = document.createElement('div')
+  moldura.className = 'item__foto'
+  moldura.append(montaImagem(item.imagem, indice === 0 ? SIZES_ITEM_GRANDE : SIZES_ITEM))
 
-  const p = document.createElement('p');
-  p.textContent = item.descricao;
-
-  corpo.append(h3, p);
-
+  const nome = document.createElement('h4')
+  nome.className = 'item__nome'
+  nome.append(document.createTextNode(item.nome))
   if (item.nota) {
-    const nota = document.createElement('span');
-    nota.className = 'nota';
-    nota.textContent = item.nota;
-    corpo.append(nota);
+    const nota = document.createElement('span')
+    nota.className = 'item__nota'
+    nota.textContent = item.nota
+    nome.append(nota)
   }
 
-  const botao = document.createElement('button');
-  botao.type = 'button';
-  botao.className = 'somar';
-  botao.dataset.id = item.id;
-  botao.setAttribute('aria-pressed', 'false');
-  botao.textContent = 'Adicionar ao pedido';
-  botao.addEventListener('click', () => alternarItem(item, botao));
+  const descricao = document.createElement('p')
+  descricao.className = 'item__descricao'
+  descricao.textContent = item.descricao
 
-  corpo.append(botao);
-  li.append(figura, corpo);
-  return li;
+  const ver = document.createElement('span')
+  ver.className = 'item__ver'
+  ver.setAttribute('aria-hidden', 'true')
+  ver.textContent = 'Ver de perto'
+
+  botao.append(moldura, nome, descricao, ver)
+  return botao
 }
 
-function montarFiltros(): void {
-  const caixa = el<HTMLDivElement>('.filtros');
-  for (const cat of CATEGORIAS) {
-    const chip = document.createElement('button');
-    chip.type = 'button';
-    chip.className = 'chip';
-    chip.textContent = cat.rotulo;
-    chip.setAttribute('aria-pressed', String(cat.id === filtroAtivo));
-    chip.addEventListener('click', () => {
-      filtroAtivo = cat.id;
-      for (const outro of caixa.querySelectorAll('.chip')) {
-        outro.setAttribute('aria-pressed', String(outro === chip));
+function montaCapitulo(capitulo: CapituloCarta): HTMLElement {
+  const secao = document.createElement('section')
+  secao.className = 'capitulo'
+  secao.id = `capitulo-${capitulo.id}`
+  secao.setAttribute('aria-labelledby', `titulo-${capitulo.id}`)
+
+  const cabecalho = document.createElement('div')
+  cabecalho.className = 'capitulo__cabecalho'
+  cabecalho.setAttribute('data-revela', '')
+
+  const titulo = document.createElement('h3')
+  titulo.id = `titulo-${capitulo.id}`
+  titulo.textContent = capitulo.titulo
+
+  const chamada = document.createElement('p')
+  chamada.className = 'capitulo__chamada'
+  chamada.textContent = capitulo.chamada
+
+  cabecalho.append(titulo, chamada)
+
+  const grade = document.createElement('div')
+  grade.className = 'capitulo__itens'
+  capitulo.itens.forEach((item, i) => {
+    const el = montaItem(item, capitulo, i)
+    el.setAttribute('data-revela', '')
+    // escalonamento curto: 45ms por item, com teto para não arrastar
+    el.style.setProperty('--atraso', `${Math.min(i, 4) * 45}ms`)
+    grade.append(el)
+  })
+
+  secao.append(cabecalho, grade)
+  return secao
+}
+
+function montaNavCapitulos(): HTMLElement {
+  const nav = document.createElement('nav')
+  nav.className = 'capitulos-nav'
+  nav.setAttribute('aria-label', 'Capítulos da carta')
+  for (const capitulo of CAPITULOS) {
+    const link = document.createElement('a')
+    link.className = 'capitulos-nav__item'
+    link.href = `#capitulo-${capitulo.id}`
+    link.textContent = capitulo.titulo
+    link.dataset.alvo = `capitulo-${capitulo.id}`
+    nav.append(link)
+  }
+  return nav
+}
+
+function renderizaCarta(): void {
+  const alvo = document.querySelector<HTMLElement>('#carta-corpo')
+  if (!alvo) return
+  alvo.append(montaNavCapitulos())
+  for (const capitulo of CAPITULOS) alvo.append(montaCapitulo(capitulo))
+}
+
+/* =========================================================================
+   ato III — o salão
+   ========================================================================= */
+
+function renderizaLugar(): void {
+  const alvo = document.querySelector<HTMLElement>('#salao-mosaico')
+  if (!alvo) return
+  // a primeira imagem (o panorama) já está no HTML; aqui entram as demais
+  LUGAR.slice(1).forEach((img, i) => {
+    const moldura = document.createElement('div')
+    moldura.className = 'foto foto--luz'
+    moldura.setAttribute('data-revela', '')
+    moldura.style.setProperty('--atraso', `${Math.min(i, 4) * 45}ms`)
+    moldura.append(montaImagem(img, '(min-width: 56rem) 33vw, 47vw'))
+    alvo.append(moldura)
+  })
+}
+
+/* =========================================================================
+   detalhe do item — diálogo nativo
+   ========================================================================= */
+
+interface RefsDialogo {
+  dialogo: HTMLDialogElement
+  capitulo: HTMLElement
+  titulo: HTMLElement
+  descricao: HTMLElement
+  nota: HTMLElement
+  foto: HTMLElement
+  acao: HTMLAnchorElement
+}
+
+function pegaRefs(): RefsDialogo | null {
+  const dialogo = document.querySelector<HTMLDialogElement>('#detalhe')
+  if (!dialogo) return null
+  const capitulo = dialogo.querySelector<HTMLElement>('#detalhe-capitulo')
+  const titulo = dialogo.querySelector<HTMLElement>('#detalhe-titulo')
+  const descricao = dialogo.querySelector<HTMLElement>('#detalhe-descricao')
+  const nota = dialogo.querySelector<HTMLElement>('#detalhe-nota')
+  const foto = dialogo.querySelector<HTMLElement>('#detalhe-foto')
+  const acao = dialogo.querySelector<HTMLAnchorElement>('#detalhe-acao')
+  if (!capitulo || !titulo || !descricao || !nota || !foto || !acao) return null
+  return { dialogo, capitulo, titulo, descricao, nota, foto, acao }
+}
+
+function ligaDetalhe(): void {
+  const encontrado = pegaRefs()
+  if (!encontrado) return
+  // cópia já estreitada: funções aninhadas não herdam o narrowing do guard
+  const refs: RefsDialogo = encontrado
+
+  const indice = new Map<string, { item: ItemCarta; capitulo: CapituloCarta }>()
+  for (const capitulo of CAPITULOS) {
+    for (const item of capitulo.itens) indice.set(item.id, { item, capitulo })
+  }
+
+  // guarda quem abriu, para devolver o foco no fechamento
+  let origem: HTMLElement | null = null
+
+  function abre(id: string, gatilho: HTMLElement): void {
+    const achado = indice.get(id)
+    if (!achado) return
+    const { item, capitulo } = achado
+
+    refs.capitulo.textContent = capitulo.titulo
+    refs.titulo.textContent = item.nome
+    refs.descricao.textContent = item.descricao
+
+    if (item.nota) {
+      refs.nota.textContent = item.nota
+      refs.nota.hidden = false
+    } else {
+      refs.nota.hidden = true
+    }
+
+    refs.foto.replaceChildren(montaImagem(item.imagem, '(min-width: 46rem) 32rem, 100vw', false))
+
+    refs.acao.href = linkWhatsApp(
+      `Olá! Vim pelo site e queria saber sobre ${item.nome}. A casa está servindo hoje?`,
+    )
+
+    origem = gatilho
+    refs.dialogo.showModal()
+  }
+
+  document.addEventListener('click', (ev) => {
+    const alvo = (ev.target as HTMLElement | null)?.closest<HTMLElement>('[data-item]')
+    if (alvo?.dataset.item) abre(alvo.dataset.item, alvo)
+  })
+
+  // clique no backdrop fecha: o <dialog> recebe o clique fora do conteúdo
+  refs.dialogo.addEventListener('click', (ev) => {
+    if (ev.target === refs.dialogo) refs.dialogo.close()
+  })
+
+  refs.dialogo.querySelector('[data-fechar]')?.addEventListener('click', () => {
+    refs.dialogo.close()
+  })
+
+  refs.dialogo.addEventListener('close', () => {
+    origem?.focus()
+    origem = null
+  })
+}
+
+/* =========================================================================
+   header: estado preso e seção corrente
+   ========================================================================= */
+
+function ligaTopo(): void {
+  const topo = document.querySelector<HTMLElement>('.topo')
+  if (!topo) return
+
+  const sentinela = document.createElement('div')
+  sentinela.setAttribute('aria-hidden', 'true')
+  sentinela.style.cssText = 'position:absolute;top:4rem;height:1px;width:1px;'
+  document.body.prepend(sentinela)
+
+  new IntersectionObserver(
+    ([entrada]) => {
+      topo.dataset.preso = entrada?.isIntersecting ? 'nao' : 'sim'
+    },
+    { threshold: 0 },
+  ).observe(sentinela)
+}
+
+/**
+ * Marca no menu a seção que está sendo lida. Vale para a navegação do topo e
+ * para a navegação de capítulos da carta, com o mesmo observador.
+ */
+function ligaSecaoCorrente(): void {
+  const links = [
+    ...document.querySelectorAll<HTMLAnchorElement>('.topo__link[data-alvo]'),
+    ...document.querySelectorAll<HTMLAnchorElement>('.capitulos-nav__item[data-alvo]'),
+  ]
+  if (!links.length) return
+
+  const porAlvo = new Map<string, HTMLAnchorElement[]>()
+  for (const link of links) {
+    const alvo = link.dataset.alvo
+    if (!alvo) continue
+    porAlvo.set(alvo, [...(porAlvo.get(alvo) ?? []), link])
+  }
+
+  const visiveis = new Set<string>()
+  const ordem = [...porAlvo.keys()]
+
+  function atualiza(): void {
+    const corrente = ordem.find((id) => visiveis.has(id))
+    for (const [id, lista] of porAlvo) {
+      for (const link of lista) {
+        if (id === corrente) link.setAttribute('aria-current', 'true')
+        else link.removeAttribute('aria-current')
       }
-      aplicarFiltro();
-    });
-    caixa.append(chip);
+    }
+  }
+
+  const observador = new IntersectionObserver(
+    (entradas) => {
+      for (const e of entradas) {
+        if (e.isIntersecting) visiveis.add(e.target.id)
+        else visiveis.delete(e.target.id)
+      }
+      atualiza()
+    },
+    // a faixa central da tela decide qual seção está "sendo lida"
+    { rootMargin: '-45% 0px -45% 0px' },
+  )
+
+  for (const id of ordem) {
+    const secao = document.getElementById(id)
+    if (secao) observador.observe(secao)
   }
 }
 
-function montarGrade(): void {
-  const grade = el<HTMLUListElement>('#grade-cardapio');
-  for (const item of ITENS) grade.append(cardDoItem(item));
-}
+/* =========================================================================
+   revelação: a luz acendendo na ordem de leitura
+   ========================================================================= */
 
-function aplicarFiltro(): void {
-  const grade = el<HTMLUListElement>('#grade-cardapio');
-  let visiveis = 0;
-  for (const li of grade.querySelectorAll<HTMLLIElement>('.prato')) {
-    const mostrar = filtroAtivo === 'tudo' || li.dataset.categoria === filtroAtivo;
-    li.hidden = !mostrar;
-    if (mostrar) visiveis += 1;
-  }
-  el<HTMLParagraphElement>('#grade-vazia').hidden = visiveis > 0;
-}
+function ligaRevelacao(): void {
+  const reduzido = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const alvos = document.querySelectorAll<HTMLElement>('[data-revela]')
 
-/* ------------------------------------------------------------- pedido     */
-
-function alternarItem(item: Item, botao: HTMLButtonElement): void {
-  if (selecionados.has(item.id)) {
-    selecionados.delete(item.id);
-    botao.setAttribute('aria-pressed', 'false');
-    botao.textContent = 'Adicionar ao pedido';
-  } else {
-    selecionados.set(item.id, 1);
-    botao.setAttribute('aria-pressed', 'true');
-    botao.textContent = 'No pedido ✓';
-  }
-  atualizarBarra();
-}
-
-function textoDoPedido(): string {
-  const linhas = [...selecionados.entries()].map(([id, qtd]) => {
-    const item = ITENS.find((i) => i.id === id);
-    return `• ${qtd}x ${item ? item.nome : id}`;
-  });
-  return [
-    'Olá! Vim pelo site e tenho interesse em:',
-    ...linhas,
-    '',
-    'Pode me passar os valores e o tempo de entrega?',
-  ].join('\n');
-}
-
-function atualizarBarra(): void {
-  const barra = el<HTMLDivElement>('#barra-pedido');
-  const total = selecionados.size;
-
-  barra.hidden = total === 0;
-  document.body.style.paddingBottom = total > 0 ? '92px' : '';
-
-  el<HTMLSpanElement>('#barra-contagem').textContent =
-    total === 1 ? '1 item escolhido' : `${total} itens escolhidos`;
-
-  el<HTMLAnchorElement>('#enviar-pedido').href = linkWhatsApp(textoDoPedido());
-}
-
-function limparPedido(): void {
-  selecionados.clear();
-  for (const botao of document.querySelectorAll<HTMLButtonElement>('.somar')) {
-    botao.setAttribute('aria-pressed', 'false');
-    botao.textContent = 'Adicionar ao pedido';
-  }
-  atualizarBarra();
-}
-
-/* ------------------------------------------------------------- início     */
-
-function ligarCTAs(): void {
-  const simples = linkWhatsApp(
-    'Olá! Vim pelo site do Sushi do Verão e gostaria de fazer um pedido.',
-  );
-  for (const a of document.querySelectorAll<HTMLAnchorElement>('[data-zap-simples]')) {
-    a.href = simples;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
+  if (reduzido || !('IntersectionObserver' in window)) {
+    for (const el of alvos) el.dataset.visivel = 'sim'
+    return
   }
 
-  const evento = linkWhatsApp(
-    'Olá! Vim pelo site do Sushi do Verão e gostaria de um orçamento para evento.',
-  );
-  for (const a of document.querySelectorAll<HTMLAnchorElement>('[data-zap-evento]')) {
-    a.href = evento;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
+  const observador = new IntersectionObserver(
+    (entradas, obs) => {
+      for (const e of entradas) {
+        if (!e.isIntersecting) continue
+        ;(e.target as HTMLElement).dataset.visivel = 'sim'
+        obs.unobserve(e.target) // revela uma vez só; não pisca ao rolar de volta
+      }
+    },
+    { rootMargin: '0px 0px -12% 0px', threshold: 0.05 },
+  )
+
+  for (const el of alvos) observador.observe(el)
+}
+
+/* =========================================================================
+   links de WhatsApp com mensagem pronta
+   ========================================================================= */
+
+function ligaWhatsApp(): void {
+  const mensagens: Record<string, string> = {
+    geral: 'Olá! Vim pelo site do Sushi do Verão e queria falar com a casa.',
+    evento:
+      'Olá! Vim pelo site e queria um orçamento para encomenda ou evento. ' +
+      'Posso passar a data, o número de pessoas e o local?',
+    mesa: 'Olá! Vim pelo site e queria saber sobre mesa no salão.',
+  }
+  const padrao = mensagens.geral ?? ''
+  for (const el of document.querySelectorAll<HTMLAnchorElement>('[data-zap]')) {
+    const chave = el.dataset.zap ?? 'geral'
+    el.href = linkWhatsApp(mensagens[chave] ?? padrao)
   }
 }
 
-function iniciar(): void {
-  montarFiltros();
-  montarGrade();
-  aplicarFiltro();
-  ligarCTAs();
-  el<HTMLButtonElement>('#limpar-pedido').addEventListener('click', limparPedido);
-  el<HTMLAnchorElement>('#enviar-pedido').target = '_blank';
-  el<HTMLAnchorElement>('#enviar-pedido').rel = 'noopener noreferrer';
+/* =========================================================================
+   partida
+   ========================================================================= */
+
+function inicia(): void {
+  document.documentElement.classList.add('js')
+  renderizaCarta()
+  renderizaLugar()
+  ligaDetalhe()
+  ligaTopo()
+  ligaSecaoCorrente()
+  ligaWhatsApp()
+  ligaRevelacao()
+
+  // o ano do rodapé sai do relógio, não de um número escrito à mão
+  const ano = document.querySelector<HTMLElement>('[data-ano]')
+  if (ano) ano.textContent = String(new Date().getFullYear())
 }
 
-iniciar();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', inicia, { once: true })
+} else {
+  inicia()
+}

@@ -1,0 +1,244 @@
+# Redesign v2 — "A casa acende às 19h"
+
+Registro da segunda rodada, feita depois de o Marcilio revisar a v1 no desktop
+e no celular e rejeitá-la. A v1 continua recuperável no histórico do Git
+(`797c469`); esta rodada vive na branch `jarvis/sushi-verao-redesign`.
+
+A pesquisa e a mídia da v1 foram preservadas. Estratégia, copy, identidade e
+interface foram refeitas do zero.
+
+## 1. O que a auditoria encontrou
+
+Cada crítica foi confrontada com evidência antes de virar decisão.
+
+| # | Crítica do Marcilio | O que a evidência mostrou | Resposta na v2 |
+| --- | --- | --- | --- |
+| 1 | Abaixo de Seveng e Recanto; cara de layout genérico de IA | Confirmado. A v1 era uma grade de 13 cards idênticos com "Adicionar ao pedido", fundo escuro e pílulas âmbar. Nenhum conceito. | Conceito nomeado que atravessa hero, seções, foto, tipografia e movimento. |
+| 2 | A logo real não aparece | Confirmado: o header era texto puro; a marca só existia, borrada, dentro da foto da fachada. | Logo real no header, no hero e no rodapé. Arquivo enviado pelo Marcilio. |
+| 3 | Preto + âmbar não convence | O âmbar foi inventado. A marca é **preto, vermelho e branco**; a fachada tem faixas vermelhas; os pratos do salão são vermelhos; há quadros de círculo vermelho na parede. | Paleta derivada da marca e medida nas fotos. |
+| 4 | Copy fraca; "Tem sushi na esquina da Antônio João" é banal | Confirmado. Era um endereço no lugar de uma ideia. | Narrativa reescrita inteira. |
+| 5 | Remover carrinho e mecânica de pedido | A v1 tinha seleção acumulativa, contador e barra fixa. | Removidos por completo. A carta é vitrine editorial. |
+| 6 | O espaço físico precisa pesar mais | "O lugar" era a penúltima seção, com 6 miniaturas. | O salão virou um ato inteiro, com panorâmica e mosaico. |
+| 7 | Festas e encomendas como eixo comercial | Existia, mas como faixa secundária. | Bloco próprio, com lista de serviços e CTA de orçamento. |
+| 8 | Maps embutido de verdade | **A alegação da v1 estava errada.** Ver seção 4. | Iframe real do Google, com reserva visual e CTA externo. |
+| 9 | Fundo e composição sem conceito | Confirmado. | Ver seção 2. |
+| 10 | Mais e melhor mídia real | O acervo tinha material de lugar que a v1 não usou. | Quatro enquadramentos novos; três fotos recortadas por privacidade. |
+| 11 | Interatividade com propósito | A v1 só tinha filtro e carrinho. | Ver seção 5. |
+| 12 | Precisa servir ao portfólio | — | Meta desta rodada. |
+
+## 2. O conceito
+
+**A casa acende às 19h.**
+
+A página encena a chegada a uma esquina do Centro de Corumbá depois que o
+letreiro acende. Isso resolve o problema apontado no item 9: o escuro deixa de
+ser "dark premium" — um estilo escolhido por gosto — e passa a ser **o horário
+de funcionamento da casa**, que é fato informado pelo Marcilio (terça a
+domingo, 19h às 23h30).
+
+A luz é o material de composição. Ela aparece como:
+
+- o vão iluminado da porta na abertura;
+- um brilho quente no topo das seções (`.ato--aceso`);
+- um halo que sobe sobre a foto do item quando o cursor ou o foco chega nele;
+- a revelação progressiva das seções na ordem de leitura.
+
+### Paleta
+
+Nenhuma cor foi escolhida por gosto. O vermelho foi tirado do arquivo da
+marca; os tons de superfície foram medidos por amostragem nas fotos da
+fachada.
+
+| Token | Valor | Origem |
+| --- | --- | --- |
+| `--carvao` | `#12100E` | a noite em volta do prédio |
+| `--osso` | `#F2ECE2` | o claro da parede da fachada |
+| `--vermelho` | `#D02A2A` | a marca, as faixas da fachada, os pratos |
+| `--vermelho-btn` | `#C42323` | derivado, para passar 4.5:1 com osso |
+| `--vermelho-txt` | `#E2564B` | derivado, para passar 4.5:1 sobre carvão |
+
+Contraste conferido por cálculo, não por impressão:
+
+```
+osso  sobre carvão          16.16:1  AAA
+mudo  sobre carvão           7.45:1  AAA
+osso  sobre vermelho-btn      4.95:1  AA
+vermelho-txt sobre carvão     5.12:1  AA
+vermelho #D02A2A sobre carvão 3.66:1  só AA-large → nunca em texto pequeno
+```
+
+O último caso é a razão de existirem três vermelhos em vez de um: o vermelho
+da marca reprova em texto pequeno, então ele fica restrito a filete,
+grafismo e display grande.
+
+**Decisão de contraste com as outras demos:** o verde-petróleo do salão é
+bonito e real, mas dominá-lo colidiria com a Seveng (`#0F3B44` + dourado), e
+verde/azul/dourado colidiria com o Recanto. O verde do salão entra apenas
+dentro das fotografias, nunca como superfície de interface. O eixo que separa
+esta peça das outras duas é **vermelho + preto + osso** — que é literalmente a
+marca do cliente.
+
+### Tipografia
+
+- **Fraunces** (variável, eixos `SOFT` e `WONK`) no display. Escolhida por ter
+  personalidade e conviver com o script pincelado da marca sem imitá-lo.
+- **Inter Tight** no corpo.
+- Auto-hospedadas em `public/fontes/` (subsets latin + latin-ext, 256 KB no
+  total). Sem requisição a terceiro e sem depender de rede externa para o
+  layout fechar.
+
+## 3. O que veio da skill UI/UX Pro Max — e o que foi rejeitado
+
+Stack detectada, não presumida: Vite + TypeScript sem framework
+(`package.json`), o que aproxima de `html-tailwind` na tabela da skill, sem
+Tailwind no projeto.
+
+Rodei `--design-system --persist` com três formulações diferentes
+(`japanese restaurant local dining room ambience events catering premium
+editorial`, `upscale neighborhood restaurant physical dining experience warm
+intimate photography-led`, `fine dining restaurant reservation ambience
+gallery editorial calm`). Resultado persistido em
+`design-system/sushi-do-verao/MASTER.md`.
+
+### Adotado
+
+| Recomendação | Onde entrou |
+| --- | --- |
+| Padrão **Portfolio Grid** — "visuals first, filter by category, fast loading essential" | É exatamente um microcardápio sem carrinho: capítulos navegáveis, foto como protagonista, zero transação. |
+| "Neutral background (let work shine)" da estratégia de cor do Portfolio Grid | Superfícies neutras; a cor forte só no acento. |
+| `--domain color` → paleta de restaurante com vermelho apetitoso | Confirmou o vermelho como cor de categoria, o que reforçou a decisão que já vinha da marca. |
+| Checklist de pré-entrega (contraste, foco visível, reduced-motion, sem emoji como ícone, responsivo em 375/768/1024/1440) | Auditado item a item; três reprovações corrigidas (seção 6). |
+| `quick-reference.md` §2 `touch-target-size` e `tap-delay` | Alvos mínimos de 44px e `touch-action: manipulation`. |
+| `quick-reference.md` §7 `stagger-sequence` (30–50ms por item) | O escalonamento estava em 60–70ms; baixado para 45ms. |
+| `quick-reference.md` §3 `image-dimension` e `content-jumping` | `width`/`height` reais em toda imagem e `aspect-ratio` nas molduras. |
+| `quick-reference.md` §5 `viewport-units` | `100svh` no lugar de `100vh`. |
+
+### Rejeitado
+
+| Recomendação | Por que não serve aqui |
+| --- | --- |
+| Estilo **"Vibrant & Block-based"** — devolvido nas **três** formulações | O eixo de estilo da base está degenerado: devolve o mesmo resultado para consultas opostas. Além disso a própria ficha diz "best for: startups, creative agencies, gaming, social media, youth-focused". É o oposto de uma casa que o Marcilio descreve como a mais chique da cidade. |
+| Paleta `#EA580C` laranja + `#2563EB` azul ("Event orange + map blue") | Inventada em relação à marca. Repetiria o erro do âmbar da v1. |
+| Paleta `#FEF2F2` / `#450A0A` (vermelho claro) e `#FAFAFA` "gallery" | Fundo claro é implacável com o acervo: 34% das fotos são escuras demais (ver `inventario-conteudo.md` §9). |
+| Tipografia **Noto Serif JP + Noto Sans JP** ("Japanese sites, Japanese restaurants") | É o clichê que a direção preliminar já tinha decidido evitar: fonte "japonesa" decorativa. |
+| Tipografia **Playfair Display SC + Karla** ("Restaurant Menu") | Playfair é o default de todo site de restaurante; entregaria de novo a sensação de template. |
+| Padrão **"Immersive/Interactive Experience"** com "full-screen interactive element" e "CTA after interaction complete" | Transformaria a landing em parque de efeitos — exatamente o que o item 11 do briefing proíbe. |
+| Presets GSAP (`--domain gsap`) | Adicionar GSAP a uma página estática com uma ilha de interatividade seria peso sem trabalho removido. O movimento aqui é `IntersectionObserver` + transições CSS. |
+| `--domain chart` | Não há dado a visualizar. |
+
+## 4. O mapa: a alegação da v1 estava errada
+
+A v1 registrou que o embed do Google "responde com `x-frame-options:
+SAMEORIGIN` — exige chave da Maps Embed API". **Isso não se sustenta.** O
+teste da v1 foi feito com `curl`, e o Google devolve resposta diferente para
+cliente que não é navegador.
+
+Testado em navegador real:
+
+1. `https://www.google.com/maps?q=<endereço>&output=embed` responde **200** e
+   redireciona para `https://www.google.com/maps/embed?origin=mfe&pb=…`.
+2. Abrindo esse endpoint no topo da janela, o Google responde, também com 200:
+   *"The Google Maps Embed API must be used in an iframe."* Ou seja: é um
+   embed sem chave que apenas exige contexto de iframe.
+3. Nenhum bloqueio de `X-Frame-Options` ocorreu.
+
+O que de fato falha **nesta máquina** é a entrega dos *tiles*: a requisição do
+payload do embed fica pendente, e o embed do OpenStreetMap renderiza marcador
+e controles com os tiles pretos. É restrição da rede local, não da técnica —
+o mesmo sintoma que a v1 já tinha observado no OSM (`x-blocked: Access
+denied`) e atribuído à causa errada no caso do Google.
+
+**Decisão:** a v2 publica o iframe real. Sob ele, e não sobre ele, fica uma
+reserva visual com a foto da fachada e o endereço. Se os tiles não pintarem —
+rede que bloqueia, extensão, offline —, o visitante vê a fachada e o endereço
+em vez de um retângulo vazio, e o botão "Abrir no Google Maps" sempre
+funciona.
+
+**Pendência para o Marcilio:** confirmar na máquina dele que os tiles pintam.
+Aqui não foi possível verificar isso visualmente.
+
+## 5. Interatividade
+
+Movimento com função, sem virar parque de efeitos:
+
+- **Revelação por seção** na ordem de leitura, com escalonamento de 45ms e
+  `unobserve` depois da primeira vez (não pisca ao rolar de volta).
+- **Diálogo nativo `<dialog>`** para ver um item de perto: `showModal()` dá
+  foco preso e Escape de graça; o foco volta ao botão que abriu.
+- **Navegação de capítulos grudada**, com o capítulo corrente marcado por cor
+  **e** por fundo — nunca só por cor.
+- **Seção corrente** marcada no menu do topo pelo mesmo observador.
+- **Header** que passa de transparente a sólido ao sair da abertura.
+- **Respiração lenta** da foto de abertura (26s, `scale`).
+
+Tudo depende de JS ativo (classe `.js`) e some por completo em
+`prefers-reduced-motion: reduce`. Sem JS, o conteúdo nasce visível — nunca
+fica preso invisível.
+
+## 6. Acessibilidade — o que a auditoria reprovou e foi corrigido
+
+Medido no navegador, não presumido:
+
+| Achado | Correção |
+| --- | --- |
+| Links do menu do topo com 41px de altura | `min-height: 2.75rem` (44px) |
+| Links de contato do rodapé com 27px de altura | `min-height: 2.75rem`, com o sublinhado migrando para `box-shadow` para não esticar junto |
+| `touch-action: auto` nos alvos | `touch-action: manipulation` em `a` e `button` |
+
+Conferido e aprovado sem ajuste: hierarquia de títulos sem pulo de nível
+(`h1→h2→h3→h4`), `alt` em todas as imagens, `width`/`height` em todas as
+imagens, ausência de rolagem horizontal em 390px, foco visível, skip link,
+foco devolvido ao fechar o diálogo.
+
+## 7. Política de imagem — o que mudou
+
+A regra herdada é "nenhuma foto com rosto identificável de cliente". A v1
+declarava cumpri-la, mas a auditoria visual desta rodada encontrou **quatro
+violações**, três delas em fotos que a v1 já publicava:
+
+| Imagem | Problema | Corte aplicado |
+| --- | --- | --- |
+| `parede-discos` (nova) | Clientes de rosto visível na metade de baixo. Os cortes de 52% e 42% ainda os deixavam no quadro. | topo 37,5% |
+| `combinado-premium` (da v1) | Criança de rosto visível atrás do balcão | de 26% para baixo |
+| `preparo-fogo` (da v1) | Cliente sentada, nítida, no terço de cima | de 35% para baixo |
+| `hot-roll` (da v1) | Clientes sentados ao fundo, na faixa de cima | de 14% para baixo |
+
+Além disso, a foto de abertura (fachada à noite, com clientes ao fundo pela
+porta aberta) tinha sido avaliada e aceita na v1. O conceito da v2 colocava um
+**brilho quente justamente sobre o vão da porta**, o que os tornava mais
+visíveis do que na v1 — uma regressão introduzida pelo próprio conceito.
+Corrigido com `filter: brightness(0.66)` na fotografia e um gradiente escuro
+adicional sobre a porta: o clima permanece, a luz agora vem do véu, e restam
+apenas silhuetas.
+
+## 8. Fatos e fontes
+
+Nada foi afirmado sem lastro. O que aparece no site:
+
+| Afirmação | Fonte |
+| --- | --- |
+| Rua América, 677, esquina com Antônio João; Centro, Corumbá — MS; CEP 79302-070 | cadastro comercial do perfil + legendas |
+| (67) 99991-7786 | cadastro comercial; ~110 publicações desde 2022 |
+| Terça a domingo, das 19h às 23h30 | informado pelo Marcilio |
+| Os 11 itens da carta | nomeados pelo próprio perfil |
+| "32 peças" no Combinado do Verão | artes do próprio perfil |
+| Buffet montado em evento de terceiros | publicações de parceiros |
+
+Descrições dos pratos são autorais e definicionais — dizem o que a peça é em
+termos gerais, nunca ingrediente, porção, preço ou técnica não confirmada.
+
+Corrigido nesta rodada: o texto dizia "prédio pintado de vermelho e creme". A
+amostragem de cor das fotos mostrou parede **cinza-clara** com faixas
+vermelhas. O título passou a "Prédio de esquina, faixa vermelha, letreiro
+sobre a porta" — três observações verificáveis.
+
+Continua fora: preços, promoções, história de origem, reserva de mesa (só há
+indício, não fato), taxa e raio de entrega.
+
+## 9. O que não foi feito
+
+- Sem deploy, sem publicação, sem alteração de infraestrutura.
+- Sem imagem gerada por IA.
+- Sem backend, admin ou qualquer transação.
+- O acervo bruto continua fora do Git; ao repositório vai só a seleção
+  otimizada (`public/img/`, gerada por `scripts/prepara-assets.py`).

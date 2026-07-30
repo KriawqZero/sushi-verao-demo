@@ -1,5 +1,27 @@
 # Arquitetura e conteúdo do site
 
+> **SUPERADO PELA v2 — leia [`redesign-v2.md`](redesign-v2.md) primeiro.**
+>
+> Este documento descreve a v1, que o Marcilio rejeitou depois de revisar no
+> desktop e no celular. Fica como registro da Fase 3. Três pontos daqui estão
+> explicitamente revogados:
+>
+> 1. **A mecânica de pedido (item 4)** — seleção acumulativa, barra fixa e
+>    contagem foram removidas por completo. O site não processa pedido e não
+>    finge que processa. A carta virou vitrine editorial.
+> 2. **A nota sobre o mapa embutido (item 4)** — a alegação de que o embed
+>    "exige chave da Maps Embed API" está **errada**. Ela veio de um teste com
+>    `curl`, que recebe do Google uma resposta diferente da de um navegador.
+>    Em navegador real o embed responde 200 e só exige contexto de iframe.
+>    Ver `redesign-v2.md`, seção 4.
+> 3. **O acento âmbar (item 1)** — substituído pelo vermelho da própria marca.
+> 4. **A política de imagem (item 5)** — continua valendo, mas a v1 **não a
+>    cumpria**: três fotos publicadas tinham cliente de rosto visível. Ver
+>    `redesign-v2.md`, seção 7.
+>
+> O que permanece válido: os fatos, as fontes, a procedência dos itens da
+> carta e as restrições de conteúdo.
+
 Documento de consolidação da Fase 3. Define o que será construído, com que
 texto e com base em qual fonte. Escrito em 30/07/2026, depois das decisões do
 Marcilio.
