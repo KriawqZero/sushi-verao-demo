@@ -1,0 +1,309 @@
+/*
+  Sushi do Verão — conceito independente da Avantis.
+
+  Direção "A Casa": o escuro não é minimalismo japonês de catálogo, é a
+  penumbra quente de um salão à noite. O acento âmbar vem das luminárias de
+  palha que existem nas fotos do lugar — a cor não foi inventada, foi
+  observada.
+*/
+
+:root {
+  --bg:        #0f1110;
+  --bg-2:      #161917;
+  --bg-3:      #1d211e;
+  --linha:     #272c28;
+  --linha-2:   #363c37;
+
+  --tx:        #f2f0ea;
+  --tx-2:      #a8a9a1;
+  --tx-3:      #7c7e77;
+
+  --ambar:     #e0a44a;
+  --ambar-cl:  #f2c584;
+  --ambar-es:  #8a5f1e;
+
+  --raio:      12px;
+  --raio-sm:   8px;
+  --limite:    1160px;
+
+  --t: 180ms cubic-bezier(.4, 0, .2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+* { margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--tx);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, picture, iframe { display: block; max-width: 100%; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--ambar);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.limite { width: 100%; max-width: var(--limite); margin: 0 auto; padding: 0 22px; }
+
+.pular {
+  position: absolute; left: -9999px; top: 0; z-index: 200;
+  background: var(--ambar); color: #17140c; padding: 12px 20px;
+  font-weight: 700; text-decoration: none; border-radius: 0 0 var(--raio-sm) 0;
+}
+.pular:focus { left: 0; }
+
+/* ---------- botões ---------- */
+/* min-height 44px: alvo de toque conforme WCAG 2.5.5 */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 13px 22px; min-height: 44px; border-radius: 100px;
+  font-size: 15px; font-weight: 700; text-decoration: none;
+  border: 1px solid transparent; cursor: pointer;
+  transition: background var(--t), color var(--t), border-color var(--t);
+  font-family: inherit; line-height: 1.2; text-align: center;
+}
+.btn-cheio { background: var(--ambar); color: #191307; }
+.btn-cheio:hover { background: var(--ambar-cl); }
+.btn-vazado { border-color: var(--linha-2); color: var(--tx); }
+.btn-vazado:hover { border-color: var(--ambar); color: var(--ambar); }
+.btn-claro { background: #17140c; color: var(--ambar-cl); }
+.btn-claro:hover { background: #241d10; }
+
+.link { color: var(--ambar); text-decoration-color: var(--ambar-es); text-underline-offset: 3px; }
+.link:hover { color: var(--ambar-cl); }
+
+/* ---------- topo ---------- */
+.topo {
+  position: sticky; top: 0; z-index: 60;
+  background: rgba(15, 17, 16, .93);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--linha);
+}
+.topo .faixa {
+  width: 100%; max-width: var(--limite); margin: 0 auto; padding: 0 22px;
+  height: 68px; display: flex; align-items: center; gap: 26px;
+}
+.marca { font-size: 18px; font-weight: 800; letter-spacing: -.01em; text-decoration: none; white-space: nowrap; }
+.marca-2 { color: var(--ambar); }
+.nav { display: flex; gap: 22px; margin-left: auto; }
+.nav a {
+  font-size: 14.5px; color: var(--tx-2); text-decoration: none;
+  transition: color var(--t);
+}
+.nav a:hover { color: var(--ambar); }
+
+/* ---------- hero ---------- */
+.hero { position: relative; min-height: 640px; height: 86vh; max-height: 900px; }
+.hero-img, .hero-img img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-img img { object-fit: cover; filter: brightness(.5) saturate(1.06); }
+.hero::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 60%, rgba(224, 164, 74, .17), transparent 70%),
+    linear-gradient(to top, rgba(15, 17, 16, .96) 4%, rgba(15, 17, 16, .3) 55%, rgba(15, 17, 16, .55));
+}
+.hero-conteudo {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; align-items: flex-end; padding-bottom: 68px;
+}
+.olho {
+  font-size: 12.5px; letter-spacing: .17em; text-transform: uppercase;
+  color: var(--ambar); font-weight: 700; margin-bottom: 18px;
+}
+.hero h1 {
+  font-size: clamp(34px, 6vw, 68px); line-height: 1.03;
+  letter-spacing: -.028em; font-weight: 800;
+  /* text-wrap: balance em vez de <br> fixo — um <br> escondido no mobile
+     colava as palavras ("esquinada Antônio João") e a quebra manual
+     desequilibrava as linhas nas larguras intermediárias. */
+  text-wrap: balance;
+  max-width: 20ch;
+}
+.hero-texto { margin-top: 18px; font-size: clamp(15px, 1.6vw, 17.5px); color: #dcdcd6; max-width: 47ch; }
+.hero-acoes { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 30px; }
+
+/* ---------- seções ---------- */
+.secao { padding: 92px 0; }
+.secao-cabeca { margin-bottom: 30px; }
+h2 { font-size: clamp(26px, 3.4vw, 40px); line-height: 1.1; letter-spacing: -.025em; font-weight: 800; }
+.lede { color: var(--tx-2); font-size: 16px; margin-top: 12px; max-width: 54ch; }
+
+/* ---------- filtros ---------- */
+.filtros { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+.chip {
+  padding: 11px 18px; min-height: 44px; border-radius: 100px;
+  border: 1px solid var(--linha-2);
+  background: none; color: var(--tx-2); font-size: 14px; cursor: pointer;
+  font-family: inherit; transition: all var(--t);
+}
+.chip:hover { border-color: var(--ambar); color: var(--ambar); }
+.chip[aria-pressed="true"] {
+  background: var(--ambar); border-color: var(--ambar);
+  color: #191307; font-weight: 700;
+}
+
+/* ---------- grade do cardápio ---------- */
+.grade {
+  list-style: none; display: grid; gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+}
+.prato {
+  background: var(--bg-2); border: 1px solid var(--linha);
+  border-radius: var(--raio); overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: border-color var(--t), transform var(--t);
+}
+.prato:hover { border-color: var(--linha-2); transform: translateY(-2px); }
+.prato-img { aspect-ratio: 4 / 3; background: #000; overflow: hidden; }
+.prato-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 400ms ease; }
+.prato:hover .prato-img img { transform: scale(1.035); }
+.prato-corpo { padding: 16px 17px 17px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.prato h3 { font-size: 17.5px; font-weight: 700; letter-spacing: -.01em; }
+.prato p { color: var(--tx-2); font-size: 14px; line-height: 1.5; flex: 1; }
+.nota {
+  align-self: flex-start; font-size: 11.5px; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--ambar); border: 1px solid var(--ambar-es);
+  padding: 3px 9px; border-radius: 100px; font-weight: 700;
+}
+.somar {
+  margin-top: 12px; width: 100%; padding: 12px; min-height: 44px;
+  border-radius: 100px;
+  border: 1px solid var(--linha-2); background: none; color: var(--ambar);
+  font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: all var(--t);
+}
+.somar:hover { border-color: var(--ambar); background: rgba(224, 164, 74, .09); }
+.somar[aria-pressed="true"] {
+  background: var(--ambar); border-color: var(--ambar); color: #191307;
+}
+.vazio { color: var(--tx-3); padding: 30px 0; }
+
+/* ---------- encomendas ---------- */
+.festa { position: relative; border-radius: var(--raio); overflow: hidden; min-height: 430px; display: flex; }
+.festa picture, .festa img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.festa img { object-fit: cover; filter: brightness(.42); }
+.festa-texto {
+  position: relative; z-index: 2; align-self: flex-end;
+  padding: 42px; max-width: 640px;
+}
+.festa-texto p { color: #d8d8d2; margin: 14px 0 26px; font-size: 16px; }
+
+.cartoes { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+.cartao {
+  display: flex; gap: 16px; align-items: center;
+  background: var(--bg-2); border: 1px solid var(--linha);
+  border-radius: var(--raio); padding: 15px;
+}
+.cartao img { width: 104px; height: 104px; object-fit: cover; border-radius: var(--raio-sm); flex: none; }
+.cartao h3 { font-size: 17px; font-weight: 700; }
+.cartao p { color: var(--tx-2); font-size: 14px; margin-top: 4px; }
+
+/* ---------- galeria ---------- */
+.galeria {
+  display: grid; gap: 14px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 208px;
+}
+.galeria figure { position: relative; border-radius: var(--raio); overflow: hidden; margin: 0; }
+.galeria img { width: 100%; height: 100%; object-fit: cover; }
+.g-grande { grid-column: span 2; grid-row: span 2; }
+.galeria figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 13px 15px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, .8));
+  font-size: 13.5px; font-weight: 700; letter-spacing: .01em;
+}
+
+/* ---------- onde fica ---------- */
+.onde-grade { display: grid; grid-template-columns: .85fr 1.15fr; gap: 18px; align-items: start; }
+.onde-info { display: flex; flex-direction: column; gap: 14px; }
+.dado { background: var(--bg-2); border: 1px solid var(--linha); border-radius: var(--raio); padding: 22px; }
+.dado h3 {
+  font-size: 11.5px; letter-spacing: .17em; text-transform: uppercase;
+  color: var(--ambar); font-weight: 700; margin-bottom: 10px;
+}
+.dado p { color: var(--tx-2); font-size: 15.5px; line-height: 1.65; }
+.dado strong { color: var(--tx); }
+.dado .btn { margin-top: 15px; }
+.mapa {
+  border-radius: var(--raio); overflow: hidden;
+  border: 1px solid var(--linha); background: var(--bg-2);
+  display: flex; flex-direction: column;
+}
+.mapa > img { width: 100%; height: 320px; object-fit: cover; object-position: center 42%; }
+.mapa-acoes { padding: 20px; }
+.mapa-end { color: var(--tx-2); font-size: 15px; line-height: 1.6; }
+.mapa-end strong { color: var(--tx); }
+.mapa-botoes { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+.mapa-botoes .btn { flex: 1 1 auto; }
+
+/* ---------- rodapé ---------- */
+.rodape { border-top: 1px solid var(--linha); padding: 46px 0 120px; color: var(--tx-2); font-size: 14.5px; }
+.rodape-grade { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.rodape p { margin-bottom: 5px; }
+.marca-rodape { font-size: 19px; margin-bottom: 12px; color: var(--tx); }
+.aviso {
+  margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--linha);
+  font-size: 12.5px; color: var(--tx-3); line-height: 1.7; max-width: 74ch;
+}
+.aviso strong { color: var(--tx-2); }
+
+/* ---------- barra de pedido ---------- */
+.barra {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 80;
+  background: var(--ambar); color: #191307;
+  box-shadow: 0 -8px 34px rgba(0, 0, 0, .5);
+}
+.barra-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 12px; padding-bottom: 12px; }
+.barra-txt { font-weight: 800; font-size: 15px; display: flex; align-items: center; gap: 12px; }
+.limpar {
+  background: none; border: 0; color: #4a3a12; font-size: 13px;
+  text-decoration: underline; cursor: pointer; font-family: inherit;
+  padding: 10px 8px; min-height: 44px;
+}
+.limpar:hover { color: #191307; }
+
+/* ---------- responsivo ---------- */
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .secao { padding: 66px 0; }
+  .onde-grade { grid-template-columns: 1fr; }
+  .cartoes { grid-template-columns: 1fr; }
+  .galeria { grid-template-columns: 1fr 1fr; grid-auto-rows: 168px; }
+  .g-grande { grid-column: span 2; grid-row: span 1; }
+  .festa-texto { padding: 26px; }
+  .rodape-grade { grid-template-columns: 1fr; gap: 18px; }
+}
+
+@media (max-width: 620px) {
+  .topo .faixa { height: 60px; gap: 12px; }
+  .marca { font-size: 16px; }
+  .topo .btn { padding: 10px 15px; font-size: 13.5px; }
+  .hero { height: auto; min-height: 0; padding-top: 58vh; }
+  .hero-conteudo { position: relative; padding-bottom: 46px; }
+  .hero-acoes .btn { flex: 1 1 100%; }
+  .grade { grid-template-columns: 1fr; }
+  .barra-in { flex-direction: column; align-items: stretch; gap: 10px; }
+  .barra-txt { justify-content: space-between; }
+  .barra .btn { width: 100%; }
+  .mapa iframe { height: 320px; }
+}
