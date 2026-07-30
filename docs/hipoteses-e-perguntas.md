@@ -35,29 +35,24 @@ Atualizado em 30/07/2026, **depois** da coleta.
 Revisadas após a coleta. Nenhuma bloqueia o trabalho; todas afetam a rodada 2
 de decisão, e as três primeiras são as que realmente mudam o resultado.
 
-1. **Origem da casa** — a coleta não achou nenhum relato em primeira pessoa:
-   quando abriu, como começou, onde o Rodrigo aprendeu sushi, por que sushi em
-   Corumbá. Sem isso o módulo "quem faz" fica factual e curto. Você sabe?
-   Consegue perguntar?
-2. **Nome oficial** — "Sushi do Verão" ou "Rodrigo Verão"? A casa é chamada
+**Encerrada:** origem e história da casa. O módulo foi removido do escopo por
+decisão do Marcilio em 30/07/2026. Não se pergunta mais sobre isso.
+
+1. **Nome oficial** — "Sushi do Verão" ou "Rodrigo Verão"? A casa é chamada
    das duas formas, e o Facebook vinculado está como "Rodrigo Verão". Isso
-   define o logo, o título e o domínio.
-3. **Horário de funcionamento** — não existe em nenhum lugar público. Há
-   indício de que fecha às segundas. Você consegue confirmar os dias e
-   horários com seu tio?
-4. **Uso do resultado** — a demo vai ser mostrada ao tio como proposta real,
-   ou é peça de portfólio para atrair outros restaurantes? Se for a segunda,
-   dá para ser mais autoral; se for a primeira, precisa ser mais literal ao
-   negócio dele.
-5. **Modelo de operação** — o rodízio/à vontade ainda existe? Apareceu uma
+   define o logo, o título e o domínio. **Levado à decisão.**
+2. **Funcionamento sem horário confirmado** — não existe horário oficial
+   público e não haverá consulta ao dono. Como tratar: omitir ou remeter ao
+   WhatsApp. **Levado à decisão.**
+3. **Forma do pedido via WhatsApp** — mensagem pronta montada pelo site,
+   ou contato direto sem montagem. **Levado à decisão.**
+4. **Modelo de operação** — o rodízio/à vontade ainda existe? Apareceu uma
    única vez, em 2023. Se for uma modalidade viva, muda a hierarquia do
-   cardápio.
-6. **Delivery** — está ativo em 2026, mas ficou fora do escopo. Reabrir?
-7. **Foto** — existe acervo fotográfico fora do Instagram? A direção escura
-   funciona com o que há, mas um punhado de fotos boas muda o teto.
-8. **Itens do cardápio** — os nomes próprios da casa ("Joe Sofia", "Sofia
-   Camarão", "Skin Uramaki", "Eby Uramaki") vêm de uma publicação de terceiro
-   de 2024. Valem hoje?
+   cardápio. Sem confirmação, não entra.
+5. **Delivery** — está ativo em 2026, mas ficou fora do escopo. Reabrir?
+6. **Itens do cardápio** — os nomes próprios da casa ("Joe Sofia", "Sofia
+   Camarão", "Skin Uramaki", "Eby Uramaki") vêm de publicação de terceiro de
+   2024. Sem validação, entram apenas os que o próprio perfil nomeia.
 
 ## 3. Riscos identificados
 

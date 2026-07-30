@@ -162,7 +162,12 @@ Duas leituras possíveis, ambas relevantes para o site: público de fronteira
 (inclusive boliviano) e público hospedado — turista de pesca e de passagem.
 Nenhuma das duas foi confirmada pelo dono.
 
-## 7. Matéria-prima para o módulo "quem faz"
+## 7. Matéria-prima para o módulo "quem faz" — NÃO VAI PARA O SITE
+
+> **Decisão de 30/07/2026: o módulo de história foi removido do escopo.**
+> Esta seção permanece como registro de pesquisa — é o que a coleta encontrou,
+> preservado para rastreabilidade. **Nada aqui vira conteúdo do site**, nem
+> mesmo de forma resumida ou indireta. Ver `briefing.md`, item 2.3.
 
 O briefing condicionou este módulo a haver material real. **Há material, mas
 é indireto.**
@@ -188,11 +193,9 @@ material não deve ser usado comercialmente.** É luto pessoal, não narrativa d
 marca, e usá-lo em página de restaurante seria uma escolha ruim mesmo com
 autorização.
 
-**Conclusão para o Marcilio:** o módulo é viável, mas não a partir do
-Instagram sozinho. Dá para sustentar "quem faz" com o que existe — chef-dono,
-reconhecimento local, rede de parceiros — porém a origem da casa precisa vir
-de você ou do seu tio. Sem isso, o bloco fica factual e curto, sem narrativa.
-Não vou preencher com texto genérico.
+**Desfecho:** reportada a ausência de relato de origem, o Marcilio decidiu
+remover o módulo em vez de buscar o material. Registro encerrado — nenhuma
+parte desta seção será usada na construção do site.
 
 ## 8. Como o perfil se comporta como mídia
 
@@ -249,6 +252,66 @@ A ressalva que permanece: 34% das fotos são escuras demais. Isso não impede a
 direção, mas significa que **o site não pode ter grade densa de fotos** —
 precisa de poucas imagens grandes, escolhidas uma a uma. É uma restrição de
 layout, não de estética.
+
+## 9-b. O que a curadoria visual revelou (30/07/2026)
+
+A revisão das imagens uma a uma corrigiu a leitura puramente numérica da
+seção 9 e trouxe fatos que só aparecem olhando.
+
+### O acervo tem duas eras, e elas são opostas
+
+| Período | Natureza do material |
+| --- | --- |
+| 2022 – 2023 | **Fotografia real.** Pratos, barcas, sashimi, peixe grelhado, polvo, ceviche, yakisoba, além de fachada, salão e clientes. |
+| 2024 – 2026 | **Arte promocional.** Flyers de oferta com preço, logo e telefone. Na amostra revisada do período recente, **não há uma única fotografia** de prato sem tratamento gráfico. |
+
+Isso inverte a conclusão anterior. A medição técnica apontava 2024-2026 como o
+melhor material porque texto tem bordas duras e pontua altíssimo em nitidez —
+o critério estava premiando flyer. **O site precisa ser construído sobre o
+acervo de 2022-2023.** Nenhuma heurística automática separou foto de arte
+neste acervo (os flyers recentes usam fotografia de bambu ao fundo); a
+separação foi feita a olho.
+
+### Existe material de lugar, e ele é bom
+
+A coleta revelou o que nenhuma legenda contou:
+
+- **fachada** do restaurante — prédio de esquina, pintado, com letreiro;
+- **salão** — mesas de madeira, luminárias esféricas de papel, parede de
+  folhagem, quadros, mesas numeradas, iluminação quente;
+- **clientes à mesa**, em várias ocasiões;
+- **área kids**, com brinquedos e sinalização própria.
+
+Isso importa porque ocupa, com fato observável, o espaço que o módulo de
+história deixou. O site pode mostrar **o lugar** sem narrar nenhuma origem.
+
+### Ritual semanal de ofertas (fonte: artes do próprio perfil)
+
+O perfil opera um calendário promocional fixo, nomeado: Terça Especial /
+Imperdível, Quarta Dupla, Quarta Show, Quarta Relâmpago, Quarta Quádrupla,
+Quarta Tripla, Quarta do Verão, Quinta Hot, Quinta Dupla, Quinta Especial,
+Sextou Relâmpago, Domingão em Dose Dupla.
+
+Por decisão de briefing, **promoções não entram no site**. O registro fica
+porque descreve como o negócio funciona e pode ser reaberto pelo Marcilio.
+
+### Itens de cardápio adicionais, vindos das artes
+
+Combinado do Verão (32 peças), 30 Roll's, Hot Philadélfia, Temaki Philadélfia,
+Temaki Hot, Makimono, Uramaki Philadélfia, Skin Uramaki, Combinado Premium,
+Buquê de Sushi, Bacalhau à Gomes de Sá, e "Os Filés do Verão".
+
+### Dois indícios de funcionamento — indícios, não fatos
+
+- "**Os Filés do Verão** — Todo Sábado e Domingo **no Almoço a partir das
+  11h**";
+- "**Entregas até as 20h**" (arte de encomenda de Natal);
+- "**Somente delivery ou retirada**" em boa parte das ofertas;
+- "**Reserve já o seu**" e "Garanta sua mesa" — indicam que reserva existe.
+
+São artes promocionais datadas, não horário oficial. **Não viram horário de
+funcionamento no site.** A ausência de horário confirmado permanece como
+lacuna, tratada por decisão do Marcilio.
 
 ## 10. Lacunas que impedem afirmações no site
 

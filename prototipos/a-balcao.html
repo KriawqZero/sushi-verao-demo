@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Esboço A — O Balcão · Sushi do Verão</title>
+<style>
+  :root{
+    --bg:#0d0d0f; --bg2:#141417; --linha:#26262b;
+    --tx:#f2f2f0; --tx2:#a3a3a8;
+    --acento:#d7263d;      /* vermelho-laca, do próprio logo */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--tx);
+    font-family:"Helvetica Neue",Inter,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;padding-bottom:76px}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  header{position:sticky;top:0;z-index:30;background:rgba(13,13,15,.94);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--linha)}
+  .hdr{display:flex;align-items:center;justify-content:space-between;
+    height:60px}
+  .marca{font-weight:800;letter-spacing:.14em;font-size:14px;text-transform:uppercase}
+  .marca b{color:var(--acento)}
+  .btn{background:var(--acento);color:#fff;border:0;border-radius:2px;
+    padding:11px 18px;font-weight:700;font-size:13px;letter-spacing:.04em;
+    text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block}
+
+  /* HERO curto — o site não perde tempo */
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:0;
+    border-bottom:1px solid var(--linha)}
+  .hero .foto{aspect-ratio:16/10;background:#000}
+  .hero .txt{padding:44px 40px;display:flex;flex-direction:column;
+    justify-content:center;gap:14px}
+  .hero h1{font-size:clamp(30px,3.6vw,48px);line-height:1.02;font-weight:800;
+    letter-spacing:-.02em}
+  .hero p{color:var(--tx2);font-size:15px;line-height:1.55;max-width:38ch}
+  .selo{font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--acento);font-weight:700}
+
+  /* FILTRO fixo de categoria */
+  .filtros{position:sticky;top:60px;z-index:20;background:var(--bg2);
+    border-bottom:1px solid var(--linha);overflow-x:auto}
+  .filtros .in{display:flex;gap:6px;padding:12px 20px;max-width:1180px;
+    margin:0 auto}
+  .chip{white-space:nowrap;padding:8px 15px;border:1px solid var(--linha);
+    border-radius:2px;font-size:12.5px;color:var(--tx2);cursor:pointer;
+    letter-spacing:.03em;background:none}
+  .chip.on{background:var(--acento);border-color:var(--acento);color:#fff;font-weight:700}
+
+  h2{font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--tx2);margin:38px 0 16px;font-weight:700}
+
+  /* GRADE densa — a vitrine */
+  .grade{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .card{background:var(--bg2);border:1px solid var(--linha);border-radius:3px;
+    overflow:hidden;display:flex;flex-direction:column}
+  .card .im{aspect-ratio:1;background:#000;position:relative}
+  .card .im::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.55));}
+  .card .b{padding:12px 13px 13px;display:flex;flex-direction:column;gap:5px;flex:1}
+  .card h3{font-size:14.5px;font-weight:700;letter-spacing:-.01em}
+  .card small{color:var(--tx2);font-size:12px;line-height:1.45;flex:1}
+  .add{margin-top:8px;border:1px solid var(--acento);color:var(--acento);
+    background:none;border-radius:2px;padding:8px;font-weight:700;font-size:12px;
+    letter-spacing:.06em;text-transform:uppercase;cursor:pointer;width:100%}
+  .add.on{background:var(--acento);color:#fff}
+
+  .faixa{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  .bloco{position:relative;aspect-ratio:16/9;border-radius:3px;overflow:hidden}
+  .bloco .cap{position:absolute;left:0;bottom:0;right:0;padding:20px;
+    background:linear-gradient(transparent,rgba(0,0,0,.85))}
+  .bloco h3{font-size:19px;font-weight:800}
+  .bloco p{color:#d6d6d6;font-size:13px;margin-top:4px}
+
+  .info{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 40px}
+  .box{background:var(--bg2);border:1px solid var(--linha);padding:22px;border-radius:3px}
+  .box p{color:var(--tx2);font-size:14px;line-height:1.65}
+  .box strong{color:var(--tx)}
+
+  /* BARRA de pedido fixa */
+  .barra{position:fixed;left:0;right:0;bottom:0;z-index:40;
+    background:var(--acento);color:#fff;display:flex;align-items:center;
+    justify-content:space-between;padding:13px 22px;gap:16px}
+  .barra span{font-weight:700;font-size:14px}
+  .barra a{background:#fff;color:var(--acento);text-decoration:none;
+    padding:10px 18px;border-radius:2px;font-weight:800;font-size:13px;
+    text-transform:uppercase;letter-spacing:.04em}
+
+  footer{border-top:1px solid var(--linha);padding:26px 0 34px;color:var(--tx2);font-size:12.5px}
+  .nota{margin-top:10px;font-size:11px;color:#6c6c72;line-height:1.6}
+
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr}.hero .txt{padding:28px 20px}
+    .grade{grid-template-columns:repeat(2,1fr)}
+    .faixa,.info{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header><div class="wrap hdr">
+  <div class="marca">Sushi <b>do Verão</b></div>
+  <a class="btn" href="#">Pedir no WhatsApp</a>
+</div></header>
+
+<section class="hero">
+  <div class="foto"><img src="img/barca-1.jpg" alt="Barca de sushi"></div>
+  <div class="txt">
+    <div class="selo">Corumbá · Mato Grosso do Sul</div>
+    <h1>O cardápio inteiro,<br>numa tela só.</h1>
+    <p>Escolha o que quer comer, monte seu pedido e mande pronto no WhatsApp.
+       Sem procurar no feed, sem esperar resposta pra saber o que tem.</p>
+    <div><a class="btn" href="#cardapio">Ver o cardápio</a></div>
+  </div>
+</section>
+
+<div class="filtros"><div class="in">
+  <button class="chip on">Tudo</button>
+  <button class="chip">Combinados</button>
+  <button class="chip">Hot</button>
+  <button class="chip">Temaki</button>
+  <button class="chip">Sashimi</button>
+  <button class="chip">Uramaki</button>
+  <button class="chip">Quentes</button>
+  <button class="chip">Frutos do mar</button>
+</div></div>
+
+<main class="wrap" id="cardapio">
+  <h2>Cardápio</h2>
+  <div class="grade">
+    <div class="card"><div class="im"><img src="img/combinado.jpg" alt=""></div>
+      <div class="b"><h3>Combinado do Verão</h3><small>32 peças variadas</small>
+      <button class="add on">Adicionado ✓</button></div></div>
+
+    <div class="card"><div class="im"><img src="img/barca-circ.jpg" alt=""></div>
+      <div class="b"><h3>Combinado Premium</h3><small>Barca com variedade maior</small>
+      <button class="add">+ Adicionar</button></div></div>
+
+    <div class="card"><div class="im"><img src="img/maki-preto.jpg" alt=""></div>
+      <div class="b"><h3>Hot Philadélfia</h3><small>Empanado e quente</small>
+      <button class="add on">Adicionado ✓</button></div></div>
+
+    <div class="card"><div class="im"><img src="img/sashimi-flor.jpg" alt=""></div>
+      <div class="b"><h3>Sashimi de salmão</h3><small>Fatias frescas</small>
+      <button class="add">+ Adicionar</button></div></div>
+
+    <div class="card"><div class="im"><img src="img/gunkan.jpg" alt=""></div>
+      <div class="b"><h3>Joe</h3><small>Base cremosa, receita da casa</small>
+      <button class="add">+ Adicionar</button></div></div>
+
+    <div class="card"><div class="im"><img src="img/salmao-macarico.jpg" alt=""></div>
+      <div class="b"><h3>Salmão maçaricado</h3><small>Selado na chama</small>
+      <button class="add">+ Adicionar</button></div></div>
+
+    <div class="card"><div class="im"><img src="img/yakisoba.jpg" alt=""></div>
+      <div class="b"><h3>Yakisoba</h3><small>Macarrão salteado</small>
+      <button class="add">+ Adicionar</button></div></div>
+
+    <div class="card"><div class="im"><img src="img/camarao.jpg" alt=""></div>
+      <div class="b"><h3>Camarão do Verão</h3><small>Empanado</small>
+      <button class="add on">Adicionado ✓</button></div></div>
+  </div>
+
+  <h2>Encomendas e festas</h2>
+  <div class="faixa">
+    <div class="bloco"><img src="img/buffet.jpg" alt="">
+      <div class="cap"><h3>Buffet para festas</h3>
+      <p>Sushi do Verão já montou banquete em aniversário, réveillon e evento de grupo.</p></div></div>
+    <div class="bloco"><img src="img/bandeja-grande.jpg" alt="">
+      <div class="cap"><h3>Barcas grandes</h3>
+      <p>Encomenda para família, escritório ou confraternização.</p></div></div>
+  </div>
+
+  <h2>Onde fica</h2>
+  <div class="info">
+    <div class="box"><p><strong>Rua América, 677</strong><br>
+      Esquina com a Rua Antônio João<br>Centro · Corumbá — MS</p></div>
+    <div class="box"><p><strong>Pedidos e informações</strong><br>
+      (67) 99991-7786<br>
+      <span style="color:#8b8b90">Confirme o funcionamento pelo WhatsApp.</span></p></div>
+  </div>
+</main>
+
+<footer class="wrap">
+  <div>Sushi do Verão · Rua América, 677 — Corumbá/MS · (67) 99991-7786</div>
+  <div class="nota">Conceito independente criado pela Avantis a partir de conteúdo público.
+    Não é o site oficial e não foi encomendado pelo estabelecimento.</div>
+</footer>
+
+<div class="barra">
+  <span>3 itens escolhidos</span>
+  <a href="#">Enviar pedido no WhatsApp →</a>
+</div>
+
+</body>
+</html>

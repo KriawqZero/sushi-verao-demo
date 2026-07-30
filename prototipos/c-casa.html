@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Esboço C — A Casa · Sushi do Verão</title>
+<style>
+  :root{
+    --bg:#101211;           /* escuro levemente esverdeado, não preto morto */
+    --bg2:#171a18;
+    --linha:#262b27;
+    --tx:#f0efe9; --tx2:#a7a9a3;
+    --acento:#b9d34a;       /* verde-limão: a cor real da identidade do Rodrigo */
+    --quente:#e8a33d;       /* âmbar das luminárias do salão */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--tx);
+    font-family:"Segoe UI",Inter,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+
+  header{position:sticky;top:0;z-index:30;background:rgba(16,18,17,.92);
+    backdrop-filter:blur(9px);border-bottom:1px solid var(--linha)}
+  .hdr{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .marca{font-weight:800;font-size:15px;letter-spacing:.02em}
+  .marca em{font-style:normal;color:var(--acento)}
+  .btn{background:var(--acento);color:#141614;text-decoration:none;
+    padding:11px 19px;border-radius:100px;font-weight:800;font-size:13.5px}
+  .btn.ghost{background:none;color:var(--acento);border:1px solid var(--acento)}
+
+  /* HERO: o salão à noite, penumbra quente */
+  .hero{position:relative;height:82vh;min-height:540px}
+  .hero img{filter:brightness(.52) saturate(1.05)}
+  .hero::after{content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 62%,rgba(232,163,61,.16),transparent 62%)}
+  .hero .c{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;
+    justify-content:flex-end;padding:0 0 60px}
+  .hero h1{font-size:clamp(34px,5.4vw,66px);line-height:1.02;font-weight:800;
+    letter-spacing:-.025em;max-width:16ch}
+  .hero p{color:#d9dbd5;font-size:16px;line-height:1.6;max-width:44ch;margin-top:16px}
+  .local{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--quente);
+    margin-bottom:18px;font-weight:700}
+  .acoes{display:flex;gap:11px;margin-top:26px;flex-wrap:wrap}
+
+  h2.sec{font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-.02em;
+    margin-bottom:8px}
+  .lead{color:var(--tx2);font-size:15px;line-height:1.65;max-width:52ch}
+  .bloco{padding:82px 0}
+
+  /* CARDÁPIO: grade com foto, mas respirando */
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 22px}
+  .tab{padding:9px 16px;border-radius:100px;border:1px solid var(--linha);
+    background:none;color:var(--tx2);font-size:13px;cursor:pointer}
+  .tab.on{background:var(--acento);border-color:var(--acento);color:#141614;font-weight:700}
+  .grade{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .prato{border-radius:12px;overflow:hidden;background:var(--bg2);
+    border:1px solid var(--linha);display:flex;flex-direction:column}
+  .prato .im{aspect-ratio:4/3;background:#000}
+  .prato .b{padding:15px 16px 17px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .prato h3{font-size:17px;font-weight:700}
+  .prato small{color:var(--tx2);font-size:13px;line-height:1.5;flex:1}
+  .prato button{margin-top:10px;background:none;border:1px solid var(--linha);
+    color:var(--acento);border-radius:100px;padding:9px;font-weight:700;
+    font-size:12.5px;cursor:pointer}
+  .prato button.on{background:var(--acento);color:#141614;border-color:var(--acento)}
+
+  /* ENCOMENDAS */
+  .festa{position:relative;border-radius:16px;overflow:hidden;min-height:400px;
+    display:flex;align-items:flex-end}
+  .festa img{position:absolute;inset:0;filter:brightness(.46)}
+  .festa .c{position:relative;z-index:2;padding:40px}
+  .festa h3{font-size:clamp(24px,3vw,38px);font-weight:800;max-width:18ch}
+  .festa p{color:#d6d8d2;margin-top:12px;max-width:48ch;line-height:1.65;font-size:15px}
+
+  /* O LUGAR — o achado da coleta */
+  .lugar{display:grid;grid-template-columns:repeat(4,1fr);
+    grid-template-rows:210px 210px;gap:14px;margin-top:28px}
+  .lugar .g{border-radius:12px;overflow:hidden;position:absolute;inset:0}
+  .cel{position:relative;border-radius:12px;overflow:hidden}
+  .cel .lab{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:14px;
+    background:linear-gradient(transparent,rgba(0,0,0,.82));
+    font-size:13px;font-weight:700;letter-spacing:.02em}
+  .cel.big{grid-column:span 2;grid-row:span 2}
+
+  .mapa{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+  .box{background:var(--bg2);border:1px solid var(--linha);border-radius:12px;padding:24px}
+  .box h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--quente);margin-bottom:12px}
+  .box p{color:var(--tx2);font-size:14.5px;line-height:1.7}
+  .box strong{color:var(--tx);font-weight:700}
+
+  footer{border-top:1px solid var(--linha);padding:34px 0 42px;
+    color:var(--tx2);font-size:13px;line-height:1.8}
+  .nota{margin-top:14px;font-size:11.5px;color:#6b6f69;line-height:1.65;max-width:60ch}
+
+  .flut{position:fixed;right:18px;bottom:18px;z-index:50;background:var(--acento);
+    color:#141614;text-decoration:none;font-weight:800;padding:14px 20px;
+    border-radius:100px;box-shadow:0 10px 30px rgba(0,0,0,.5);font-size:14px}
+
+  @media(max-width:900px){
+    .grade{grid-template-columns:1fr 1fr}
+    .lugar{grid-template-columns:1fr 1fr;grid-template-rows:170px 170px 170px}
+    .cel.big{grid-column:span 2;grid-row:span 1}
+    .mapa{grid-template-columns:1fr}
+  }
+  @media(max-width:560px){ .grade{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header><div class="wrap hdr">
+  <div class="marca">Sushi <em>do Verão</em></div>
+  <a class="btn" href="#">Pedir no WhatsApp</a>
+</div></header>
+
+<section class="hero">
+  <img src="img/salao-3.jpg" alt="Salão do restaurante à noite">
+  <div class="c"><div class="wrap">
+    <div class="local">◆ Rua América, 677 · Corumbá — MS</div>
+    <h1>Tem sushi na esquina da Antônio João.</h1>
+    <p>Salão aberto, delivery e encomenda para festa. Peça pelo WhatsApp
+       ou venha sentar — a casa é essa aqui.</p>
+    <div class="acoes">
+      <a class="btn" href="#">Pedir no WhatsApp</a>
+      <a class="btn ghost" href="#cardapio">Ver o cardápio</a>
+    </div>
+  </div></div>
+</section>
+
+<section class="bloco wrap" id="cardapio">
+  <h2 class="sec">O cardápio</h2>
+  <p class="lead">Combinados, peças do balcão e pratos quentes. Monte o que quiser
+     e mande a lista pronta no WhatsApp.</p>
+
+  <div class="tabs">
+    <button class="tab on">Tudo</button>
+    <button class="tab">Combinados</button>
+    <button class="tab">Balcão</button>
+    <button class="tab">Hot</button>
+    <button class="tab">Quentes</button>
+    <button class="tab">Frutos do mar</button>
+  </div>
+
+  <div class="grade">
+    <div class="prato"><div class="im"><img src="img/combinado.jpg" alt=""></div>
+      <div class="b"><h3>Combinado do Verão</h3><small>32 peças variadas, o carro-chefe da casa</small>
+      <button class="on">Na lista ✓</button></div></div>
+
+    <div class="prato"><div class="im"><img src="img/barca-3.jpg" alt=""></div>
+      <div class="b"><h3>Combinado Premium</h3><small>Barca maior, pensada para dividir</small>
+      <button>+ Adicionar</button></div></div>
+
+    <div class="prato"><div class="im"><img src="img/sashimi-flor.jpg" alt=""></div>
+      <div class="b"><h3>Sashimi</h3><small>Salmão e atum, cortados na hora</small>
+      <button>+ Adicionar</button></div></div>
+
+    <div class="prato"><div class="im"><img src="img/maki-preto.jpg" alt=""></div>
+      <div class="b"><h3>Hot Philadélfia</h3><small>Empanado, servido quente</small>
+      <button class="on">Na lista ✓</button></div></div>
+
+    <div class="prato"><div class="im"><img src="img/yakisoba.jpg" alt=""></div>
+      <div class="b"><h3>Yakisoba</h3><small>Macarrão salteado com legumes</small>
+      <button>+ Adicionar</button></div></div>
+
+    <div class="prato"><div class="im"><img src="img/polvo.jpg" alt=""></div>
+      <div class="b"><h3>Frutos do mar</h3><small>Polvo, camarão e peixe do dia</small>
+      <button>+ Adicionar</button></div></div>
+  </div>
+</section>
+
+<section class="bloco wrap">
+  <div class="festa">
+    <img src="img/buffet.jpg" alt="Buffet de sushi em evento">
+    <div class="c">
+      <h3>Sua festa com sushi de verdade</h3>
+      <p>Aniversário, confraternização, réveillon. A casa já montou banquete
+         fora — barca grande, mesa completa, combinado sob medida.
+         Fale com o chef e monte o seu.</p>
+      <div class="acoes"><a class="btn" href="#">Pedir orçamento</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="bloco wrap">
+  <h2 class="sec">O lugar</h2>
+  <p class="lead">Esquina do Centro, salão com mesa de madeira, luminária de papel
+     e parede verde. Tem espaço para criança também.</p>
+
+  <div class="lugar">
+    <div class="cel big"><img src="img/salao-6.jpg" alt="Salão"><div class="lab">Salão</div></div>
+    <div class="cel"><img src="img/fachada-noite.jpg" alt="Fachada"><div class="lab">Fachada</div></div>
+    <div class="cel"><img src="img/salao-4.jpg" alt="Mesas"><div class="lab">Mesas</div></div>
+    <div class="cel"><img src="img/kids-2.jpg" alt="Área kids"><div class="lab">Área kids</div></div>
+    <div class="cel"><img src="img/clientes-2.jpg" alt="Clientes"><div class="lab">Movimento</div></div>
+  </div>
+
+  <div class="mapa">
+    <div class="box"><h4>Endereço</h4>
+      <p><strong>Rua América, 677</strong><br>Esquina com a Rua Antônio João<br>
+         Centro · Corumbá — MS</p></div>
+    <div class="box"><h4>Pedidos</h4>
+      <p><strong>(67) 99991-7786</strong><br>
+         Confirme o funcionamento e faça seu pedido pelo WhatsApp.</p></div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div>Sushi do Verão · Rua América, 677 — Corumbá/MS · (67) 99991-7786</div>
+  <div class="nota">Conceito independente criado pela Avantis a partir de conteúdo
+    público do Instagram. Não é o site oficial e não foi encomendado, revisado
+    ou aprovado pelo estabelecimento.</div>
+</footer>
+
+<a class="flut" href="#">Pedir no WhatsApp</a>
+
+</body>
+</html>

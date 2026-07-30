@@ -57,20 +57,34 @@ algo que um perfil de Instagram, por melhor que seja, não faz.
 | --- | --- |
 | Cardápio visual navegável | **Aprovado.** Núcleo da demo. |
 | Eventos e encomendas | **Aprovado.** Ticket alto, pouco explorado localmente. |
-| História / quem faz | **Aprovado sob condição.** Ver 2.3. |
+| História / quem faz | ~~Aprovado sob condição~~ → **REMOVIDO do escopo.** Ver 2.3. |
 | Delivery e área de atendimento | **Fora do escopo** nesta rodada. |
 
-### 2.3 Condição explícita sobre o módulo "História / quem faz"
+### 2.3 Módulo "História / quem faz" — removido (decisão de 30/07/2026)
 
-Marcilio aprovou o módulo com a ressalva de que ele seja analisado com cautela
-e de que **seja avisado se o material for insuficiente**.
+O módulo entrou na rodada 1 sob a condição de haver material real. A coleta
+mostrou que **não existe relato de origem em primeira pessoa** no perfil.
+Reportado ao Marcilio, veio a decisão:
 
-Regra adotada: o bloco de história só entra se a coleta produzir matéria-prima
-real — relato de origem, rosto e nome de quem prepara, bastidor de produção,
-tempo de casa ou algo equivalente com fonte rastreável. Se a coleta trouxer
-apenas fotos de prato sem narrativa, o módulo é reportado como inviável e não
-é preenchido com texto genérico de restaurante. A decisão de cortar ou de
-buscar material extra fica com o Marcilio.
+> Se não há material suficiente para um módulo de história, o módulo não deve
+> existir. Ele não vai pedir esse material ao tio e não considera a história
+> necessária ou interessante para esta demo.
+
+Consequências, todas em vigor:
+
+- o módulo **sai da arquitetura** e não volta em nenhuma das direções;
+- **não se pede** narrativa de origem ao Marcilio nem a terceiros;
+- a lacuna **não é preenchida** com fonte indireta, texto genérico de
+  restaurante, missão-e-valores ou reconstrução a partir de publicação de
+  parceiro;
+- os fatos coletados sobre Rodrigo permanecem no inventário como **registro
+  de pesquisa**, não como conteúdo do site;
+- a homenagem de luto ([DXycYkSuBtG](https://www.instagram.com/p/DXycYkSuBtG/))
+  segue explicitamente **fora de qualquer uso**, por ser luto pessoal.
+
+O que ocupa o lugar dessa camada humana: a coleta revelou fotografia real de
+**fachada, salão e ambiente**, que descreve o lugar sem precisar narrar
+história nenhuma. Isso é fato observável, não narrativa.
 
 ### 2.4 Direção visual: japonês contemporâneo escuro
 
