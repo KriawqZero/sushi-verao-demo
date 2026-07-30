@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sushi do Verão · Rua América, 677 — Corumbá, MS</title>
-  <meta name="description" content="Sushi do Verão: salão na esquina da Rua América com a Antônio João, no Centro de Corumbá. Terça a domingo, das 19h às 23h30. Carta, salão, encomendas para festa e como chegar. Conceito independente criado pela Avantis.">
+  <title>Sushi do Verão · Restaurante japonês no Centro de Corumbá — MS</title>
+  <meta name="description" content="Restaurante japonês na Rua América, 677, esquina com a Antônio João, no Centro de Corumbá. Salão, entrega e retirada, de terça a domingo, das 19h às 23h30. Cardápio, festas e encomendas. Pedidos pelo WhatsApp.">
   <meta name="theme-color" content="#12100e">
   <meta name="color-scheme" content="dark">
   <meta name="robots" content="noindex, nofollow">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:title" content="Sushi do Verão · Corumbá — MS">
-  <meta property="og:description" content="A esquina da Rua América com a Antônio João, de terça a domingo, das 19h às 23h30.">
+  <meta property="og:title" content="Sushi do Verão · Restaurante japonês em Corumbá">
+  <meta property="og:description" content="Rua América, 677, no Centro. Salão, entrega e retirada, de terça a domingo, das 19h às 23h30.">
   <meta property="og:image" content="/img/fachada-noite-1440.webp">
 
   <link rel="icon" href="/marca/icone-180.png" type="image/png">
@@ -26,7 +26,7 @@
 </head>
 <body>
 
-<a class="pular" href="#carta">Pular para a carta</a>
+<a class="pular" href="#carta">Pular para o cardápio</a>
 
 <!-- ===================================================================== -->
 <header class="topo" data-preso="nao">
@@ -39,15 +39,15 @@
     </a>
 
     <nav class="topo__nav" aria-label="Seções da página">
-      <a class="topo__link" href="#chegada" data-alvo="chegada">A esquina</a>
-      <a class="topo__link" href="#carta" data-alvo="carta">A carta</a>
+      <a class="topo__link" href="#carta" data-alvo="carta">Cardápio</a>
+      <a class="topo__link" href="#entrega" data-alvo="entrega">Entrega</a>
       <a class="topo__link" href="#salao" data-alvo="salao">O salão</a>
       <a class="topo__link" href="#festas" data-alvo="festas">Festas</a>
       <a class="topo__link" href="#chegar" data-alvo="chegar">Como chegar</a>
     </nav>
 
     <a class="botao botao--marca topo__acao" data-zap="geral"
-       href="https://wa.me/5567999917786" rel="noopener">Falar no WhatsApp</a>
+       href="https://wa.me/5567999917786" rel="noopener">Pedir no WhatsApp</a>
   </div>
 </header>
 
@@ -59,7 +59,7 @@
       <img src="/img/fachada-noite-1440.webp"
            srcset="/img/fachada-noite-480.webp 480w, /img/fachada-noite-960.webp 960w, /img/fachada-noite-1440.webp 1440w"
            sizes="100vw" width="1440" height="1440" fetchpriority="high"
-           alt="Fachada do Sushi do Verão à noite: prédio de esquina com o letreiro aceso e a porta aberta, iluminada por dentro">
+           alt="Fachada do Sushi do Verão à noite, com o letreiro aceso sobre a porta">
     </div>
     <div class="abertura__veu"></div>
 
@@ -70,94 +70,44 @@
              sizes="(min-width: 48rem) 17rem, 10rem"
              width="1500" height="1024" alt="Sushi do Verão">
 
-        <h1 id="abertura-titulo">Às sete da noite,<br>a esquina <em>acende</em>.</h1>
+        <h1 id="abertura-titulo">Restaurante japonês no Centro de Corumbá.</h1>
+
+        <!-- Preenchido por JS. Sem script, some e sobra o horário por
+             extenso logo abaixo, que nunca fica desatualizado. -->
+        <p class="estado" data-estado hidden>
+          <span class="estado__marca" aria-hidden="true"></span>
+          <strong data-estado-principal></strong>
+          <span class="estado__apoio" data-estado-apoio></span>
+        </p>
 
         <div class="abertura__meta">
           <span class="abertura__ponto">Terça a domingo, das 19h às 23h30</span>
-          <span class="abertura__ponto">Rua América com Antônio João · Centro, Corumbá</span>
+          <span class="abertura__ponto">Rua América, 677 — esquina com Antônio João</span>
         </div>
 
         <div class="botoes">
-          <a class="botao botao--marca" data-zap="mesa" href="https://wa.me/5567999917786" rel="noopener">
-            Falar no WhatsApp
+          <a class="botao botao--marca" data-zap="geral" href="https://wa.me/5567999917786" rel="noopener">
+            Pedir no WhatsApp
           </a>
-          <a class="botao botao--contorno" href="#carta">Ver a carta</a>
+          <a class="botao botao--contorno" href="#carta">Ver o cardápio</a>
         </div>
       </div>
     </div>
-
-    <span class="abertura__rolar" aria-hidden="true">Role</span>
   </section>
 
-  <!-- === ato I — a chegada ============================================= -->
-  <section class="ato ato--aceso" id="chegada" aria-labelledby="chegada-titulo">
-    <div class="envelope chegada__grade">
-
-      <div class="chegada__texto" data-revela>
-        <p class="rotulo">A esquina</p>
-        <h2 id="chegada-titulo">Prédio de esquina, faixa vermelha, letreiro sobre a porta.</h2>
-
-        <p class="texto">
-          O letreiro fica acima da porta, e a porta fica aberta. De dentro sai a luz
-          das luminárias de papel — do outro lado da rua já dá para saber que a casa
-          está servindo.
-        </p>
-        <p class="texto">
-          A placa azul da Rua América está na parede e o número, 677, ao lado da
-          entrada. Quem chega pela Antônio João vê o letreiro antes de ver a porta.
-        </p>
-
-        <dl class="chegada__detalhes">
-          <div class="detalhe">
-            <dt>Endereço</dt>
-            <dd>Rua América, 677 — esquina com Antônio João</dd>
-          </div>
-          <div class="detalhe">
-            <dt>Onde</dt>
-            <dd>Centro, Corumbá — MS · CEP 79302-070</dd>
-          </div>
-          <div class="detalhe">
-            <dt>Salão</dt>
-            <dd>Terça a domingo, das 19h às 23h30</dd>
-          </div>
-          <div class="detalhe">
-            <dt>Contato</dt>
-            <dd>(67) 99991-7786</dd>
-          </div>
-        </dl>
-      </div>
-
-      <div class="chegada__fotos" data-revela>
-        <figure class="foto foto--luz" style="--prop: 0.6198; margin: 0;">
-          <img src="/img/letreiro-807.webp"
-               srcset="/img/letreiro-480.webp 480w, /img/letreiro-807.webp 807w"
-               sizes="(min-width: 60rem) 28vw, 55vw" width="807" height="1302" loading="lazy" decoding="async"
-               alt="Letreiro do Sushi do Verão aceso sobre a porta aberta, com o salão iluminado ao fundo">
-        </figure>
-        <figure class="foto foto--luz" style="--prop: 0.8002; margin: 0;">
-          <img src="/img/esquina-placa-960.webp"
-               srcset="/img/esquina-placa-480.webp 480w, /img/esquina-placa-960.webp 960w, /img/esquina-placa-1302.webp 1302w"
-               sizes="(min-width: 60rem) 21vw, 42vw" width="1302" height="1627" loading="lazy" decoding="async"
-               alt="Esquina do prédio com a placa azul da Rua América, o número 677 e as faixas vermelhas da fachada">
-        </figure>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- === ato II — a carta ============================================== -->
-  <section class="ato" id="carta" aria-labelledby="carta-titulo">
+  <!-- === cardápio ====================================================== -->
+  <section class="ato ato--aceso" id="carta" aria-labelledby="carta-titulo">
     <div class="envelope">
       <div class="ato__cabecalho" data-revela>
-        <p class="rotulo">A carta</p>
-        <h2 id="carta-titulo">O que a casa nomeia.</h2>
+        <p class="rotulo">Cardápio</p>
+        <h2 id="carta-titulo">O que a gente serve.</h2>
         <p class="lead">
-          Onze pratos que o próprio perfil da casa nomeia, cada um com a foto que
-          corresponde a ele. Nenhum item foi ilustrado com imagem aproximada.
+          Combinados para dividir, o que sai do balcão e os pratos quentes.
+          Toque em qualquer prato para ver de perto.
         </p>
         <p class="carta__aviso">
-          Sem preços: a casa não publica tabela, e este site não inventa nenhuma.
-          Valor, tamanho e o que está saindo hoje se perguntam direto no WhatsApp.
+          Os valores mudam, então a gente combina na hora. Manda no WhatsApp o
+          que você quer que a gente te passa o preço e o que tem hoje.
         </p>
       </div>
 
@@ -165,16 +115,42 @@
     </div>
   </section>
 
-  <!-- === ato III — o salão ============================================= -->
+  <!-- === entrega e retirada ============================================ -->
+  <section class="ato entrega" id="entrega" aria-labelledby="entrega-titulo">
+    <div class="envelope entrega__grade">
+      <div data-revela>
+        <p class="rotulo">Entrega e retirada</p>
+        <h2 id="entrega-titulo">Para levar ou receber em casa.</h2>
+        <p class="texto">
+          A gente entrega e também separa para você retirar no balcão. É tudo
+          combinado na conversa: manda o que você quer e o seu endereço que a
+          gente confirma o valor e o tempo.
+        </p>
+        <div class="botoes entrega__acoes">
+          <a class="botao botao--marca" data-zap="entrega"
+             href="https://wa.me/5567999917786" rel="noopener">Pedir para entrega</a>
+          <a class="botao botao--contorno" href="#carta">Ver o cardápio</a>
+        </div>
+      </div>
+
+      <figure class="foto foto--luz" style="--prop: 1.35; margin: 0;" data-revela>
+        <img src="/img/combinado-premium-1080.webp"
+             srcset="/img/combinado-premium-480.webp 480w, /img/combinado-premium-960.webp 960w, /img/combinado-premium-1080.webp 1080w"
+             sizes="(min-width: 60rem) 45vw, 92vw" width="1080" height="800" loading="lazy" decoding="async"
+             alt="Travessa de sushi montada e fechada, pronta para sair">
+      </figure>
+    </div>
+  </section>
+
+  <!-- === o salão ======================================================= -->
   <section class="ato ato--aceso" id="salao" aria-labelledby="salao-titulo">
     <div class="envelope">
       <div class="ato__cabecalho" data-revela>
         <p class="rotulo">O salão</p>
-        <h2 id="salao-titulo">Mesa posta, luz baixa, prato vermelho.</h2>
+        <h2 id="salao-titulo">Como é comer aqui.</h2>
         <p class="lead">
-          Discos de palha trançada cobrindo a parede, luminárias de papel penduradas
-          baixo, boxes de couro e mesa numerada. O prato é vermelho — a mesma cor do
-          letreiro e das faixas da fachada.
+          Mesa de madeira, luminária de papel, parede de palha e box estofado.
+          Dá para vir em dupla ou trazer a família — tem área kids com brinquedo.
         </p>
       </div>
 
@@ -186,26 +162,21 @@
       </figure>
 
       <div class="salao__mosaico" id="salao-mosaico"></div>
-
-      <p class="texto salao__nota" data-revela>
-        Tem área kids, com brinquedo e piso próprio. Isso muda quem pode vir: dá para
-        trazer criança e ainda jantar sentado.
-      </p>
     </div>
   </section>
 
-  <!-- === ato IV — festas e encomendas ================================== -->
+  <!-- === festas e encomendas =========================================== -->
   <section class="ato festas" id="festas" aria-labelledby="festas-titulo">
     <div class="envelope">
       <div class="festas__grade">
 
         <div data-revela>
-          <p class="rotulo">Encomendas e eventos</p>
-          <h2 id="festas-titulo">A casa já montou banquete fora do salão.</h2>
+          <p class="rotulo">Festas e encomendas</p>
+          <h2 id="festas-titulo">A gente monta a sua festa.</h2>
           <p class="texto">
-            Aniversário, confraternização, réveillon. O que sai daqui para uma festa é
-            barca grande, buffet montado no local e combinado feito sob medida para o
-            número de pessoas.
+            Aniversário, confraternização, réveillon. A gente já montou mesa em
+            evento fora do salão. Manda a data, quantas pessoas e o local que a
+            gente faz o orçamento.
           </p>
 
           <ul class="festas__lista">
@@ -215,11 +186,11 @@
             </li>
             <li>
               <b>Buffet montado</b>
-              A casa já montou mesa em evento de terceiros, fora do salão.
+              A gente leva e monta a mesa no local do evento.
             </li>
             <li>
               <b>Combinado sob medida</b>
-              Composição e quantidade combinadas antes, pelo WhatsApp.
+              Você diz quantas pessoas e a gente monta do tamanho certo.
             </li>
           </ul>
 
@@ -243,23 +214,23 @@
                sizes="(min-width: 48rem) 30vw, 46vw" width="1440" height="1800" loading="lazy" decoding="async"
                alt="Mesa de buffet montada em evento, com travessas de sushi e arranjo de folhagem">
         </figure>
-        <figure class="foto foto--luz" style="--prop: 1; margin: 0; --atraso: 70ms" data-revela>
+        <figure class="foto foto--luz" style="--prop: 1.5375; margin: 0; --atraso: 45ms" data-revela>
           <img src="/img/preparo-fogo-1024.webp"
                srcset="/img/preparo-fogo-480.webp 480w, /img/preparo-fogo-960.webp 960w, /img/preparo-fogo-1024.webp 1024w"
                sizes="(min-width: 48rem) 30vw, 46vw" width="1024" height="666" loading="lazy" decoding="async"
                alt="Prato sendo finalizado no maçarico, com a chama sobre as peças">
         </figure>
-        <figure class="foto foto--luz" style="--prop: 1; margin: 0;" data-revela>
-          <img src="/img/combinado-premium-1080.webp"
-               srcset="/img/combinado-premium-480.webp 480w, /img/combinado-premium-960.webp 960w, /img/combinado-premium-1080.webp 1080w"
-               sizes="(min-width: 48rem) 30vw, 46vw" width="1080" height="800" loading="lazy" decoding="async"
-               alt="Combinado Premium montado em travessa escura, com fileiras de peças">
+        <figure class="foto foto--luz" style="--prop: 1; margin: 0; --atraso: 90ms" data-revela>
+          <img src="/img/combinado-chef-1440.webp"
+               srcset="/img/combinado-chef-480.webp 480w, /img/combinado-chef-960.webp 960w, /img/combinado-chef-1440.webp 1440w"
+               sizes="(min-width: 48rem) 30vw, 46vw" width="1440" height="1440" loading="lazy" decoding="async"
+               alt="Combinado do Chef com as peças dispostas em arranjo sobre o prato">
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- === ato V — como chegar =========================================== -->
+  <!-- === como chegar =================================================== -->
   <section class="ato" id="chegar" aria-labelledby="chegar-titulo">
     <div class="envelope chegar__grade">
 
@@ -280,10 +251,10 @@
 
       <div class="chegar__painel" data-revela>
         <p class="rotulo">Como chegar</p>
-        <h2 id="chegar-titulo">No Centro, na esquina.</h2>
+        <h2 id="chegar-titulo">Onde a gente fica.</h2>
         <p class="texto">
-          O mapa marca a esquina da Rua América com a Antônio João. Dá para abrir a
-          rota direto no aplicativo.
+          Rua América, 677, na esquina com a Antônio João, no Centro. É um prédio
+          de esquina com faixa vermelha, e o letreiro fica em cima da porta.
         </p>
 
         <dl class="chegar__dados">
@@ -296,8 +267,12 @@
             <dd>Centro, Corumbá — MS · CEP 79302-070</dd>
           </div>
           <div class="detalhe">
-            <dt>Salão</dt>
+            <dt>Horário</dt>
             <dd>Terça a domingo, das 19h às 23h30</dd>
+          </div>
+          <div class="detalhe">
+            <dt>WhatsApp</dt>
+            <dd>(67) 99991-7786</dd>
           </div>
         </dl>
 
@@ -307,11 +282,33 @@
              target="_blank" rel="noopener noreferrer">
             Abrir no Google Maps
           </a>
-          <a class="botao botao--contorno" data-zap="geral"
+          <a class="botao botao--contorno" data-zap="mesa"
              href="https://wa.me/5567999917786" rel="noopener">Falar no WhatsApp</a>
         </div>
       </div>
 
+    </div>
+
+    <!-- as duas fotos que ajudam a reconhecer o lugar de longe -->
+    <div class="envelope chegar__fotos">
+      <figure class="foto foto--luz" style="--prop: 0.6198; margin: 0;" data-revela>
+        <img src="/img/letreiro-807.webp"
+             srcset="/img/letreiro-480.webp 480w, /img/letreiro-807.webp 807w"
+             sizes="(min-width: 48rem) 30vw, 46vw" width="807" height="1302" loading="lazy" decoding="async"
+             alt="Letreiro do Sushi do Verão aceso sobre a porta aberta, com o salão iluminado ao fundo">
+      </figure>
+      <figure class="foto foto--luz" style="--prop: 0.8002; margin: 0; --atraso: 45ms" data-revela>
+        <img src="/img/esquina-placa-960.webp"
+             srcset="/img/esquina-placa-480.webp 480w, /img/esquina-placa-960.webp 960w, /img/esquina-placa-1302.webp 1302w"
+             sizes="(min-width: 48rem) 30vw, 46vw" width="1302" height="1627" loading="lazy" decoding="async"
+             alt="Esquina do prédio com a placa azul da Rua América, o número 677 e as faixas vermelhas da fachada">
+      </figure>
+      <figure class="foto foto--luz chegar__fotos--some" style="--prop: 0.8; margin: 0; --atraso: 90ms" data-revela>
+        <img src="/img/fachada-dia-960.webp"
+             srcset="/img/fachada-dia-480.webp 480w, /img/fachada-dia-960.webp 960w, /img/fachada-dia-1440.webp 1440w"
+             sizes="(min-width: 48rem) 30vw, 46vw" width="1440" height="1800" loading="lazy" decoding="async"
+             alt="Fachada do prédio de esquina durante o dia, com faixas vermelhas e o letreiro">
+      </figure>
     </div>
   </section>
 
@@ -327,7 +324,7 @@
 
       <div class="rodape__contatos">
         <p>Rua América, 677 — esquina com Antônio João<br>Centro, Corumbá — MS · CEP 79302-070</p>
-        <p>Terça a domingo, das 19h às 23h30</p>
+        <p>Terça a domingo, das 19h às 23h30 · Salão, entrega e retirada</p>
         <a data-zap="geral" href="https://wa.me/5567999917786" rel="noopener">WhatsApp (67) 99991-7786</a>
         <a href="https://www.instagram.com/rodrigo_verao/" target="_blank" rel="noopener noreferrer">Instagram @rodrigo_verao</a>
       </div>
@@ -366,8 +363,7 @@
 
       <div class="detalhe-item__rodape">
         <p class="detalhe-item__ressalva">
-          A casa não publica preço nem composição fixa. Pergunte no WhatsApp o valor
-          e o que está saindo hoje.
+          Manda mensagem que a gente te passa o preço e confirma se tem hoje.
         </p>
         <a class="botao botao--marca" id="detalhe-acao" href="https://wa.me/5567999917786" rel="noopener">
           Perguntar no WhatsApp

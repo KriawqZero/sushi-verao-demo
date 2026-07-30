@@ -1,15 +1,15 @@
 @import '/fontes/fontes.css';
 
 /* ==========================================================================
-   Sushi do Verão — conceito "A casa acende às 19h"
+   Sushi do Verão — conceito independente da Avantis
    --------------------------------------------------------------------------
-   A ideia visual atravessa tudo: a página é a chegada a uma esquina depois
-   que o letreiro acende. Por isso o escuro não é estilo, é o horário da casa
-   (terça a domingo, 19h às 23h30), e a luz é o material de composição — ela
-   entra pelo vão da porta, pousa nas fotos e revela as seções.
+   O escuro aqui não é gosto: a casa serve das 19h às 23h30, e a página é
+   feita para ser aberta nesse horário, no celular, por quem quer decidir
+   onde jantar. A luz quente é o material de composição — entra pelo vão da
+   porta, pousa nas fotos e revela as seções na ordem de leitura.
 
    A paleta não foi escolhida, foi medida. O vermelho é o da marca e o das
-   faixas pintadas na fachada; o osso é o creme da mesma parede; o carvão é a
+   faixas pintadas na fachada; o osso é o claro da mesma parede; o carvão é a
    noite em volta. O verde do salão só aparece dentro das fotografias.
    ========================================================================== */
 
@@ -505,15 +505,13 @@ button {
   filter: drop-shadow(0 6px 28px rgb(0 0 0 / 0.55));
 }
 
+/* Escala menor que a de um título de conceito: esta headline é descritiva,
+   e descrição gritada em 100px vira ruído em vez de hierarquia. */
 .abertura h1 {
-  font-size: var(--t-mega);
-  font-weight: 900;
-  font-variation-settings: 'SOFT' 30, 'WONK' 1;
-}
-
-.abertura h1 em {
-  font-style: normal;
-  color: var(--vermelho);
+  max-width: 16ch;
+  font-size: clamp(2.2rem, 1.2rem + 3.4vw, 4rem);
+  font-weight: 800;
+  font-variation-settings: 'SOFT' 28, 'WONK' 1;
 }
 
 .abertura__meta {
@@ -544,20 +542,55 @@ button {
   margin-top: var(--e2);
 }
 
-.abertura__rolar {
-  position: absolute;
-  left: 50%;
-  bottom: 1.25rem;
-  translate: -50% 0;
-  font-size: 0.68rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
+/* --- estamos abertos agora? ---------------------------------------------
+   A resposta que quem chega pelo link da bio procura primeiro. O estado é
+   dito por cor E por texto — nunca só pela bolinha. */
+
+.estado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.7rem;
+  justify-self: start; /* a pílula acompanha o texto, não a coluna inteira */
+  padding: 0.55rem 1rem 0.55rem 0.8rem;
+  border: 1px solid var(--carvao-borda);
+  /* pastilha quando cabe em uma linha; quando quebra em duas, no celular,
+     vira retângulo — cantos de 999px numa caixa alta ficam com cara de balão */
+  border-radius: 999px;
+  background: rgb(18 16 14 / 0.6);
+  backdrop-filter: blur(8px);
+  font-size: 0.92rem;
+}
+
+.estado strong {
+  font-weight: 600;
+}
+
+.estado__apoio {
   color: var(--osso-3);
 }
 
-@media (max-width: 47.9375rem) {
-  .abertura__rolar {
-    display: none;
+.estado__marca {
+  flex: none;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--osso-3);
+}
+
+.estado[data-aberto='sim'] .estado__marca {
+  background: #4ea865;
+  box-shadow: 0 0 0 4px rgb(78 168 101 / 0.2);
+}
+
+.estado[data-aberto='nao'] .estado__marca {
+  background: var(--vermelho-txt);
+  box-shadow: 0 0 0 4px rgb(226 86 75 / 0.16);
+}
+
+@media (max-width: 34rem) {
+  .estado {
+    border-radius: 0.85rem;
   }
 }
 
@@ -598,45 +631,39 @@ button {
 }
 
 /* ==========================================================================
-   ato I — a chegada
+   entrega e retirada
    ========================================================================== */
 
-.chegada__grade {
+.entrega {
+  background: var(--carvao-2);
+  border-block: 1px solid var(--carvao-borda);
+}
+
+.entrega__grade {
   display: grid;
   gap: var(--e4);
+  align-items: center;
 }
 
 @media (min-width: 60rem) {
-  .chegada__grade {
-    grid-template-columns: 1fr 1.05fr;
-    align-items: center;
+  .entrega__grade {
+    grid-template-columns: 1fr 0.85fr;
     gap: var(--e6);
   }
 }
 
-.chegada__texto h2 {
+.entrega h2 {
   font-size: var(--t-h2);
   margin-bottom: var(--e3);
 }
 
-/* As duas fotos têm proporções diferentes de propósito — o letreiro é
-   vertical, a esquina é mais larga. Alinhar pelo pé (align-items: end) faz o
-   escalonamento acontecer no topo sozinho, em qualquer largura, sem depender
-   de uma margem fixa que só fecharia em um tamanho de tela. */
-.chegada__fotos {
-  display: grid;
-  grid-template-columns: 1fr 1.05fr;
-  gap: var(--e2);
-  align-items: end;
+.entrega__acoes {
+  margin-top: var(--e4);
 }
 
-.chegada__detalhes {
-  display: grid;
-  gap: var(--e2);
-  margin: var(--e4) 0 0;
-  padding-top: var(--e3);
-  border-top: 1px solid var(--carvao-borda);
-}
+/* ==========================================================================
+   detalhe (par rótulo/valor), usado em "como chegar"
+   ========================================================================== */
 
 .detalhe {
   display: grid;
@@ -1064,11 +1091,6 @@ button {
   aspect-ratio: auto;
 }
 
-.salao__nota {
-  max-width: 40rem;
-  margin-top: var(--e4);
-}
-
 /* ==========================================================================
    ato IV — festas e encomendas
    ========================================================================== */
@@ -1227,6 +1249,29 @@ button {
 .chegar__acoes {
   margin-top: auto;
   padding-top: var(--e3);
+}
+
+/* fotos que ajudam a reconhecer o lugar de longe */
+.chegar__fotos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--e2);
+  margin-top: var(--e5);
+  align-items: end;
+}
+
+@media (min-width: 48rem) {
+  .chegar__fotos {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--e3);
+  }
+}
+
+/* a terceira é reforço: em duas colunas ela só ocuparia espaço */
+@media (max-width: 47.9375rem) {
+  .chegar__fotos--some {
+    display: none;
+  }
 }
 
 /* ==========================================================================

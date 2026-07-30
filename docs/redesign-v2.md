@@ -1,4 +1,4 @@
-# Redesign v2 — "A casa acende às 19h"
+# Redesign v2
 
 Registro da segunda rodada, feita depois de o Marcilio revisar a v1 no desktop
 e no celular e rejeitá-la. A v1 continua recuperável no histórico do Git
@@ -242,3 +242,77 @@ indício, não fato), taxa e raio de entrega.
 - Sem backend, admin ou qualquer transação.
 - O acervo bruto continua fora do Git; ao repositório vai só a seleção
   otimizada (`public/img/`, gerada por `scripts/prepara-assets.py`).
+
+
+## 10. Rodada de copy — o site passa a falar com o cliente
+
+Depois da primeira v2, o Marcilio apontou o erro de endereçamento: a copy
+estava escrita para **ele** (portfólio) e para o **dono** (pitch), não para
+quem de fato abre o site — alguém que chegou pelo link da bio ou por uma busca
+e quer decidir onde jantar.
+
+### O que estava errado
+
+1. **Meta-copy sobre a fabricação do site.** "Onze pratos que o próprio perfil
+   da casa nomeia (…) Nenhum item foi ilustrado com imagem aproximada" e "este
+   site não inventa nenhuma" descrevem o meu método de curadoria. Não servem a
+   quem está com fome.
+2. **Descrição no lugar de resposta.** "Prédio de esquina, faixa vermelha,
+   letreiro sobre a porta" descrevia a fachada que estava na foto ao lado.
+3. **Uma afirmação sem fonte que passou pela primeira revisão.** A chamada do
+   capítulo de quentes dizia "e que a vizinhança pede tanto quanto" — demanda
+   que a coleta nunca mediu. Removida.
+4. **O título conceitual.** "Às sete da noite, a esquina acende" foi rejeitado
+   pelo Marcilio como texto de IA — bonito, sem informação. Ele está certo: é
+   exatamente o padrão que a regra de texto público manda recusar. A frase e
+   todo o registro dela saíram; os outros H2 eram do mesmo naipe e caíram
+   junto.
+
+### O que mudou
+
+| Antes | Agora |
+| --- | --- |
+| "Às sete da noite, a esquina acende." | "Restaurante japonês no Centro de Corumbá." |
+| "O que a casa nomeia." | "O que a gente serve." |
+| "Mesa posta, luz baixa, prato vermelho." | "Como é comer aqui." |
+| "A casa já montou banquete fora do salão." | "A gente monta a sua festa." |
+| terceira pessoa ("a casa") | primeira pessoa ("a gente") |
+
+**Voz.** O indicador pedido pelo Marcilio — "Estamos abertos agora" — só
+funciona se o site inteiro falar como a casa. A página passou toda para a
+primeira pessoa do plural. O aviso de peça conceitual no rodapé continua na
+voz da Avantis, que é onde ele tem que estar.
+
+**Ordem das seções.** Reordenada para a sequência em que as perguntas nascem:
+cardápio → entrega → salão → festas → como chegar. A antiga seção "A esquina"
+foi absorvida por "Como chegar", que é onde as fotos do letreiro e da placa da
+rua realmente servem — para reconhecer o lugar.
+
+### Aberto agora
+
+Marcador calculado no navegador a partir do horário, no fuso de Campo Grande.
+Estados verificados com o relógio fixado em oito instantes, incluindo as
+viradas: 23h29 aberto, 23h31 fechado, domingo à meia-noite aponta terça
+(pulando a segunda), segunda aponta amanhã.
+
+O marcador só existe com JS. Sem script ele some e sobra o horário por
+extenso, que é a informação de base e nunca fica desatualizada.
+
+**Ressalva registrada:** o horário veio do Marcilio, não do dono, e feriado ou
+imprevisto não aparece em cálculo de relógio. Por isso o marcador anda sempre
+colado a um caminho de WhatsApp. O Marcilio escreveu "fecha as 23h" ao pedir o
+recurso; mantive **23h30**, que é o horário que ele informou originalmente e
+que está em todo o site. Se o certo for 23h, é trocar em `HORARIO`.
+
+### Entrega e retirada — escopo reaberto
+
+A v1 tinha deixado delivery fora do escopo. Para quem chega do feed de 2026 —
+onde quase toda arte diz "somente delivery ou retirada" — essa era a pergunta
+mais provável e o site não respondia. Entrou um bloco curto logo depois do
+cardápio.
+
+Fonte: "MUITAS promoções no delivery" e "Delivery bombando" (2026), além de
+dezenas de artes com "somente delivery ou retirada".
+
+**Continua fora, por não ter fonte:** taxa de entrega, raio de atendimento,
+prazo, pedido mínimo e presença em aplicativos.

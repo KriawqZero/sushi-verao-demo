@@ -51,6 +51,116 @@ export const CONTATO = {
 /** Consulta de endereco usada tanto no embed quanto no link externo. */
 export const CONSULTA_MAPA = 'Sushi do Verão, Rua América, 677, Corumbá - MS, 79302-070'
 
+/**
+ * Horario de funcionamento, informado pelo Marcilio.
+ *
+ * `dias` usa a convencao de Date.getDay(): 0 = domingo. A casa abre de terca
+ * a domingo, entao a segunda (1) fica de fora.
+ */
+export const HORARIO: {
+  fuso: string
+  dias: readonly number[]
+  abre: number
+  fecha: number
+  abreTexto: string
+  fechaTexto: string
+  resumo: string
+} = {
+  fuso: 'America/Campo_Grande',
+  dias: [0, 2, 3, 4, 5, 6],
+  abre: 19 * 60,
+  fecha: 23 * 60 + 30,
+  abreTexto: '19h',
+  fechaTexto: '23h30',
+  resumo: 'Terça a domingo, das 19h às 23h30',
+}
+
+const NOMES_DIA = [
+  'domingo',
+  'segunda',
+  'terça',
+  'quarta',
+  'quinta',
+  'sexta',
+  'sábado',
+] as const
+
+/** Hora corrente em Corumba, independente do fuso de quem esta visitando. */
+function agoraNaCasa(): { dia: number; minutos: number } {
+  const partes = new Intl.DateTimeFormat('en-US', {
+    timeZone: HORARIO.fuso,
+    weekday: 'short',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  }).formatToParts(new Date())
+
+  const pega = (tipo: string): string =>
+    partes.find((p) => p.type === tipo)?.value ?? ''
+
+  const semana: Record<string, number> = {
+    Sun: 0,
+    Mon: 1,
+    Tue: 2,
+    Wed: 3,
+    Thu: 4,
+    Fri: 5,
+    Sat: 6,
+  }
+
+  // alguns runtimes devolvem "24" para meia-noite com hour12: false
+  const hora = Number(pega('hour')) % 24
+  return { dia: semana[pega('weekday')] ?? 0, minutos: hora * 60 + Number(pega('minute')) }
+}
+
+export interface EstadoDaCasa {
+  aberto: boolean
+  principal: string
+  apoio: string
+}
+
+/**
+ * Diz se a casa esta servindo agora.
+ *
+ * A redacao evita fingir certeza que o site nao tem: o horario veio do
+ * Marcilio, nao do dono, e feriado ou imprevisto nao aparece em calculo de
+ * relogio. Por isso o aviso anda sempre colado a um caminho de WhatsApp.
+ */
+export function estadoDaCasa(): EstadoDaCasa {
+  const { dia, minutos } = agoraNaCasa()
+  const abreHoje = HORARIO.dias.includes(dia)
+
+  if (abreHoje && minutos >= HORARIO.abre && minutos < HORARIO.fecha) {
+    return {
+      aberto: true,
+      principal: 'Estamos abertos agora',
+      apoio: `Fechamos às ${HORARIO.fechaTexto}`,
+    }
+  }
+
+  if (abreHoje && minutos < HORARIO.abre) {
+    return {
+      aberto: false,
+      principal: 'Estamos fechados agora',
+      apoio: `Abrimos hoje às ${HORARIO.abreTexto}`,
+    }
+  }
+
+  // já fechou hoje, ou é o dia de folga: procura o próximo dia de abertura
+  for (let i = 1; i <= 7; i += 1) {
+    const proximo = (dia + i) % 7
+    if (!HORARIO.dias.includes(proximo)) continue
+    const quando = i === 1 ? 'amanhã' : NOMES_DIA[proximo]
+    return {
+      aberto: false,
+      principal: 'Estamos fechados agora',
+      apoio: `Abrimos ${quando} às ${HORARIO.abreTexto}`,
+    }
+  }
+
+  return { aberto: false, principal: 'Estamos fechados agora', apoio: HORARIO.resumo }
+}
+
 export function linkWhatsApp(mensagem: string): string {
   return `https://wa.me/${CONTATO.telefone.replace('+', '')}?text=${encodeURIComponent(mensagem)}`
 }
@@ -59,7 +169,7 @@ export const CAPITULOS: CapituloCarta[] = [
   {
     id: 'combinados',
     titulo: 'Combinados',
-    chamada: 'As travessas de dividir. Chegam à mesa para mais de um.',
+    chamada: 'Travessas para dividir na mesa.',
     itens: [
       {
         id: 'combinado-verao',
@@ -100,7 +210,7 @@ export const CAPITULOS: CapituloCarta[] = [
   {
     id: 'balcao',
     titulo: 'Do balcão',
-    chamada: 'O que é cortado na frente de quem pede, sem passar pelo fogo.',
+    chamada: 'Cortado na hora, sem passar pelo fogo.',
     itens: [
       {
         id: 'sashimi',
@@ -151,7 +261,7 @@ export const CAPITULOS: CapituloCarta[] = [
   {
     id: 'quentes',
     titulo: 'Da cozinha quente',
-    chamada: 'A parte da casa que não é sushi — e que a vizinhança pede tanto quanto.',
+    chamada: 'O que sai quente da cozinha.',
     itens: [
       {
         id: 'hot-roll',
