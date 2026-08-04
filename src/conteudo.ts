@@ -1,13 +1,12 @@
 /**
  * Conteudo da pagina, separado da apresentacao.
  *
- * Regra que atravessa este arquivo: nada aqui afirma fato sem lastro. As
- * descricoes sao autorais e definicionais — dizem o que a peca e em termos
- * gerais ("enrolado com a alga por fora"), nunca ingrediente, porcao, preco
- * ou tecnica que a coleta nao confirmou. Onde ha numero, ele veio do proprio
- * perfil e esta marcado em `nota`.
+ * Regra de edicao deste arquivo: as descricoes dizem o que a peca e em termos
+ * gerais ("enrolado com a alga por fora") e nao entram em ingrediente, porcao,
+ * preco ou tecnica que nao esteja confirmado com a casa. Preco e composicao
+ * mudam e sao acertados na conversa do WhatsApp — por isso nao vivem aqui.
  *
- * Ver docs/redesign-v2.md e docs/inventario-conteudo.md para a procedencia.
+ * Ao incluir prato novo, mande junto a foto: item sem imagem quebra a grade.
  */
 
 export interface Imagem {
@@ -52,10 +51,11 @@ export const CONTATO = {
 export const CONSULTA_MAPA = 'Sushi do Verão, Rua América, 677, Corumbá - MS, 79302-070'
 
 /**
- * Horario de funcionamento, informado pelo Marcilio.
+ * Horario de funcionamento da casa.
  *
  * `dias` usa a convencao de Date.getDay(): 0 = domingo. A casa abre de terca
- * a domingo, entao a segunda (1) fica de fora.
+ * a domingo, entao a segunda (1) fica de fora. Mudou o horario? Mexa aqui e
+ * no texto por extenso do HTML — os dois precisam contar a mesma coisa.
  */
 export const HORARIO: {
   fuso: string
@@ -122,9 +122,9 @@ export interface EstadoDaCasa {
 /**
  * Diz se a casa esta servindo agora.
  *
- * A redacao evita fingir certeza que o site nao tem: o horario veio do
- * Marcilio, nao do dono, e feriado ou imprevisto nao aparece em calculo de
- * relogio. Por isso o aviso anda sempre colado a um caminho de WhatsApp.
+ * O calculo e do relogio: feriado e imprevisto nao entram nele. Por isso o
+ * marcador anda sempre colado a um caminho de WhatsApp, que e onde a duvida
+ * de verdade se resolve.
  */
 export function estadoDaCasa(): EstadoDaCasa {
   const { dia, minutos } = agoraNaCasa()

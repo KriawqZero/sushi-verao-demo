@@ -4,6 +4,7 @@ assets/instagram/.session/
 docs/
 design-system/
 prototipos/
+artifacts/
 
 # Dependências, builds e credenciais locais.
 node_modules/

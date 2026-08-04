@@ -1,9 +1,9 @@
 {
-  "name": "sushi-verao-demo",
+  "name": "sushi-do-verao-site",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
-  "description": "Conceito independente de site para o Sushi do Verao (Corumba-MS), criado pela Avantis a partir de conteudo publico.",
+  "description": "Site do Sushi do Verao — restaurante japones no Centro de Corumba-MS. Estatico, pagina unica, publicado em sushidoverao.com.br.",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",

@@ -5,15 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sushi do Verão · Restaurante japonês no Centro de Corumbá — MS</title>
   <meta name="description" content="Restaurante japonês na Rua América, 677, esquina com a Antônio João, no Centro de Corumbá. Salão, entrega e retirada, de terça a domingo, das 19h às 23h30. Cardápio, festas e encomendas. Pedidos pelo WhatsApp.">
+  <link rel="canonical" href="https://sushidoverao.com.br/">
   <meta name="theme-color" content="#12100e">
   <meta name="color-scheme" content="dark">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="index, follow">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Sushi do Verão">
+  <meta property="og:url" content="https://sushidoverao.com.br/">
   <meta property="og:title" content="Sushi do Verão · Restaurante japonês em Corumbá">
   <meta property="og:description" content="Rua América, 677, no Centro. Salão, entrega e retirada, de terça a domingo, das 19h às 23h30.">
-  <meta property="og:image" content="/img/fachada-noite-1440.webp">
+  <meta property="og:image" content="https://sushidoverao.com.br/img/abre-social.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Fachada do Sushi do Verão à noite, com o letreiro aceso sobre a porta">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sushi do Verão · Restaurante japonês em Corumbá">
+  <meta name="twitter:description" content="Rua América, 677, no Centro. Salão, entrega e retirada, de terça a domingo, das 19h às 23h30.">
+  <meta name="twitter:image" content="https://sushidoverao.com.br/img/abre-social.jpg">
+  <meta name="twitter:image:alt" content="Fachada do Sushi do Verão à noite, com o letreiro aceso sobre a porta">
+
+  <!-- o que só existe depois do JS montar a página não deve ser prometido antes -->
+  <noscript><style>.so-com-js { display: none; }</style></noscript>
 
   <link rel="icon" href="/marca/icone-180.png" type="image/png">
   <link rel="apple-touch-icon" href="/marca/icone-180.png">
@@ -23,6 +39,36 @@
   <link rel="preload" as="image" href="/img/fachada-noite-1440.webp"
         imagesrcset="/img/fachada-noite-480.webp 480w, /img/fachada-noite-960.webp 960w, /img/fachada-noite-1440.webp 1440w"
         imagesizes="100vw" fetchpriority="high">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Sushi do Verão",
+    "url": "https://sushidoverao.com.br/",
+    "image": "https://sushidoverao.com.br/img/abre-social.jpg",
+    "logo": "https://sushidoverao.com.br/marca/logo.png",
+    "servesCuisine": "Japonesa",
+    "telephone": "+55 67 99991-7786",
+    "menu": "https://sushidoverao.com.br/#carta",
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=Sushi+do+Ver%C3%A3o%2C+Rua+Am%C3%A9rica%2C+677%2C+Corumb%C3%A1+-+MS",
+    "sameAs": ["https://www.instagram.com/rodrigo_verao/"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua América, 677",
+      "addressLocality": "Corumbá",
+      "addressRegion": "MS",
+      "postalCode": "79302-070",
+      "addressCountry": "BR"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "19:00",
+      "closes": "23:30"
+    }]
+  }
+  </script>
 </head>
 <body>
 
@@ -72,8 +118,7 @@
 
         <h1 id="abertura-titulo">Restaurante japonês no Centro de Corumbá.</h1>
 
-        <!-- Preenchido por JS. Sem script, some e sobra o horário por
-             extenso logo abaixo, que nunca fica desatualizado. -->
+        <!-- preenchido por JS; sem script sobra o horário por extenso abaixo -->
         <p class="estado" data-estado hidden>
           <span class="estado__marca" aria-hidden="true"></span>
           <strong data-estado-principal></strong>
@@ -103,15 +148,28 @@
         <h2 id="carta-titulo">O que a gente serve.</h2>
         <p class="lead">
           Combinados para dividir, o que sai do balcão e os pratos quentes.
-          Toque em qualquer prato para ver de perto.
+          <span class="so-com-js">Toque em qualquer prato para ver de perto.</span>
         </p>
-        <p class="carta__aviso">
-          Os valores mudam, então a gente combina na hora. Manda no WhatsApp o
-          que você quer que a gente te passa o preço e o que tem hoje.
+        <!-- sem JS quem cumpre este papel é o bloco do <noscript> abaixo -->
+        <p class="carta__aviso so-com-js">
+          Manda no WhatsApp o que você quer que a gente te passa o valor do dia
+          e monta o seu pedido.
         </p>
       </div>
 
-      <div id="carta-corpo"></div>
+      <div id="carta-corpo">
+        <noscript>
+          <div class="carta__semjs">
+            <p>
+              Chama a gente no WhatsApp que a gente te manda o cardápio com os
+              pratos do dia e os valores.
+            </p>
+            <a class="botao botao--marca" href="https://wa.me/5567999917786" rel="noopener">
+              Pedir o cardápio no WhatsApp
+            </a>
+          </div>
+        </noscript>
+      </div>
     </div>
   </section>
 
@@ -235,9 +293,7 @@
     <div class="envelope chegar__grade">
 
       <div class="mapa" data-revela>
-        <!-- Reserva ATRÁS do iframe: se o embed não pintar (rede que bloqueia
-             tiles, extensão, offline), o visitante ainda vê a fachada e o
-             endereço em vez de um retângulo vazio. -->
+        <!-- reserva atrás do iframe: se o embed não pintar, sobra a fachada e o endereço -->
         <div class="mapa__reserva">
           <img src="/img/fachada-dia-480.webp" width="1440" height="1800" loading="lazy" decoding="async"
                alt="">
@@ -289,7 +345,7 @@
 
     </div>
 
-    <!-- as duas fotos que ajudam a reconhecer o lugar de longe -->
+    <!-- as fotos que ajudam a reconhecer o lugar de longe -->
     <div class="envelope chegar__fotos">
       <figure class="foto foto--luz" style="--prop: 0.6198; margin: 0;" data-revela>
         <img src="/img/letreiro-807.webp"
@@ -329,17 +385,22 @@
         <a href="https://www.instagram.com/rodrigo_verao/" target="_blank" rel="noopener noreferrer">Instagram @rodrigo_verao</a>
       </div>
 
-      <p class="rodape__aviso">
-        Conceito independente criado pela Avantis a partir de conteúdo público do
-        Instagram. Não é o site oficial e não foi encomendado, revisado ou aprovado
-        pelo estabelecimento. Fotografias do próprio perfil da casa; nenhuma imagem
-        gerada por inteligência artificial.
-      </p>
+      <div class="rodape__chamada">
+        <p class="rodape__chamada-titulo">Pedidos e encomendas</p>
+        <p>
+          Manda no WhatsApp o que você quer. A gente monta o pedido, passa o
+          valor do dia e combina entrega, retirada ou mesa no salão.
+        </p>
+        <a class="botao botao--marca" data-zap="geral"
+           href="https://wa.me/5567999917786" rel="noopener">Pedir no WhatsApp</a>
+      </div>
     </div>
 
     <div class="rodape__base">
-      <span>© <span data-ano>2026</span> Sushi do Verão · marca do estabelecimento</span>
-      <span>Peça conceitual — Avantis</span>
+      <span>© <span data-ano>2026</span> Sushi do Verão</span>
+      <span class="rodape__assinatura">
+        Site por <a href="https://avantis.dev" target="_blank" rel="noopener noreferrer">Avantis</a>
+      </span>
     </div>
   </div>
 </footer>
@@ -363,10 +424,11 @@
 
       <div class="detalhe-item__rodape">
         <p class="detalhe-item__ressalva">
-          Manda mensagem que a gente te passa o preço e confirma se tem hoje.
+          Gostou? Chama a gente no WhatsApp que a gente passa o valor e monta o
+          seu pedido.
         </p>
         <a class="botao botao--marca" id="detalhe-acao" href="https://wa.me/5567999917786" rel="noopener">
-          Perguntar no WhatsApp
+          Pedir no WhatsApp
         </a>
       </div>
     </div>

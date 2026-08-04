@@ -1,10 +1,10 @@
 /**
- * Sushi do Verão — conceito independente da Avantis.
+ * Sushi do Verão — site.
  *
  * Toda a interatividade daqui serve a quem chegou com uma pergunta: dizer se
  * a casa está aberta agora, mostrar o cardápio, abrir um prato de perto e
  * levar a conversa para o WhatsApp. Não existe carrinho, contador, valor nem
- * checkout — o site não processa pedido, e não finge que processa.
+ * checkout — o pedido é fechado na conversa, e o site não finge o contrário.
  */
 
 import './style.css'
@@ -228,7 +228,7 @@ function ligaDetalhe(): void {
     refs.foto.replaceChildren(montaImagem(item.imagem, '(min-width: 46rem) 32rem, 100vw', false))
 
     refs.acao.href = linkWhatsApp(
-      `Olá! Vim pelo site e queria saber sobre ${item.nome}. Tem hoje?`,
+      `Olá! Vim pelo site e queria pedir ${item.nome}.`,
     )
 
     origem = gatilho
@@ -359,7 +359,7 @@ function ligaRevelacao(): void {
 /**
  * Responde a pergunta que quem chega pelo link da bio faz primeiro. O
  * marcador só é preenchido por JS: sem script, o visitante continua vendo o
- * horário por extenso, que é a informação de base e nunca fica errada.
+ * horário por extenso, que é a informação de base e nunca fica desatualizada.
  */
 function ligaEstado(): void {
   const alvo = document.querySelector<HTMLElement>('[data-estado]')
@@ -396,7 +396,7 @@ function ligaWhatsApp(): void {
     evento:
       'Olá! Vim pelo site e queria um orçamento para uma festa. ' +
       'Posso passar a data, quantas pessoas e o local?',
-    mesa: 'Olá! Vim pelo site e queria saber sobre mesa no salão.',
+    mesa: 'Olá! Vim pelo site e queria falar sobre mesa no salão.',
     entrega: 'Olá! Vim pelo site e queria pedir para entrega. Posso passar o meu endereço?',
   }
   const padrao = mensagens.geral ?? ''

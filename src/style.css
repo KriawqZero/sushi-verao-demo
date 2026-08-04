@@ -1,7 +1,7 @@
 @import '/fontes/fontes.css';
 
 /* ==========================================================================
-   Sushi do Verão — conceito independente da Avantis
+   Sushi do Verão — folha única do site
    --------------------------------------------------------------------------
    O escuro aqui não é gosto: a casa serve das 19h às 23h30, e a página é
    feita para ser aberta nesse horário, no celular, por quem quer decidir
@@ -562,6 +562,12 @@ button {
   font-size: 0.92rem;
 }
 
+/* o `display: flex` acima ganha do [hidden] da folha do navegador; sem esta
+   regra, a pastilha aparecia vazia — só a bolinha — quando não há JS */
+.estado[hidden] {
+  display: none;
+}
+
 .estado strong {
   font-weight: 600;
 }
@@ -704,6 +710,20 @@ button {
   border-left: 2px solid var(--vermelho);
   background: var(--carvao-2);
   font-size: 0.93rem;
+  color: var(--osso-2);
+}
+
+/* Sem JS a grade de pratos não é montada. Em vez de deixar a seção vazia, ela
+   oferece o caminho que resolve a mesma pergunta — o cardápio pelo WhatsApp. */
+.carta__semjs {
+  display: grid;
+  justify-items: start;
+  gap: var(--e2);
+  max-width: 34rem;
+  margin-top: var(--e4);
+  padding: var(--e3);
+  border: 1px solid var(--carvao-borda);
+  border-left: 2px solid var(--vermelho);
   color: var(--osso-2);
 }
 
@@ -1290,11 +1310,29 @@ button {
   margin-bottom: var(--e5);
 }
 
+/* Duas paradas, não uma: entre 48rem e 64rem a terceira coluna espremeria o
+   endereço a ponto de quebrar "Rua América, 677" em seis linhas. Nessa faixa o
+   painel desce inteiro; a três colunas só entra quando há largura para ela. */
 @media (min-width: 48rem) {
   .rodape__grade {
-    grid-template-columns: auto 1fr minmax(0, 34rem);
-    gap: var(--e5);
+    grid-template-columns: auto 1fr;
+    gap: var(--e4) var(--e5);
     align-items: start;
+  }
+
+  .rodape__chamada {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 64rem) {
+  .rodape__grade {
+    grid-template-columns: auto 1fr minmax(0, 26rem);
+    gap: var(--e5);
+  }
+
+  .rodape__chamada {
+    grid-column: auto;
   }
 }
 
@@ -1313,7 +1351,8 @@ button {
   /* alvo de 44px sem esticar o sublinhado: a linha acompanha só o texto */
   display: inline-flex;
   align-items: center;
-  align-self: start;
+  /* grid: quem segura o sublinhado no tamanho do texto é o eixo inline */
+  justify-self: start;
   min-height: 2.75rem;
   color: var(--osso-2);
   text-decoration: none;
@@ -1329,13 +1368,29 @@ button {
 }
 
 
-.rodape__aviso {
+/* fecha a página com o caminho que ela toda propõe: a conversa no WhatsApp */
+.rodape__chamada {
+  display: grid;
+  justify-items: start;
+  gap: 0.7rem;
+  max-width: 34rem;
   padding: var(--e3);
   border: 1px solid var(--carvao-borda);
   border-left: 2px solid var(--vermelho);
-  font-size: 0.86rem;
+  font-size: 0.92rem;
   line-height: 1.6;
-  color: var(--osso-3);
+  color: var(--osso-2);
+}
+
+.rodape__chamada-titulo {
+  font-family: var(--fonte-display);
+  font-size: 1.15rem;
+  line-height: 1.2;
+  color: var(--osso);
+}
+
+.rodape__chamada .botao {
+  margin-top: 0.2rem;
 }
 
 .rodape__base {
@@ -1347,6 +1402,21 @@ button {
   border-top: 1px solid var(--carvao-borda);
   font-size: 0.82rem;
   color: var(--osso-3);
+}
+
+/* discreta, mas legível: mesma cor do © e sublinhado que só reage ao toque */
+.rodape__assinatura a {
+  color: var(--osso-2);
+  text-decoration: none;
+  box-shadow: inset 0 -1px 0 rgb(242 236 226 / 0.25);
+  transition:
+    color 0.2s var(--curva),
+    box-shadow 0.2s var(--curva);
+}
+
+.rodape__assinatura a:hover {
+  color: var(--osso);
+  box-shadow: inset 0 -1px 0 var(--vermelho);
 }
 
 /* ==========================================================================

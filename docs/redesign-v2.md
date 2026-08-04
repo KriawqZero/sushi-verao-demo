@@ -284,7 +284,8 @@ e quer decidir onde jantar.
 **Voz.** O indicador pedido pelo Marcilio — "Estamos abertos agora" — só
 funciona se o site inteiro falar como a casa. A página passou toda para a
 primeira pessoa do plural. O aviso de peça conceitual no rodapé continua na
-voz da Avantis, que é onde ele tem que estar.
+voz da Avantis, que é onde ele tem que estar. *(Superado pela seção 11: o site
+foi aceito para uso público e o aviso saiu.)*
 
 **Ordem das seções.** Reordenada para a sequência em que as perguntas nascem:
 cardápio → entrega → salão → festas → como chegar. A antiga seção "A esquina"
@@ -319,3 +320,136 @@ dezenas de artes com "somente delivery ou retirada".
 
 **Continua fora, por não ter fonte:** taxa de entrega, raio de atendimento,
 prazo, pedido mínimo e presença em aplicativos.
+
+---
+
+## 11. Transição para site público (2026-08-04)
+
+O Sushi do Verão aceitou o trabalho e o site passou a ser o site oficial da
+casa, em `https://sushidoverao.com.br/`, com o link entrando na bio do
+Instagram. Isso muda o **destinatário** da interface: até aqui ela falava, em
+parte, com quem avaliava a peça; agora fala só com quem quer comer.
+
+As seções 1 a 10 continuam valendo como registro do que foi feito e por quê.
+Onde esta seção contradiz alguma delas, esta prevalece.
+
+### O que saiu da interface
+
+O rodapé tinha um aviso de quatro linhas — conceito independente, não é o site
+oficial, não foi encomendado nem aprovado, procedência das fotos, nenhuma
+imagem gerada por IA — e a assinatura "Peça conceitual — Avantis". Tudo isso
+existia para proteger uma peça não solicitada. Com o aceite, deixou de ter
+função e passou a ter custo: um restaurante que explica a origem das próprias
+fotos no rodapé soa inseguro para o cliente.
+
+Saíram também os resíduos de bastidor fora do rodapé: o `noindex, nofollow` do
+`<head>`, os cabeçalhos de arquivo que descreviam o site como conceito, e os
+comentários de código que citavam coleta, procedência ou nome de quem informou
+um dado. **A rastreabilidade não foi apagada** — ela vive em `docs/`, que é
+material interno e não sobe para a Vercel. O que saiu foi o tom de bastidor na
+interface.
+
+### O que entrou no lugar
+
+Remover o aviso deixaria a terceira coluna do rodapé vazia — a grade em
+desktop é `logo | contatos | painel`. O painel virou o fecho comercial que a
+página inteira propõe: **"Pedidos e encomendas"**, uma linha sobre o que a
+conversa resolve (valor do dia, entrega, retirada, mesa) e o botão de
+WhatsApp. Mesma moldura, mesmo filete vermelho, função nova. A largura máxima
+da coluna caiu de 34rem para 26rem, porque um painel com botão não pede a
+mesma medida de um parágrafo corrido.
+
+A assinatura da agência ficou onde assinatura de agência fica: na base, ao
+lado do ©, como **"Site por Avantis"**, com link para `avantis.dev` em nova
+aba, `rel="noopener noreferrer"` e o mesmo tratamento de foco do resto da
+página. Discreta e legível — não é aviso, é crédito.
+
+### Copy revista
+
+O padrão que atravessava a página era a **ressalva defensiva**: "os valores
+mudam, então a gente combina na hora", "confirma se tem hoje", "queria saber
+sobre X — tem hoje?". Cada uma delas nasceu da mesma cautela do rodapé e todas
+denunciavam incerteza de quem escreveu, não uma prática da casa.
+
+| Antes | Agora |
+| --- | --- |
+| "Os valores mudam, então a gente combina na hora. Manda no WhatsApp o que você quer que a gente te passa o preço e o que tem hoje." | "Manda no WhatsApp o que você quer que a gente te passa o valor do dia e monta o seu pedido." |
+| "Manda mensagem que a gente te passa o preço e confirma se tem hoje." | "Gostou? Chama a gente no WhatsApp que a gente passa o valor e monta o seu pedido." |
+| botão "Perguntar no WhatsApp" | botão "Pedir no WhatsApp" |
+| mensagem pronta "queria saber sobre X. Tem hoje?" | "queria pedir X." |
+
+**Nenhum fato novo entrou.** Não há preço, promoção, ingrediente, prazo, taxa,
+raio de entrega, depoimento ou número que já não estivesse confirmado. O que
+mudou foi a postura: a casa deixou de pedir desculpa por não ter tabela na
+página e passou a convidar para a conversa, que é como ela de fato vende.
+
+O indicador "aberto agora" e o horário por extenso ficaram intactos — o
+cálculo é do relógio, o texto por extenso é o fallback sem JS, e nenhum dos
+dois carrega ressalva no corpo.
+
+### SEO público
+
+| Item | Antes | Agora |
+| --- | --- | --- |
+| `robots` | `noindex, nofollow` | `index, follow` |
+| canonical | ausente | `https://sushidoverao.com.br/` |
+| `og:url` | ausente | absoluto |
+| `og:image` | `/img/fachada-noite-1440.webp` (relativo, quadrado) | `https://sushidoverao.com.br/img/abre-social.jpg` (absoluto, 1200×630) |
+| Twitter | ausente | `summary_large_image` com título, descrição, imagem e alt |
+| JSON-LD | ausente | `Restaurant` |
+
+A imagem de compartilhamento é nova: `scripts/prepara-og.py` corta a faixa do
+letreiro e da porta a partir da foto de abertura já versionada e salva em
+**JPEG**. WebP em `og:image` ainda tropeça em leitores de preview — WhatsApp
+inclusive —, e a prévia do link é justamente o que abre a conversa quando
+alguém repassa o site. Rodar o script de novo é a única etapa manual se a foto
+de abertura mudar.
+
+O JSON-LD tem **só fato confirmado**: nome, URL, imagem, logo, culinária,
+telefone, endereço completo com CEP, Instagram em `sameAs`, link do Maps e o
+horário de terça a domingo, das 19h às 23h30. Ficaram de fora `priceRange`,
+`aggregateRating`, `acceptsReservations`, `geo` e cardápio com preço — nada
+disso está confirmado, e dado estruturado errado é pior que dado estruturado
+ausente, porque o Google o exibe como se fosse a casa falando.
+
+### O que continua fora, e por quê
+
+Taxa de entrega, raio de atendimento, prazo, pedido mínimo, presença em
+aplicativos, política de reserva, preço e promoção. A lista é a mesma da seção
+10 e pelo mesmo motivo: ninguém confirmou. Quando a casa confirmar, entra.
+
+### Dois defeitos que a inspeção do build encontrou
+
+Nenhum dos dois foi introduzido nesta rodada; os dois apareceram quando a
+página foi olhada de novo com olho de site público.
+
+1. **A pastilha "aberto agora" vazava sem JS.** O `<p class="estado" hidden>`
+   é preenchido por script, mas `.estado { display: flex }` ganha do `[hidden]`
+   da folha do navegador — resultado: sem JS aparecia uma pastilha vazia com
+   uma bolinha cinza dentro. Corrigido com `.estado[hidden] { display: none }`.
+2. **O rodapé espremia o endereço entre 768px e 1024px.** A grade de três
+   colunas (`logo | contatos | painel`) só cabe em telas largas; em tablet ela
+   quebrava "Rua América, 677 — esquina com Antônio João" em seis linhas.
+   Agora a terceira coluna só entra a partir de 64rem; abaixo disso o painel
+   desce inteiro. No mesmo passo, os links de contato ganharam
+   `justify-self: start` — em grade, quem segura o sublinhado no tamanho do
+   texto é o eixo inline, e o `align-self` que estava lá não fazia nada.
+
+### O cardápio sem JavaScript
+
+O texto sem script prometia "toque em qualquer prato para ver de perto" e
+entregava uma seção vazia, porque a grade é montada em JS. A frase passou a
+viver dentro de `.so-com-js`, escondida por um `<style>` dentro de `<noscript>`
+— sem piscar, porque quem esconde é o próprio navegador antes da primeira
+pintura. No lugar da grade entra um bloco de `<noscript>` que resolve a mesma
+pergunta pelo caminho que a casa já usa: pedir o cardápio no WhatsApp.
+
+### Verificação
+
+`pnpm typecheck`, `pnpm lint` e `pnpm build` passam. Inspeção do build servido
+em três viewports (390×844, 768×1024, 1440×1000) via CDP: zero erro de
+console, zero exceção, zero requisição falha, zero overflow horizontal, 30
+imagens carregadas sem quebra — a única "quebra" reportada é a terceira foto
+de "Como chegar", que é `display: none` no celular e por isso nunca carrega.
+Diálogo de prato, fallback sem JS e rodapé conferidos a olho nas capturas em
+`artifacts/previews-publico/` (fora do Git).
