@@ -26,6 +26,9 @@ assets/instagram/.session/
 # Acervo bruto do Instagram: preservado localmente, fora do Git.
 assets/instagram/raw/
 
+# Fotos enviadas pelo cliente: mesma política do acervo bruto.
+assets/fotos-cliente/
+
 # Rascunhos da fase 3: os HTML ficam versionados como registro;
 # as imagens sao derivadas do acervo bruto e nao vao ao Git.
 prototipos/img/

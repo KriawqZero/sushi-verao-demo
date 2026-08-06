@@ -119,15 +119,14 @@
   "proporcao": 0.8
  },
  "fachada-noite": {
-  "origem": "2023-06-01_Cs7ieSDAcNK_01.jpg",
-  "shortcode": "Cs7ieSDAcNK",
+  "origem": "2026-08-06_fachada-noite.jpeg",
+  "shortcode": "",
   "corte": null,
   "larguras": [
    480,
-   960,
-   1440
+   960
   ],
-  "proporcao": 1.0
+  "proporcao": 0.75
  },
  "hot-roll": {
   "origem": "2023-09-16_CxO3tBSAf5H_01.jpg",

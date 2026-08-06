@@ -36,8 +36,8 @@
 
   <link rel="preload" as="font" type="font/woff2" href="/fontes/fraunces-latin.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/fontes/inter-tight-latin.woff2" crossorigin>
-  <link rel="preload" as="image" href="/img/fachada-noite-1440.webp"
-        imagesrcset="/img/fachada-noite-480.webp 480w, /img/fachada-noite-960.webp 960w, /img/fachada-noite-1440.webp 1440w"
+  <link rel="preload" as="image" href="/img/fachada-noite-960.webp"
+        imagesrcset="/img/fachada-noite-480.webp 480w, /img/fachada-noite-960.webp 960w"
         imagesizes="100vw" fetchpriority="high">
 
   <script type="application/ld+json">
@@ -102,20 +102,18 @@
   <!-- === abertura ====================================================== -->
   <section class="abertura" id="abertura" aria-labelledby="abertura-titulo">
     <div class="abertura__fundo">
-      <img src="/img/fachada-noite-1440.webp"
-           srcset="/img/fachada-noite-480.webp 480w, /img/fachada-noite-960.webp 960w, /img/fachada-noite-1440.webp 1440w"
-           sizes="100vw" width="1440" height="1440" fetchpriority="high"
-           alt="Fachada do Sushi do Verão à noite, com o letreiro aceso sobre a porta">
+      <img src="/img/fachada-noite-960.webp"
+           srcset="/img/fachada-noite-480.webp 480w, /img/fachada-noite-960.webp 960w"
+           sizes="100vw" width="960" height="1280" fetchpriority="high"
+           alt="Fachada do Sushi do Verão à noite: o letreiro redondo aceso sobre a porta de vidro, os toldos com luzes e o piso de losangos vermelhos na calçada">
     </div>
     <div class="abertura__veu"></div>
 
     <div class="envelope">
       <div class="abertura__conteudo">
-        <img class="abertura__marca" src="/marca/logo-1200.webp"
-             srcset="/marca/logo-320.webp 320w, /marca/logo-640.webp 640w, /marca/logo-1200.webp 1200w"
-             sizes="(min-width: 48rem) 17rem, 10rem"
-             width="1500" height="1024" alt="Sushi do Verão">
-
+        <!-- A marca não é carimbada aqui: ela está acesa no letreiro da
+             própria fachada, atrás, e no cabeçalho. Repetir a logo por cima
+             da foto punha três vezes o mesmo sinal na primeira dobra. -->
         <h1 id="abertura-titulo">Restaurante japonês no Centro de Corumbá.</h1>
 
         <!-- preenchido por JS; sem script sobra o horário por extenso abaixo -->

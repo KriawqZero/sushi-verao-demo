@@ -472,23 +472,29 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 58% 42%;
-  /* Escurece a fotografia na origem. Pela porta aberta aparecem clientes ao
-     fundo, e o brilho quente do véu — que é o conceito da seção — clareava
-     justamente essa área. Aqui a luz passa a vir do gradiente, não do
-     interior do salão: o clima permanece e ninguém fica reconhecível. */
-  filter: brightness(0.66) saturate(0.92);
+  /* A foto é retrato 3:4 e o hero é largo: em tela larga o corte é vertical.
+     Ancorado em 60% da altura, o letreiro sai do quadro — senão cairia atrás
+     do menu — e a porta acesa fica no centro, com o tapete e o piso embaixo.
+     Em tela estreita o corte passa a ser lateral e o letreiro reaparece;
+     é por isso que a logo não é mais carimbada por cima da abertura. */
+  object-position: 48% 60%;
+  /* Escurece a fotografia na origem — de leve. A foto da fachada reformada
+     já é noturna e fechada (luminância média 50 contra 90 da anterior); o
+     0.66 de antes a apagava por inteiro. O contraste do texto vem do
+     gradiente linear do véu, não daqui. */
+  filter: brightness(0.88) saturate(0.96);
 }
 
 /* Três camadas: escurecer para o texto respirar, apagar o vão da porta, e a
-   luz que sai dela — o motivo condutor do conceito. */
+   luz que sai dela — o motivo condutor do conceito. As posições seguem a
+   fotografia: o vão fica em 44% × 51%, o letreiro aceso em 51% × 30%. */
 .abertura__veu {
   position: absolute;
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(38% 30% at 62% 46%, rgb(18 16 14 / 0.55), transparent 72%),
-    radial-gradient(72% 55% at 60% 60%, var(--luz-forte), transparent 68%),
+    radial-gradient(34% 26% at 46% 52%, rgb(18 16 14 / 0.52), transparent 72%),
+    radial-gradient(70% 52% at 48% 44%, var(--luz-forte), transparent 68%),
     linear-gradient(to top, var(--carvao) 3%, rgb(18 16 14 / 0.86) 38%, rgb(18 16 14 / 0.46) 80%);
 }
 
@@ -496,13 +502,6 @@ button {
   display: grid;
   gap: var(--e3);
   max-width: 44rem;
-}
-
-.abertura__marca {
-  width: clamp(10rem, 24vw, 17rem);
-  height: auto;
-  margin-bottom: var(--e1);
-  filter: drop-shadow(0 6px 28px rgb(0 0 0 / 0.55));
 }
 
 /* Escala menor que a de um título de conceito: esta headline é descritiva,

@@ -20,6 +20,9 @@ import os
 from PIL import Image, ImageOps
 
 RAW = "/mnt/Files/Projetos/sushi-verao-demo/assets/instagram/raw/rodrigo_verao"
+# fotos entregues pelo cliente, fora do Instagram. mesma politica do acervo
+# bruto: ficam no disco, nao no Git.
+CLIENTE = "/mnt/Files/Projetos/sushi-verao-demo/assets/fotos-cliente"
 OUT = "/mnt/Files/Projetos/sushi-verao-demo/public/img"
 
 LARGURAS = (480, 960, 1600)
@@ -29,7 +32,8 @@ LARGURAS = (480, 960, 1600)
 #   corte = (esq, topo, dir, base) em fracao  -> recorte relativo 0..1
 SELECAO = {
     # --- a esquina e a chegada -----------------------------------------
-    "fachada-noite":  ("2023-06-01_Cs7ieSDAcNK_01.jpg", None),
+    # fachada-noite saiu daqui em 06/08/2026: a casa foi reformada e a foto
+    # do acervo mostra a fachada verde antiga. a nova esta em SELECAO_CLIENTE.
     "fachada-dia":    ("2023-05-09_CsCJTFCA9Nj_01.jpg", None),
     # letreiro real aceso sobre a porta: a marca como sinal fisico da casa.
     # corte pela direita para deixar de fora o reflexo com pessoa na vitrine.
@@ -81,6 +85,16 @@ SELECAO = {
     "preparo-fogo":   ("2023-09-30_Cx1YAACANO9_01.jpg", (0.0, 0.35, 1.0, 1.0)),
 }
 
+# Fotos enviadas pelo cliente. Mesma forma de SELECAO, outra raiz.
+SELECAO_CLIENTE = {
+    # A fachada depois da reforma: parede escura, toldos, letreiro redondo
+    # aceso sobre a porta e o piso de losangos vermelhos. Retrato 3:4, contra
+    # o quadrado da foto antiga — a abertura foi reenquadrada por causa disso.
+    # Ha uma pessoa em silhueta atras do vidro, sem rosto legivel, e a camada
+    # escura do veu cai justamente sobre o vao.
+    "fachada-noite":  ("2026-08-06_fachada-noite.jpeg", None),
+}
+
 
 def recorta(img, corte):
     if corte is None:
@@ -96,8 +110,12 @@ def main():
     faltando = []
     total = 0
 
-    for nome, (arquivo, corte) in sorted(SELECAO.items()):
-        origem = os.path.join(RAW, arquivo)
+    tarefas = [(nome, RAW, arq, corte) for nome, (arq, corte) in SELECAO.items()]
+    tarefas += [(nome, CLIENTE, arq, corte)
+                for nome, (arq, corte) in SELECAO_CLIENTE.items()]
+
+    for nome, raiz, arquivo, corte in sorted(tarefas):
+        origem = os.path.join(raiz, arquivo)
         if not os.path.exists(origem):
             faltando.append((nome, arquivo))
             continue
@@ -124,7 +142,9 @@ def main():
 
         manifesto[nome] = {
             "origem": arquivo,
-            "shortcode": arquivo.split("_")[1] if "_" in arquivo else "",
+            # shortcode so existe para o que veio do Instagram.
+            "shortcode": (arquivo.split("_")[1]
+                          if raiz == RAW and "_" in arquivo else ""),
             "corte": list(corte) if corte else None,
             "larguras": larguras,
             "proporcao": round(larg0 / alt0, 4),

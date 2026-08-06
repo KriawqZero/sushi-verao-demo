@@ -394,7 +394,7 @@ dois carrega ressalva no corpo.
 | `robots` | `noindex, nofollow` | `index, follow` |
 | canonical | ausente | `https://sushidoverao.com.br/` |
 | `og:url` | ausente | absoluto |
-| `og:image` | `/img/fachada-noite-1440.webp` (relativo, quadrado) | `https://sushidoverao.com.br/img/abre-social.jpg` (absoluto, 1200×630) |
+| `og:image` | `/img/fachada-noite-1440.webp` (relativo, quadrado; hoje a origem é `fachada-noite-960.webp`) | `https://sushidoverao.com.br/img/abre-social.jpg` (absoluto, 1200×630) |
 | Twitter | ausente | `summary_large_image` com título, descrição, imagem e alt |
 | JSON-LD | ausente | `Restaurant` |
 
@@ -453,3 +453,43 @@ imagens carregadas sem quebra — a única "quebra" reportada é a terceira foto
 de "Como chegar", que é `display: none` no celular e por isso nunca carrega.
 Diálogo de prato, fallback sem JS e rodapé conferidos a olho nas capturas em
 `artifacts/previews-publico/` (fora do Git).
+
+## Adendo — 06/08/2026: a fachada reformada
+
+O cliente enviou uma foto nova da casa, e ela não é a mesma casa: a fachada
+verde de faixas marrons virou parede escura com toldos, luzes penduradas,
+porta de vidro e um letreiro redondo aceso sobre ela. A foto entrou no lugar
+de `fachada-noite`. Três coisas mudaram junto, e nenhuma era opcional:
+
+**O enquadramento.** A foto do acervo era quadrada; a nova é retrato 3:4.
+Em tela larga o `object-fit: cover` corta na vertical, então o ponto de
+ancoragem foi de 42% para 60% da altura — mais alto que isso e o letreiro
+caía atrás do menu do cabeçalho.
+
+**A luz.** As duas camadas radiais do véu apontavam para onde estava a porta
+na foto antiga (62% × 46% e 60% × 60%). Na nova, o vão está em 44% × 51% e o
+letreiro aceso em 51% × 30%; os gradientes foram para lá. O `brightness` caiu
+de 0.66 para 0.88: a foto nova tem luminância média 50 contra 90 da anterior,
+e o filtro antigo simplesmente a apagava.
+
+**A logo do hero saiu.** Isto corrige, sem desdizer, a linha 2 da tabela de
+críticas lá em cima. A logo foi posta no hero quando a marca não aparecia em
+lugar nenhum — a fachada antiga tinha um letreiro preto e discreto. Agora a
+marca está acesa na própria casa, e em tela estreita o corte é lateral: o
+letreiro reaparece sempre, ao lado da logo carimbada, e a primeira dobra ficava
+com três vezes o mesmo sinal. A marca segue no cabeçalho e no rodapé. Com
+isso, `public/marca/logo-1200.webp` deixou de ter uso e saiu do repositório.
+
+A foto original vive em `assets/fotos-cliente/`, fora do Git, sob a mesma
+política do acervo bruto do Instagram, e entra pelo `prepara-assets.py` por
+uma segunda tabela (`SELECAO_CLIENTE`) — o que o script gera continua sendo a
+única fonte do que vai para `public/img/`. Origem de 960×1280: a escala para
+em 960, sem ampliar, e a variante de 1440 deixou de existir.
+
+### Verificação
+
+`pnpm typecheck`, `pnpm lint` e `pnpm build` passam. Abertura conferida em
+capturas de 390×844, 820×1180 e 1440×1000 do build servido. Há uma pessoa em
+silhueta atrás do vidro da porta, sem rosto legível, e a camada escura do véu
+cai justamente sobre o vão — a regra de não publicar cliente identificável
+segue valendo.
