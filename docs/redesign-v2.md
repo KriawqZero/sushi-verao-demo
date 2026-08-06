@@ -2,7 +2,7 @@
 
 Registro da segunda rodada, feita depois de o Marcilio revisar a v1 no desktop
 e no celular e rejeitá-la. A v1 continua recuperável no histórico do Git
-(`797c469`); esta rodada vive na branch `jarvis/sushi-verao-redesign`.
+(`797c469`); esta rodada foi consolidada em `main`, a branch de produção.
 
 A pesquisa e a mídia da v1 foram preservadas. Estratégia, copy, identidade e
 interface foram refeitas do zero.
