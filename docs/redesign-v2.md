@@ -493,3 +493,93 @@ capturas de 390×844, 820×1180 e 1440×1000 do build servido. Há uma pessoa em
 silhueta atrás do vidro da porta, sem rosto legível, e a camada escura do véu
 cai justamente sobre o vão — a regra de não publicar cliente identificável
 segue valendo.
+
+## Adendo — 07/08/2026: o acervo de 2026 e o cardápio no AnotaAi
+
+Duas mudanças de fundo nesta rodada. A primeira troca a fonte das fotos; a
+segunda troca o destino do pedido. Elas revogam pontos deste documento, e os
+parágrafos abaixo dizem quais.
+
+### As fotos: o acervo do Instagram deixou de ser a fonte
+
+O cliente não reconhecia mais a própria casa no site, e o motivo não era
+estético: a reforma da fachada tornou **falsas** as três fotos da seção "Como
+chegar" — letreiro sobre parede verde, esquina de faixa vermelha, fachada de
+dia. Quem chegasse pelo site procuraria na rua um prédio que não está lá. Isso
+não era um defeito de gosto, era informação errada na única seção cujo trabalho
+é fazer a pessoa achar o lugar.
+
+Entraram 18 frames de vídeo que o cliente mandou do evento de Dia dos
+Namorados de 2026 — comida, salão e área externa. São **464×832, verticais, de
+vídeo de WhatsApp**: essa é a resolução máxima que existe, não há original
+melhor a buscar, e o script nunca amplia. A consequência prática é que essas
+fotos sustentam card, vitrine e mosaico, e não sustentam largura total.
+
+Quinze delas entraram; três (`mesa-romantica`, `mesa-vela-petalas` e o segundo
+quadro da torre) ficaram fora por serem fracas demais. O acervo de 2023 caiu de
+26 entradas para sete: os pratos quentes, o carpaccio, um canto do salão e a
+área kids — o que a seleção nova não cobre e que não mostra fachada. O bruto de
+2026 vive em `assets/fotos-cliente/2026-eventos/`, fora do Git, sob a mesma
+política de sempre.
+
+**Revoga a seção 7.** Das quatro imagens da tabela de cortes por rosto de
+cliente, três saíram do site (`parede-discos`, `combinado-premium`,
+`preparo-fogo`); só `hot-roll` continua publicada, com o mesmo corte. A regra
+segue valendo e foi reaplicada: um dos quadros novos tinha uma pessoa em pé
+diante da TV e o corte a deixou inteira fora do quadro.
+
+**Revoga a nota de verificação sobre "a terceira foto de Como chegar".** Aquele
+bloco tinha três fotos e uma delas era `display: none` no celular; agora tem
+duas, ambas de 2026, e a regra de CSS que escondia a terceira saiu junto.
+
+### A faixa do salão: uma perda aceita de propósito
+
+A faixa larga que abre o ato do salão mostrava a parede de discos de palha, de
+2023, com 1302px de origem. Ela passou a mostrar o salão atual, com 464px
+esticados para a largura da tela. **Isso fica visivelmente mole em desktop** e
+foi escolha explícita do cliente, que preferiu a foto verdadeira e sem
+nitidez à foto nítida de um salão que já mudou. Se aparecer foto melhor do
+salão, é o primeiro lugar a trocar.
+
+### O cardápio: uma fonte de verdade, não duas
+
+A seção `#carta` montava a vitrine sem preço e mandava o cliente perguntar o
+valor **item a item no WhatsApp**. O cardápio real, com preço e carrinho, já
+existia no AnotaAi. Eram duas verdades sobre a mesma coisa, e a do site cobrava
+uma conversa inteira antes do primeiro pedido.
+
+A vitrine ficou — é ela que dá vontade, e é onde as fotos novas trabalham. O
+que mudou foi o destino: o botão leva a
+`https://pedido.anota.ai/loja/sushi-do-verao-1`, que soma o valor e **fecha no
+mesmo WhatsApp da casa** — o AnotaAi não é um canal concorrente do WhatsApp,
+é o WhatsApp com o pedido montado. Preço continua sem viver no site, agora por
+um motivo melhor que "ninguém confirmou": duplicá-lo criaria a divergência na
+primeira mudança de cardápio.
+
+O WhatsApp direto não saiu. Ficou onde a conversa é mesmo necessária — festa,
+encomenda sob medida, mesa no salão e dúvida — e saiu de onde só atrasava o
+pedido: cabeçalho, abertura e a chamada do rodapé. A mensagem pronta do link
+"geral" deixou de dizer "queria fazer um pedido" e passou a dizer "queria tirar
+uma dúvida", que é quem chega por ali agora.
+
+O endereço da loja vive em `CARDAPIO_ANOTAAI`, em `conteudo.ts`. O href também
+está escrito no HTML, de propósito: sem JS o botão precisa funcionar. O
+`[data-cardapio]` reafirma o valor da constante em runtime, mesmo padrão dos
+links de WhatsApp.
+
+**Revoga a subseção "O cardápio sem JavaScript".** O bloco de `<noscript>` não
+oferece mais pedir o cardápio no WhatsApp: oferece o cardápio do AnotaAi, que
+funciona sem script. O aviso da seção também deixou de ser `.so-com-js` pelo
+mesmo motivo. E o `menu` do JSON-LD, que apontava para `/#carta`, passou a
+apontar para o cardápio de verdade.
+
+### Verificação
+
+`pnpm typecheck`, `pnpm lint` e `pnpm build` passam. Os 24 cortes foram
+conferidos um a um na imagem gerada — três janelas foram recusadas e refeitas
+por mostrarem coisa diferente do nome do item, e as recusas estão registradas
+em comentário no `prepara-assets.py`. O link da loja no AnotaAi responde 200.
+**O que não foi feito:** a inspeção da página montada em três viewports, como
+nas rodadas anteriores — a automação do navegador falhou nesta sessão. Falta
+conferir a olho a faixa do salão em desktop, o mosaico com as proporções novas
+e o bloco de "Como chegar" agora com duas fotos.
