@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sushi do Verão · Restaurante japonês no Centro de Corumbá — MS</title>
-  <meta name="description" content="Restaurante japonês na Rua América, 677, esquina com a Antônio João, no Centro de Corumbá. Salão, entrega e retirada, de terça a domingo, das 19h às 23h30. Cardápio, festas e encomendas. Pedidos pelo WhatsApp.">
+  <meta name="description" content="Restaurante japonês na Rua América, 677, esquina com a Antônio João, no Centro de Corumbá. Salão, entrega e retirada, de terça a domingo, das 19h às 23h30. Cardápio completo com preço no AnotaAi; festas e encomendas pelo WhatsApp.">
   <link rel="canonical" href="https://sushidoverao.com.br/">
   <meta name="theme-color" content="#12100e">
   <meta name="color-scheme" content="dark">
@@ -50,7 +50,7 @@
     "logo": "https://sushidoverao.com.br/marca/logo.png",
     "servesCuisine": "Japonesa",
     "telephone": "+55 67 99991-7786",
-    "menu": "https://sushidoverao.com.br/#carta",
+    "menu": "https://pedido.anota.ai/loja/sushi-do-verao-1",
     "hasMap": "https://www.google.com/maps/search/?api=1&query=Sushi+do+Ver%C3%A3o%2C+Rua+Am%C3%A9rica%2C+677%2C+Corumb%C3%A1+-+MS",
     "sameAs": ["https://www.instagram.com/rodrigo_verao/"],
     "address": {
@@ -92,8 +92,12 @@
       <a class="topo__link" href="#chegar" data-alvo="chegar">Como chegar</a>
     </nav>
 
-    <a class="botao botao--marca topo__acao" data-zap="geral"
-       href="https://wa.me/5567999917786" rel="noopener">Pedir no WhatsApp</a>
+    <!-- o pedido tem um caminho so: o cardápio do AnotaAi, que ja tem preço e
+         fecha no mesmo WhatsApp da casa. Dois botões concorrendo aqui era o
+         que mandava o cliente perguntar valor item a item. -->
+    <a class="botao botao--marca topo__acao" data-cardapio
+       href="https://pedido.anota.ai/loja/sushi-do-verao-1"
+       target="_blank" rel="noopener noreferrer">Ver cardápio e pedir</a>
   </div>
 </header>
 
@@ -129,10 +133,12 @@
         </div>
 
         <div class="botoes">
-          <a class="botao botao--marca" data-zap="geral" href="https://wa.me/5567999917786" rel="noopener">
-            Pedir no WhatsApp
+          <a class="botao botao--marca" data-cardapio
+             href="https://pedido.anota.ai/loja/sushi-do-verao-1"
+             target="_blank" rel="noopener noreferrer">
+            Ver cardápio e pedir
           </a>
-          <a class="botao botao--contorno" href="#carta">Ver o cardápio</a>
+          <a class="botao botao--contorno" href="#carta">Ver os pratos</a>
         </div>
       </div>
     </div>
@@ -148,22 +154,33 @@
           Combinados para dividir, o que sai do balcão e os pratos quentes.
           <span class="so-com-js">Toque em qualquer prato para ver de perto.</span>
         </p>
-        <!-- sem JS quem cumpre este papel é o bloco do <noscript> abaixo -->
-        <p class="carta__aviso so-com-js">
-          Manda no WhatsApp o que você quer que a gente te passa o valor do dia
-          e monta o seu pedido.
+        <!-- A vitrine mostra o que a casa faz; o preço e o pedido ficam no
+             AnotaAi. Repetir preço aqui criaria duas verdades, e a do site
+             ficaria velha na primeira mudança de cardápio. -->
+        <p class="carta__aviso">
+          O cardápio completo, com preço e carrinho, está no AnotaAi — o pedido
+          fecha no WhatsApp da casa, já com o valor somado.
         </p>
+        <div class="botoes carta__acoes">
+          <a class="botao botao--marca" data-cardapio
+             href="https://pedido.anota.ai/loja/sushi-do-verao-1"
+             target="_blank" rel="noopener noreferrer">
+            Ver cardápio completo e pedir
+          </a>
+        </div>
       </div>
 
       <div id="carta-corpo">
         <noscript>
           <div class="carta__semjs">
             <p>
-              Chama a gente no WhatsApp que a gente te manda o cardápio com os
-              pratos do dia e os valores.
+              A vitrine de pratos precisa de JavaScript. O cardápio completo,
+              com preço, está no AnotaAi.
             </p>
-            <a class="botao botao--marca" href="https://wa.me/5567999917786" rel="noopener">
-              Pedir o cardápio no WhatsApp
+            <a class="botao botao--marca"
+               href="https://pedido.anota.ai/loja/sushi-do-verao-1"
+               target="_blank" rel="noopener noreferrer">
+              Ver cardápio completo e pedir
             </a>
           </div>
         </noscript>
@@ -178,22 +195,24 @@
         <p class="rotulo">Entrega e retirada</p>
         <h2 id="entrega-titulo">Para levar ou receber em casa.</h2>
         <p class="texto">
-          A gente entrega e também separa para você retirar no balcão. É tudo
-          combinado na conversa: manda o que você quer e o seu endereço que a
-          gente confirma o valor e o tempo.
+          A gente entrega e também separa para você retirar no balcão. No
+          cardápio do AnotaAi dá para montar o pedido, ver o valor e escolher
+          entrega ou retirada. Se preferir combinar na conversa, o WhatsApp
+          continua aberto.
         </p>
         <div class="botoes entrega__acoes">
-          <a class="botao botao--marca" data-zap="entrega"
-             href="https://wa.me/5567999917786" rel="noopener">Pedir para entrega</a>
-          <a class="botao botao--contorno" href="#carta">Ver o cardápio</a>
+          <a class="botao botao--marca" data-cardapio
+             href="https://pedido.anota.ai/loja/sushi-do-verao-1"
+             target="_blank" rel="noopener noreferrer">Pedir para entrega</a>
+          <a class="botao botao--contorno" data-zap="entrega"
+             href="https://wa.me/5567999917786" rel="noopener">Falar no WhatsApp</a>
         </div>
       </div>
 
-      <figure class="foto foto--luz" style="--prop: 1.35; margin: 0;" data-revela>
-        <img src="/img/combinado-premium-1080.webp"
-             srcset="/img/combinado-premium-480.webp 480w, /img/combinado-premium-960.webp 960w, /img/combinado-premium-1080.webp 1080w"
-             sizes="(min-width: 60rem) 45vw, 92vw" width="1080" height="800" loading="lazy" decoding="async"
-             alt="Travessa de sushi montada e fechada, pronta para sair">
+      <figure class="foto foto--luz" style="--prop: 0.8014; margin: 0;" data-revela>
+        <img src="/img/combinado-salmao-464.webp"
+             sizes="(min-width: 60rem) 45vw, 92vw" width="464" height="579" loading="lazy" decoding="async"
+             alt="Travessa montada com maki de salmão em volta e salmão picado no centro, pronta para sair">
       </figure>
     </div>
   </section>
@@ -205,16 +224,15 @@
         <p class="rotulo">O salão</p>
         <h2 id="salao-titulo">Como é comer aqui.</h2>
         <p class="lead">
-          Mesa de madeira, luminária de papel, parede de palha e box estofado.
+          Mesa de madeira, luminária acesa, parede de tijolo e banco estofado.
           Dá para vir em dupla ou trazer a família — tem área kids com brinquedo.
         </p>
       </div>
 
-      <figure class="foto foto--luz salao__panorama" style="--prop: 2.668; margin: 0;" data-revela>
-        <img src="/img/parede-discos-1302.webp"
-             srcset="/img/parede-discos-480.webp 480w, /img/parede-discos-960.webp 960w, /img/parede-discos-1302.webp 1302w"
-             sizes="100vw" width="1302" height="488" loading="lazy" decoding="async"
-             alt="Parede do salão coberta de discos de palha trançada sob três luminárias de papel acesas">
+      <figure class="foto foto--luz salao__panorama" style="--prop: 2.6667; margin: 0;" data-revela>
+        <img src="/img/salao-coracoes-464.webp"
+             sizes="100vw" width="464" height="174" loading="lazy" decoding="async"
+             alt="Faixa do salão com luminárias de vime acesas e balões de coração vermelhos sobre a parede de tijolo">
       </figure>
 
       <div class="salao__mosaico" id="salao-mosaico"></div>
@@ -237,8 +255,8 @@
 
           <ul class="festas__lista">
             <li>
-              <b>Barca grande</b>
-              Travessa de dividir, montada para a mesa da festa.
+              <b>Torre de camarão</b>
+              A peça de efeito da mesa, montada sobre o abacaxi.
             </li>
             <li>
               <b>Buffet montado</b>
@@ -250,37 +268,35 @@
             </li>
           </ul>
 
+          <!-- festa não cabe em carrinho: data, número de pessoas e local se
+               acertam na conversa. Aqui o WhatsApp continua sendo o caminho. -->
           <a class="botao botao--marca" data-zap="evento"
              href="https://wa.me/5567999917786" rel="noopener">Pedir orçamento no WhatsApp</a>
         </div>
 
-        <figure class="foto foto--luz" style="--prop: 1; margin: 0;" data-revela>
-          <img src="/img/barca-grande-1080.webp"
-               srcset="/img/barca-grande-480.webp 480w, /img/barca-grande-960.webp 960w, /img/barca-grande-1080.webp 1080w"
-               sizes="(min-width: 60rem) 45vw, 92vw" width="1080" height="1080" loading="lazy" decoding="async"
-               alt="Barca grande de sushi montada em travessa comprida, com fileiras de peças variadas">
+        <figure class="foto foto--luz" style="--prop: 0.7508; margin: 0;" data-revela>
+          <img src="/img/torre-camarao-464.webp"
+               sizes="(min-width: 60rem) 45vw, 92vw" width="464" height="618" loading="lazy" decoding="async"
+               alt="Torre de camarões espetados num abacaxi, montada sobre a travessa de sushi">
         </figure>
 
       </div>
 
       <div class="festas__apoio">
-        <figure class="foto foto--luz" style="--prop: 0.8; margin: 0;" data-revela>
-          <img src="/img/buffet-960.webp"
-               srcset="/img/buffet-480.webp 480w, /img/buffet-960.webp 960w, /img/buffet-1440.webp 1440w"
-               sizes="(min-width: 48rem) 30vw, 46vw" width="1440" height="1800" loading="lazy" decoding="async"
-               alt="Mesa de buffet montada em evento, com travessas de sushi e arranjo de folhagem">
+        <figure class="foto foto--luz" style="--prop: 0.7496; margin: 0;" data-revela>
+          <img src="/img/buffet-quente-464.webp"
+               sizes="(min-width: 48rem) 30vw, 46vw" width="464" height="619" loading="lazy" decoding="async"
+               alt="Cubas de buffet quente abertas, com arroz cremoso gratinado e um segundo prato ao fundo">
         </figure>
-        <figure class="foto foto--luz" style="--prop: 1.5375; margin: 0; --atraso: 45ms" data-revela>
-          <img src="/img/preparo-fogo-1024.webp"
-               srcset="/img/preparo-fogo-480.webp 480w, /img/preparo-fogo-960.webp 960w, /img/preparo-fogo-1024.webp 1024w"
-               sizes="(min-width: 48rem) 30vw, 46vw" width="1024" height="666" loading="lazy" decoding="async"
-               alt="Prato sendo finalizado no maçarico, com a chama sobre as peças">
+        <figure class="foto foto--luz" style="--prop: 0.7496; margin: 0; --atraso: 45ms" data-revela>
+          <img src="/img/evento-mesas-brancas-464.webp"
+               sizes="(min-width: 48rem) 30vw, 46vw" width="464" height="619" loading="lazy" decoding="async"
+               alt="Mesas redondas de toalha branca montadas na área externa, sob o toldo iluminado">
         </figure>
-        <figure class="foto foto--luz" style="--prop: 1; margin: 0; --atraso: 90ms" data-revela>
-          <img src="/img/combinado-chef-1440.webp"
-               srcset="/img/combinado-chef-480.webp 480w, /img/combinado-chef-960.webp 960w, /img/combinado-chef-1440.webp 1440w"
-               sizes="(min-width: 48rem) 30vw, 46vw" width="1440" height="1440" loading="lazy" decoding="async"
-               alt="Combinado do Chef com as peças dispostas em arranjo sobre o prato">
+        <figure class="foto foto--luz" style="--prop: 0.7496; margin: 0; --atraso: 90ms" data-revela>
+          <img src="/img/evento-mesa-redonda-464.webp"
+               sizes="(min-width: 48rem) 30vw, 46vw" width="464" height="619" loading="lazy" decoding="async"
+               alt="Mesa redonda de toalha branca com cadeira acrílica, montada ao lado da folhagem">
         </figure>
       </div>
     </div>
@@ -293,7 +309,7 @@
       <div class="mapa" data-revela>
         <!-- reserva atrás do iframe: se o embed não pintar, sobra a fachada e o endereço -->
         <div class="mapa__reserva">
-          <img src="/img/fachada-dia-480.webp" width="1440" height="1800" loading="lazy" decoding="async"
+          <img src="/img/fachada-mesa-externa-464.webp" width="464" height="619" loading="lazy" decoding="async"
                alt="">
           <p>Rua América, 677 — esquina com Antônio João<br>Centro, Corumbá — MS</p>
         </div>
@@ -307,8 +323,9 @@
         <p class="rotulo">Como chegar</p>
         <h2 id="chegar-titulo">Onde a gente fica.</h2>
         <p class="texto">
-          Rua América, 677, na esquina com a Antônio João, no Centro. É um prédio
-          de esquina com faixa vermelha, e o letreiro fica em cima da porta.
+          Rua América, 677, na esquina com a Antônio João, no Centro. É o prédio
+          de esquina com toldos e o letreiro redondo aceso em cima da porta de
+          vidro, com o piso de losangos vermelhos na calçada.
         </p>
 
         <dl class="chegar__dados">
@@ -343,25 +360,24 @@
 
     </div>
 
-    <!-- as fotos que ajudam a reconhecer o lugar de longe -->
+    <!-- As fotos que ajudam a reconhecer o lugar de longe. Eram três, todas de
+         2023: letreiro sobre parede verde, esquina de faixa vermelha, fachada
+         de dia. A casa foi reformada e nenhuma delas existe mais na rua — quem
+         chegasse pelo site procuraria um prédio que não está lá. Ficaram duas,
+         de 2026. A da entrada repete a foto da abertura de propósito: lá ela é
+         fundo sob o véu escuro, aqui aparece limpa, e é justamente a fachada
+         que a pessoa precisa achar. -->
     <div class="envelope chegar__fotos">
-      <figure class="foto foto--luz" style="--prop: 0.6198; margin: 0;" data-revela>
-        <img src="/img/letreiro-807.webp"
-             srcset="/img/letreiro-480.webp 480w, /img/letreiro-807.webp 807w"
-             sizes="(min-width: 48rem) 30vw, 46vw" width="807" height="1302" loading="lazy" decoding="async"
-             alt="Letreiro do Sushi do Verão aceso sobre a porta aberta, com o salão iluminado ao fundo">
+      <figure class="foto foto--luz" style="--prop: 0.75; margin: 0;" data-revela>
+        <img src="/img/fachada-noite-960.webp"
+             srcset="/img/fachada-noite-480.webp 480w, /img/fachada-noite-960.webp 960w"
+             sizes="(min-width: 48rem) 45vw, 46vw" width="960" height="1280" loading="lazy" decoding="async"
+             alt="Fachada do Sushi do Verão à noite: letreiro redondo aceso sobre a porta de vidro e o piso de losangos vermelhos na calçada">
       </figure>
-      <figure class="foto foto--luz" style="--prop: 0.8002; margin: 0; --atraso: 45ms" data-revela>
-        <img src="/img/esquina-placa-960.webp"
-             srcset="/img/esquina-placa-480.webp 480w, /img/esquina-placa-960.webp 960w, /img/esquina-placa-1302.webp 1302w"
-             sizes="(min-width: 48rem) 30vw, 46vw" width="1302" height="1627" loading="lazy" decoding="async"
-             alt="Esquina do prédio com a placa azul da Rua América, o número 677 e as faixas vermelhas da fachada">
-      </figure>
-      <figure class="foto foto--luz chegar__fotos--some" style="--prop: 0.8; margin: 0; --atraso: 90ms" data-revela>
-        <img src="/img/fachada-dia-960.webp"
-             srcset="/img/fachada-dia-480.webp 480w, /img/fachada-dia-960.webp 960w, /img/fachada-dia-1440.webp 1440w"
-             sizes="(min-width: 48rem) 30vw, 46vw" width="1440" height="1800" loading="lazy" decoding="async"
-             alt="Fachada do prédio de esquina durante o dia, com faixas vermelhas e o letreiro">
+      <figure class="foto foto--luz" style="--prop: 0.7496; margin: 0; --atraso: 45ms" data-revela>
+        <img src="/img/fachada-mesa-externa-464.webp"
+             sizes="(min-width: 48rem) 45vw, 46vw" width="464" height="619" loading="lazy" decoding="async"
+             alt="Área externa da casa à noite, com toldo iluminado, janela gradeada e mesas montadas na calçada">
       </figure>
     </div>
   </section>
@@ -386,11 +402,12 @@
       <div class="rodape__chamada">
         <p class="rodape__chamada-titulo">Pedidos e encomendas</p>
         <p>
-          Manda no WhatsApp o que você quer. A gente monta o pedido, passa o
-          valor do dia e combina entrega, retirada ou mesa no salão.
+          O cardápio com preço, entrega e retirada está no AnotaAi. Festa,
+          encomenda sob medida e mesa no salão a gente combina no WhatsApp.
         </p>
-        <a class="botao botao--marca" data-zap="geral"
-           href="https://wa.me/5567999917786" rel="noopener">Pedir no WhatsApp</a>
+        <a class="botao botao--marca" data-cardapio
+           href="https://pedido.anota.ai/loja/sushi-do-verao-1"
+           target="_blank" rel="noopener noreferrer">Ver cardápio e pedir</a>
       </div>
     </div>
 
@@ -422,11 +439,13 @@
 
       <div class="detalhe-item__rodape">
         <p class="detalhe-item__ressalva">
-          Gostou? Chama a gente no WhatsApp que a gente passa o valor e monta o
-          seu pedido.
+          Gostou? O valor e o pedido estão no cardápio do AnotaAi — ele fecha no
+          WhatsApp da casa.
         </p>
-        <a class="botao botao--marca" id="detalhe-acao" href="https://wa.me/5567999917786" rel="noopener">
-          Pedir no WhatsApp
+        <a class="botao botao--marca" id="detalhe-acao"
+           href="https://pedido.anota.ai/loja/sushi-do-verao-1"
+           target="_blank" rel="noopener noreferrer">
+          Ver no cardápio e pedir
         </a>
       </div>
     </div>

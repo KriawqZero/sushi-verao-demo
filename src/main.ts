@@ -2,14 +2,16 @@
  * Sushi do Verão — site.
  *
  * Toda a interatividade daqui serve a quem chegou com uma pergunta: dizer se
- * a casa está aberta agora, mostrar o cardápio, abrir um prato de perto e
- * levar a conversa para o WhatsApp. Não existe carrinho, contador, valor nem
- * checkout — o pedido é fechado na conversa, e o site não finge o contrário.
+ * a casa está aberta agora, mostrar os pratos, abrir um de perto e entregar o
+ * pedido a quem sabe fechá-lo. Não existe carrinho, contador, valor nem
+ * checkout aqui: isso é do AnotaAi, e o site não finge o contrário. O
+ * WhatsApp continua no que é conversa — festa, encomenda e mesa no salão.
  */
 
 import './style.css'
 import {
   CAPITULOS,
+  CARDAPIO_ANOTAAI,
   LUGAR,
   estadoDaCasa,
   linkWhatsApp,
@@ -227,9 +229,10 @@ function ligaDetalhe(): void {
 
     refs.foto.replaceChildren(montaImagem(item.imagem, '(min-width: 46rem) 32rem, 100vw', false))
 
-    refs.acao.href = linkWhatsApp(
-      `Olá! Vim pelo site e queria pedir ${item.nome}.`,
-    )
+    // O AnotaAi não expõe link por item, então a ação leva ao cardápio inteiro.
+    // Antes daqui saía um WhatsApp com "queria pedir X" pré-escrito: parecia
+    // mais direto, mas era o começo de uma negociação de preço, não um pedido.
+    refs.acao.href = CARDAPIO_ANOTAAI
 
     origem = gatilho
     refs.dialogo.showModal()
@@ -387,12 +390,33 @@ function ligaEstado(): void {
 }
 
 /* =========================================================================
+   caminhos de pedido
+   ========================================================================= */
+
+/**
+ * Reafirma o endereço do cardápio nos botões marcados com [data-cardapio].
+ *
+ * O href já está escrito no HTML de propósito: sem JS o botão precisa
+ * funcionar. Isto aqui existe pelo mesmo motivo dos links de WhatsApp — se a
+ * loja no AnotaAi mudar de endereço, muda-se `CARDAPIO_ANOTAAI` e o HTML vira
+ * fallback, não a fonte que alguém esqueceu de atualizar.
+ */
+function ligaCardapio(): void {
+  for (const el of document.querySelectorAll<HTMLAnchorElement>('[data-cardapio]')) {
+    el.href = CARDAPIO_ANOTAAI
+  }
+}
+
+/* =========================================================================
    links de WhatsApp com mensagem pronta
    ========================================================================= */
 
 function ligaWhatsApp(): void {
   const mensagens: Record<string, string> = {
-    geral: 'Olá! Vim pelo site de vocês e queria fazer um pedido.',
+    // "geral" deixou de ser o caminho do pedido quando o cardápio foi para o
+    // AnotaAi: aqui chega quem tem uma pergunta, não quem quer o valor de um
+    // item. A mensagem pronta acompanhou a mudança.
+    geral: 'Olá! Vim pelo site de vocês e queria tirar uma dúvida.',
     evento:
       'Olá! Vim pelo site e queria um orçamento para uma festa. ' +
       'Posso passar a data, quantas pessoas e o local?',
@@ -418,6 +442,7 @@ function inicia(): void {
   ligaTopo()
   ligaSecaoCorrente()
   ligaEstado()
+  ligaCardapio()
   ligaWhatsApp()
   ligaRevelacao()
 

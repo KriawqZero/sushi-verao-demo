@@ -712,8 +712,12 @@ button {
   color: var(--osso-2);
 }
 
+.carta__acoes {
+  margin-top: var(--e3);
+}
+
 /* Sem JS a grade de pratos não é montada. Em vez de deixar a seção vazia, ela
-   oferece o caminho que resolve a mesma pergunta — o cardápio pelo WhatsApp. */
+   oferece o caminho que resolve a mesma pergunta — o cardápio do AnotaAi. */
 .carta__semjs {
   display: grid;
   justify-items: start;
@@ -1279,17 +1283,12 @@ button {
   align-items: end;
 }
 
+/* Eram três colunas enquanto havia três fotos da fachada. Depois da reforma
+   sobraram duas que mostram a casa como ela está hoje, e a terceira coluna
+   deixaria um buraco no fim da linha. */
 @media (min-width: 48rem) {
   .chegar__fotos {
-    grid-template-columns: repeat(3, 1fr);
     gap: var(--e3);
-  }
-}
-
-/* a terceira é reforço: em duas colunas ela só ocuparia espaço */
-@media (max-width: 47.9375rem) {
-  .chegar__fotos--some {
-    display: none;
   }
 }
 

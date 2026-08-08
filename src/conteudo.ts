@@ -3,8 +3,9 @@
  *
  * Regra de edicao deste arquivo: as descricoes dizem o que a peca e em termos
  * gerais ("enrolado com a alga por fora") e nao entram em ingrediente, porcao,
- * preco ou tecnica que nao esteja confirmado com a casa. Preco e composicao
- * mudam e sao acertados na conversa do WhatsApp — por isso nao vivem aqui.
+ * preco ou tecnica que nao esteja confirmado com a casa. Preco nunca entra
+ * aqui — ele vive no AnotaAi, que e a fonte unica, e duplicar seria criar duas
+ * verdades que divergem na primeira alteracao de cardapio.
  *
  * Ao incluir prato novo, mande junto a foto: item sem imagem quebra a grade.
  */
@@ -49,6 +50,20 @@ export const CONTATO = {
 
 /** Consulta de endereco usada tanto no embed quanto no link externo. */
 export const CONSULTA_MAPA = 'Sushi do Verão, Rua América, 677, Corumbá - MS, 79302-070'
+
+/**
+ * Cardapio completo, com preco e carrinho, no AnotaAi.
+ *
+ * Ate 07/08/2026 o site pedia para o cliente perguntar o valor item a item no
+ * WhatsApp. O cardapio com preco ja existia no AnotaAi — eram duas verdades, e
+ * a do site custava uma conversa inteira antes do primeiro pedido. A vitrine
+ * daqui continua: ela e o que da vontade. Quem decidiu vai para o AnotaAi, que
+ * monta o pedido e fecha pelo mesmo WhatsApp da casa, ja com o valor somado.
+ *
+ * O WhatsApp direto nao saiu: ele continua onde a conversa e mesmo necessaria
+ * — festa, encomenda sob medida, mesa no salao e duvida.
+ */
+export const CARDAPIO_ANOTAAI = 'https://pedido.anota.ai/loja/sushi-do-verao-1'
 
 /**
  * Horario de funcionamento da casa.
@@ -177,10 +192,10 @@ export const CAPITULOS: CapituloCarta[] = [
         descricao: 'O combinado que leva o nome da casa.',
         nota: '32 peças',
         imagem: {
-          arquivo: 'combinado-verao',
-          larguras: [480, 960, 1080],
+          arquivo: 'combinado-variado',
+          larguras: [464],
           proporcao: 1,
-          alt: 'Combinado do Verão servido em travessa, com peças variadas de sushi',
+          alt: 'Travessa cheia de peças variadas — maki de salmão, folhas verdes e salmão picado no centro',
         },
       },
       {
@@ -188,10 +203,10 @@ export const CAPITULOS: CapituloCarta[] = [
         nome: 'Combinado Premium',
         descricao: 'A seleção maior, montada para ocupar o meio da mesa.',
         imagem: {
-          arquivo: 'combinado-premium',
-          larguras: [480, 960, 1080],
-          proporcao: 1.35,
-          alt: 'Combinado Premium com fileiras de sushi em travessa escura',
+          arquivo: 'torre-camarao-travessa',
+          larguras: [464],
+          proporcao: 1,
+          alt: 'Travessa grande com fileiras de sushi e uma torre de camarão espetada num abacaxi ao fundo',
         },
       },
       {
@@ -199,10 +214,10 @@ export const CAPITULOS: CapituloCarta[] = [
         nome: 'Combinado do Chef',
         descricao: 'A escolha do sushiman, decidida na hora.',
         imagem: {
-          arquivo: 'combinado-chef',
-          larguras: [480, 960, 1440],
-          proporcao: 1,
-          alt: 'Combinado do Chef com peças dispostas em arranjo sobre o prato',
+          arquivo: 'travessa-niguiri',
+          larguras: [464],
+          proporcao: 0.7496,
+          alt: 'Travessa redonda com fileiras de niguiri de salmão ao lado de uramaki',
         },
       },
     ],
@@ -217,10 +232,10 @@ export const CAPITULOS: CapituloCarta[] = [
         nome: 'Sashimi',
         descricao: 'Peixe cru em fatias, servido sem arroz.',
         imagem: {
-          arquivo: 'sashimi',
-          larguras: [480, 960, 1440],
-          proporcao: 1.0007,
-          alt: 'Fatias de sashimi de salmão dispostas em leque sobre o prato',
+          arquivo: 'sashimi-leque',
+          larguras: [464],
+          proporcao: 1,
+          alt: 'Fatias de sashimi de salmão dispostas em leque, cobrindo a travessa inteira',
         },
       },
       {
@@ -239,10 +254,10 @@ export const CAPITULOS: CapituloCarta[] = [
         nome: 'Uramaki',
         descricao: 'Enrolado ao contrário: o arroz fica por fora da alga.',
         imagem: {
-          arquivo: 'uramaki',
-          larguras: [480, 960, 1080],
+          arquivo: 'uramaki-2026',
+          larguras: [464],
           proporcao: 1,
-          alt: 'Peças de uramaki com arroz por fora, dispostas em prato escuro',
+          alt: 'Peças de uramaki com o arroz e o gergelim por fora, ao lado de beterraba ralada na travessa',
         },
       },
       {
@@ -250,10 +265,10 @@ export const CAPITULOS: CapituloCarta[] = [
         nome: 'Makimono',
         descricao: 'O enrolado clássico, com a alga por fora.',
         imagem: {
-          arquivo: 'makimono',
-          larguras: [480, 960, 1024],
+          arquivo: 'makimono-2026',
+          larguras: [325],
           proporcao: 1,
-          alt: 'Peças de makimono enroladas com alga por fora',
+          alt: 'Peças de makimono enroladas com a alga por fora, com salmão no centro',
         },
       },
     ],
@@ -311,19 +326,26 @@ export const CAPITULOS: CapituloCarta[] = [
   },
 ]
 
-/** Imagens do ato do lugar, na ordem em que aparecem. */
+/**
+ * Imagens do ato do lugar, na ordem em que aparecem.
+ *
+ * A primeira e a faixa larga que abre a secao, no HTML; as outras cinco caem
+ * no mosaico, cujas proporcoes vem do CSS e nao daqui. Os dois quadros de 2023
+ * que sobraram — o canto da janela e a area kids — ocupam justamente as celulas
+ * horizontais do mosaico, que as fotos verticais de 2026 nao preenchem.
+ */
 export const LUGAR: Imagem[] = [
   {
-    arquivo: 'parede-discos',
-    larguras: [480, 960, 1302],
-    proporcao: 2.668,
-    alt: 'Parede do salão coberta de discos de palha trançada sob três luminárias de papel acesas',
+    arquivo: 'salao-coracoes',
+    larguras: [464],
+    proporcao: 2.6667,
+    alt: 'Faixa do salão com luminárias de vime acesas e balões de coração vermelhos sobre a parede de tijolo',
   },
   {
-    arquivo: 'box-vermelho',
-    larguras: [480, 912],
-    proporcao: 0.7005,
-    alt: 'Mesa do salão com prato vermelho, bowl preto e hashi, diante de um box de couro',
+    arquivo: 'ambiente-petalas',
+    larguras: [464],
+    proporcao: 0.7496,
+    alt: 'Mesa de madeira posta com pétalas de rosa espalhadas e uma taça com vela acesa dentro',
   },
   {
     arquivo: 'salao-janela',
@@ -332,16 +354,16 @@ export const LUGAR: Imagem[] = [
     alt: 'Mesa de madeira posta ao lado da janela, com bancos estofados e luminárias de papel',
   },
   {
-    arquivo: 'salao-mesas',
-    larguras: [480, 960, 1302],
+    arquivo: 'mesa-baloes',
+    larguras: [464],
     proporcao: 1,
-    alt: 'Mesa de tampo claro com cadeiras pretas e dois quadros de círculo vermelho na parede',
+    alt: 'Mesa junto à vidraça com balões de coração, taça com vela e o número da mesa em pé',
   },
   {
-    arquivo: 'salao-folhagem',
-    larguras: [480, 960, 1302],
+    arquivo: 'mesa-petalas-taca',
+    larguras: [372],
     proporcao: 1,
-    alt: 'Canto do salão com parede de folhagem ao lado de uma janela de vidro quadriculado',
+    alt: 'Mesa posta com prato branco, pétalas de rosa e uma taça com vela acesa ao fundo',
   },
   {
     arquivo: 'area-kids',
