@@ -35,7 +35,7 @@ Cada crítica foi confrontada com evidência antes de virar decisão.
 > horário, que é fato.
 
 O escuro não é "dark premium", um estilo escolhido por gosto. Ele responde ao
-**horário de funcionamento** — terça a domingo, das 19h às 23h30, informado
+**horário de funcionamento** — terça a domingo, das 18h às 23h30, informado
 pelo Marcilio. A página é feita para ser aberta nesse horário, no celular, por
 quem está decidindo onde jantar. Isso resolve o problema apontado no item 9.
 
@@ -222,7 +222,7 @@ Nada foi afirmado sem lastro. O que aparece no site:
 | --- | --- |
 | Rua América, 677, esquina com Antônio João; Centro, Corumbá — MS; CEP 79302-070 | cadastro comercial do perfil + legendas |
 | (67) 99991-7786 | cadastro comercial; ~110 publicações desde 2022 |
-| Terça a domingo, das 19h às 23h30 | informado pelo Marcilio |
+| Terça a domingo, das 18h às 23h30 | informado pelo Marcilio |
 | Os 11 itens da carta | nomeados pelo próprio perfil |
 | "32 peças" no Combinado do Verão | artes do próprio perfil |
 | Buffet montado em evento de terceiros | publicações de parceiros |
@@ -407,7 +407,7 @@ de abertura mudar.
 
 O JSON-LD tem **só fato confirmado**: nome, URL, imagem, logo, culinária,
 telefone, endereço completo com CEP, Instagram em `sameAs`, link do Maps e o
-horário de terça a domingo, das 19h às 23h30. Ficaram de fora `priceRange`,
+horário de terça a domingo, das 18h às 23h30. Ficaram de fora `priceRange`,
 `aggregateRating`, `acceptsReservations`, `geo` e cardápio com preço — nada
 disso está confirmado, e dado estruturado errado é pior que dado estruturado
 ausente, porque o Google o exibe como se fosse a casa falando.

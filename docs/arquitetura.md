@@ -37,7 +37,7 @@ redação autoral que não afirma fato.
 | Direção | **C — A Casa, com a mecânica de A.** Atmosfera, estrutura e narrativa de C; seleção acumulativa de itens e barra de pedido fixa de A. |
 | Acento | **Âmbar do salão** — o dourado das luminárias de palha que existe nas fotos. Substitui o verde-limão. |
 | Nome | **Sushi do Verão** |
-| Funcionamento | **Terça a domingo, 19h às 23h30** — informado pelo Marcilio. |
+| Funcionamento | **Terça a domingo, 18h às 23h30** — informado pelo Marcilio. |
 | Localização | Endereço + foto da fachada + links de rota. Ver nota abaixo. |
 | Módulo história | **Não existe.** Decisão de 30/07/2026. |
 | Preços | **Não exibidos.** |
@@ -164,7 +164,7 @@ exposta no HTML, ainda que restrita por domínio.
 
 Abertura:
 > **Tem sushi na esquina da Antônio João.**
-> Salão aberto de terça a domingo, das 19h às 23h30. Delivery e encomenda
+> Salão aberto de terça a domingo, das 18h às 23h30. Delivery e encomenda
 > para festa. Peça pelo WhatsApp ou venha sentar.
 
 Encomendas:

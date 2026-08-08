@@ -45,7 +45,7 @@ export const CONTATO = {
   bairro: 'Centro, Corumbá — MS',
   cep: '79302-070',
   coordenadas: { lat: -19.0108, lng: -57.6525 },
-  funcionamento: 'Terça a domingo, das 19h às 23h30',
+  funcionamento: 'Terça a domingo, das 18h às 23h30',
 } as const
 
 /** Consulta de endereco usada tanto no embed quanto no link externo. */
@@ -83,11 +83,11 @@ export const HORARIO: {
 } = {
   fuso: 'America/Campo_Grande',
   dias: [0, 2, 3, 4, 5, 6],
-  abre: 19 * 60,
+  abre: 18 * 60,
   fecha: 23 * 60 + 30,
-  abreTexto: '19h',
+  abreTexto: '18h',
   fechaTexto: '23h30',
-  resumo: 'Terça a domingo, das 19h às 23h30',
+  resumo: 'Terça a domingo, das 18h às 23h30',
 }
 
 const NOMES_DIA = [
