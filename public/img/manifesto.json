@@ -1,4 +1,18 @@
 {
+ "ambiente-petalas": {
+  "origem": "2026-eventos/ambiente-petalas-taca.jpg",
+  "shortcode": "",
+  "corte": [
+   0.0,
+   0.12,
+   1.0,
+   0.8636
+  ],
+  "larguras": [
+   464
+  ],
+  "proporcao": 0.7496
+ },
  "area-kids": {
   "origem": "2023-05-09_CsCJTFCA9Nj_10.jpg",
   "shortcode": "CsCJTFCA9Nj",
@@ -10,42 +24,19 @@
   ],
   "proporcao": 0.8
  },
- "barca-grande": {
-  "origem": "2023-11-19_Cz2H9L3AOeT_01.jpg",
-  "shortcode": "Cz2H9L3AOeT",
-  "corte": null,
-  "larguras": [
-   480,
-   960,
-   1080
-  ],
-  "proporcao": 1.0
- },
- "box-vermelho": {
-  "origem": "2023-06-01_Cs7ieSDAcNK_04.jpg",
-  "shortcode": "Cs7ieSDAcNK",
+ "buffet-quente": {
+  "origem": "2026-eventos/buffet-quente.jpg",
+  "shortcode": "",
   "corte": [
-   0.3,
    0.0,
+   0.2,
    1.0,
-   1.0
+   0.9436
   ],
   "larguras": [
-   480,
-   912
+   464
   ],
-  "proporcao": 0.7005
- },
- "buffet": {
-  "origem": "2023-09-17_CxSCpiqABFj_02.jpg",
-  "shortcode": "CxSCpiqABFj",
-  "corte": null,
-  "larguras": [
-   480,
-   960,
-   1440
-  ],
-  "proporcao": 0.8
+  "proporcao": 0.7496
  },
  "carpaccio": {
   "origem": "2023-09-07_Cw5gBpIgsK__09.jpg",
@@ -58,65 +49,75 @@
   ],
   "proporcao": 1.0
  },
- "combinado-chef": {
-  "origem": "2023-09-07_Cw5gBpIgsK__06.jpg",
-  "shortcode": "Cw5gBpIgsK",
-  "corte": null,
-  "larguras": [
-   480,
-   960,
-   1440
-  ],
-  "proporcao": 1.0
- },
- "combinado-premium": {
-  "origem": "2023-11-17_CzxAXeag3XD_01.jpg",
-  "shortcode": "CzxAXeag3XD",
+ "combinado-salmao": {
+  "origem": "2026-eventos/combinado-salmao.jpg",
+  "shortcode": "",
   "corte": [
    0.0,
-   0.26,
+   0.25,
    1.0,
-   1.0
+   0.9471
   ],
   "larguras": [
-   480,
-   960,
-   1080
+   464
   ],
-  "proporcao": 1.35
+  "proporcao": 0.8014
  },
- "combinado-verao": {
-  "origem": "2023-06-06_CtKrBRCAXNH_01.jpg",
-  "shortcode": "CtKrBRCAXNH",
-  "corte": null,
+ "combinado-variado": {
+  "origem": "2026-eventos/combinado-variado.jpg",
+  "shortcode": "",
+  "corte": [
+   0.0,
+   0.22,
+   1.0,
+   0.7777
+  ],
   "larguras": [
-   480,
-   960,
-   1080
+   464
   ],
   "proporcao": 1.0
  },
- "esquina-placa": {
-  "origem": "2023-05-09_CsCJTFCA9Nj_02.jpg",
-  "shortcode": "CsCJTFCA9Nj",
-  "corte": null,
-  "larguras": [
-   480,
-   960,
-   1302
+ "evento-mesa-redonda": {
+  "origem": "2026-eventos/evento-mesa-redonda.jpg",
+  "shortcode": "",
+  "corte": [
+   0.0,
+   0.15,
+   1.0,
+   0.8936
   ],
-  "proporcao": 0.8002
+  "larguras": [
+   464
+  ],
+  "proporcao": 0.7496
  },
- "fachada-dia": {
-  "origem": "2023-05-09_CsCJTFCA9Nj_01.jpg",
-  "shortcode": "CsCJTFCA9Nj",
-  "corte": null,
-  "larguras": [
-   480,
-   960,
-   1440
+ "evento-mesas-brancas": {
+  "origem": "2026-eventos/evento-mesas-brancas.jpg",
+  "shortcode": "",
+  "corte": [
+   0.0,
+   0.15,
+   1.0,
+   0.8936
   ],
-  "proporcao": 0.8
+  "larguras": [
+   464
+  ],
+  "proporcao": 0.7496
+ },
+ "fachada-mesa-externa": {
+  "origem": "2026-eventos/fachada-mesa-externa.jpg",
+  "shortcode": "",
+  "corte": [
+   0.0,
+   0.15,
+   1.0,
+   0.8936
+  ],
+  "larguras": [
+   464
+  ],
+  "proporcao": 0.7496
  },
  "fachada-noite": {
   "origem": "2026-08-06_fachada-noite.jpeg",
@@ -144,47 +145,47 @@
   ],
   "proporcao": 1.1625
  },
- "letreiro": {
-  "origem": "2023-06-01_Cs7ieSDAcNK_02.jpg",
-  "shortcode": "Cs7ieSDAcNK",
+ "makimono-2026": {
+  "origem": "2026-eventos/uramaki-nori.jpg",
+  "shortcode": "",
   "corte": [
-   0.0,
-   0.0,
-   0.62,
-   1.0
+   0.3,
+   0.4,
+   1.0,
+   0.7906
   ],
   "larguras": [
-   480,
-   807
-  ],
-  "proporcao": 0.6198
- },
- "makimono": {
-  "origem": "2023-10-26_Cy4Zp5Eg4rS_01.jpg",
-  "shortcode": "Cy4Zp5Eg4rS",
-  "corte": null,
-  "larguras": [
-   480,
-   960,
-   1024
+   325
   ],
   "proporcao": 1.0
  },
- "parede-discos": {
-  "origem": "2023-06-01_Cs7ieSDAcNK_05.jpg",
-  "shortcode": "Cs7ieSDAcNK",
+ "mesa-baloes": {
+  "origem": "2026-eventos/mesa-baloes-coracao.jpg",
+  "shortcode": "",
   "corte": [
    0.0,
-   0.0,
+   0.03,
    1.0,
-   0.375
+   0.5877
   ],
   "larguras": [
-   480,
-   960,
-   1302
+   464
   ],
-  "proporcao": 2.668
+  "proporcao": 1.0
+ },
+ "mesa-petalas-taca": {
+  "origem": "2026-eventos/mesa-romantica-tv.jpg",
+  "shortcode": "",
+  "corte": [
+   0.2,
+   0.28,
+   1.0,
+   0.7262
+  ],
+  "larguras": [
+   372
+  ],
+  "proporcao": 1.0
  },
  "polvo": {
   "origem": "2023-11-29_C0NmZKjgSLz_01.jpg",
@@ -197,22 +198,6 @@
   ],
   "proporcao": 0.8
  },
- "preparo-fogo": {
-  "origem": "2023-09-30_Cx1YAACANO9_01.jpg",
-  "shortcode": "Cx1YAACANO9",
-  "corte": [
-   0.0,
-   0.35,
-   1.0,
-   1.0
-  ],
-  "larguras": [
-   480,
-   960,
-   1024
-  ],
-  "proporcao": 1.5375
- },
  "risoto-camarao": {
   "origem": "2023-06-01_Cs7iwWmgw9V_03.jpg",
   "shortcode": "Cs7iwWmgw9V",
@@ -224,16 +209,19 @@
   ],
   "proporcao": 0.999
  },
- "salao-folhagem": {
-  "origem": "2023-06-01_Cs7ieSDAcNK_09.jpg",
-  "shortcode": "Cs7ieSDAcNK",
-  "corte": null,
-  "larguras": [
-   480,
-   960,
-   1302
+ "salao-coracoes": {
+  "origem": "2026-eventos/salao-interno-coracao.jpg",
+  "shortcode": "",
+  "corte": [
+   0.0,
+   0.08,
+   1.0,
+   0.289
   ],
-  "proporcao": 1.0
+  "larguras": [
+   464
+  ],
+  "proporcao": 2.6667
  },
  "salao-janela": {
   "origem": "2023-06-01_Cs7ieSDAcNK_10.jpg",
@@ -246,47 +234,73 @@
   ],
   "proporcao": 1.0
  },
- "salao-mesa3": {
-  "origem": "2023-06-01_Cs7ieSDAcNK_06.jpg",
-  "shortcode": "Cs7ieSDAcNK",
-  "corte": null,
+ "sashimi-leque": {
+  "origem": "2026-eventos/sashimi-leque.jpg",
+  "shortcode": "",
+  "corte": [
+   0.0,
+   0.18,
+   1.0,
+   0.7377
+  ],
   "larguras": [
-   480,
-   960,
-   1302
+   464
   ],
   "proporcao": 1.0
  },
- "salao-mesas": {
-  "origem": "2023-06-01_Cs7ieSDAcNK_07.jpg",
-  "shortcode": "Cs7ieSDAcNK",
-  "corte": null,
+ "torre-camarao": {
+  "origem": "2026-eventos/torre-camarao-abacaxi-1.jpg",
+  "shortcode": "",
+  "corte": [
+   0.0,
+   0.1,
+   1.0,
+   0.8436
+  ],
   "larguras": [
-   480,
-   960,
-   1302
+   464
+  ],
+  "proporcao": 0.7508
+ },
+ "torre-camarao-travessa": {
+  "origem": "2026-eventos/torre-camarao-abacaxi-2.jpg",
+  "shortcode": "",
+  "corte": [
+   0.0,
+   0.22,
+   1.0,
+   0.7777
+  ],
+  "larguras": [
+   464
   ],
   "proporcao": 1.0
  },
- "sashimi": {
-  "origem": "2023-09-07_Cw5gBpIgsK__05.jpg",
-  "shortcode": "Cw5gBpIgsK",
-  "corte": null,
-  "larguras": [
-   480,
-   960,
-   1440
+ "travessa-niguiri": {
+  "origem": "2026-eventos/sashimi-uramaki.jpg",
+  "shortcode": "",
+  "corte": [
+   0.0,
+   0.15,
+   1.0,
+   0.8936
   ],
-  "proporcao": 1.0007
- },
- "uramaki": {
-  "origem": "2023-02-21_Co8ShluskQ9_01.jpg",
-  "shortcode": "Co8ShluskQ9",
-  "corte": null,
   "larguras": [
-   480,
-   960,
-   1080
+   464
+  ],
+  "proporcao": 0.7496
+ },
+ "uramaki-2026": {
+  "origem": "2026-eventos/combinado-beterraba.jpg",
+  "shortcode": "",
+  "corte": [
+   0.0,
+   0.3,
+   1.0,
+   0.8577
+  ],
+  "larguras": [
+   464
   ],
   "proporcao": 1.0
  },
